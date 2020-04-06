@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2020_04_06_073032) do
 
   create_table "blog_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "blog_id"
+    t.integer "user_id", null: false
+    t.integer "blog_id", null: false
     t.string "comment"
     t.string "image_id"
     t.datetime "created_at", null: false
@@ -22,24 +22,24 @@ ActiveRecord::Schema.define(version: 2020_04_06_073032) do
   end
 
   create_table "blogs", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.string "title"
-    t.text "content"
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "drafts", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.string "title"
-    t.text "content"
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "stamps", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "blog_id"
+    t.integer "user_id", null: false
+    t.integer "blog_id", null: false
     t.integer "stamp_img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 2020_04_06_073032) do
   end
 
   create_table "topic_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "topic_id"
+    t.integer "user_id", null: false
+    t.integer "topic_id", null: false
     t.string "image_id"
     t.string "comment"
     t.datetime "created_at", null: false
@@ -82,29 +82,31 @@ ActiveRecord::Schema.define(version: 2020_04_06_073032) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
+    t.integer "user_id", null: false
+    t.string "title", null: false
     t.string "eyecatch_img_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "user_relations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "follow_id"
+    t.integer "user_id", null: false
+    t.integer "follow_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "introduction"
+    t.string "profile_img_id"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
