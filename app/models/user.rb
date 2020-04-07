@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :topics
   has_many :topic_comments, through: :topics
 
-  validates :name, length: {minimum: 2, maximum: 20}
+  validates :name, uniqueness: true, length: {minimum: 2, maximum: 20}
   validates :email, length: {minimum: 2, maximum: 50}
   validates :introduction, length: {maximum: 50}
+
 end
