@@ -72,7 +72,7 @@ gem 'dotenv-rails'
 
 gem 'pry-rails'
 
-gem 'administrate'
+gem 'activeadmin'
 
 gem 'omniauth-twitter'
 

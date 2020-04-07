@@ -18,4 +18,3 @@
 //= require_tree .
 
 //= require summernote
-//= require summernote/locales/ja-JP
