@@ -1,5 +1,12 @@
 class DraftsController < ApplicationController
+
   def new
+  end
+
+  def create
+  end
+
+  def index
   end
 
   def edit
@@ -8,6 +15,9 @@ class DraftsController < ApplicationController
   def preview
   end
 
-  def index
+  def update
+  end
+
+  def destroy
   end
 end

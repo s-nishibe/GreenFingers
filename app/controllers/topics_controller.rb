@@ -1,5 +1,12 @@
 class TopicsController < ApplicationController
+
   def new
+  end
+
+  def create
+  end
+
+  def index
   end
 
   def edit
@@ -8,6 +15,6 @@ class TopicsController < ApplicationController
   def show
   end
 
-  def index
+  def update
   end
 end
