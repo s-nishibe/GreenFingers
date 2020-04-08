@@ -1,3 +1,10 @@
 <%= render partial: 'layouts/header' %>
-<h1>Drafts#new</h1>
-<p>Find me in app/views/drafts/new.html.erb</p>
+<div class="container">
+  <div class="row">
+  	<%= render partial: 'layouts/sidebar', user: @user %>
+  	<div class="col col-xs-10">
+  	<%= render partial: 'layouts/flash' %>
+  	<%= render 'form', blog: @blog %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 class DraftsController < ApplicationController
+  before_action :set_user
 
   def new
   end
@@ -19,5 +20,9 @@ class DraftsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def set_user
+    @user = current_user
   end
 end

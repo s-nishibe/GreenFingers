@@ -1,0 +1,46 @@
+<h2>編集</h2>
+<%= form_with(model: @draft, local: true) do |f| %>
+  <div class="draft_field">
+  	<%= f.label :タイトル %>
+  	<%= f.text_field :title %>
+  </div>
+  <div class="draft_field">
+	<%= f.text_area :content, id: "summernote", class: 'form-control', required: true, placeholder: '', 'data-provider': :summernote %>
+  </div>
+  <div>
+  	<%= f.submit '保存する' %>
+  </div>
+<% end %>
+
+<!-- <script type="text/javascript">
+	$(function(){
+		$('[data-provider="summernote"]').each(function(){
+			$(this).summernote({
+				lang: 'ja-JP',
+				height: 1000,
+				fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+				fontNameIgnoreCheck: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+				toolbar: [
+				['style', ['bold', 'italic', 'underline', 'clear']],
+				['fontsize', ['fontsize']],
+				['para', ['ul', 'ol']],
+				]
+			});
+		})
+	})
+</script> -->
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#summernote').summernote();
+	}
+</script>

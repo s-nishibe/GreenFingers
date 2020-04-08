@@ -1,4 +1,4 @@
-<div class="col col-xs-2">
+<div class="col col-2">
   <table>
   	<thead>
   		<tr>
@@ -15,7 +15,15 @@
   			<td><strong>introduction</strong><br>
   			  <%= @user.introduction %></td>
   		</tr>
-      <tr><td><%= link_to '編集', edit_user_path(@user), class: 'btn btn-sm btn-primary' %></td></tr>
+      <% if @user.id == current_user.id %>
+      <tr><td><%= link_to '編集', edit_user_path(@user), class: 'btn btn-sm btn-primary btn-block' %></td></tr>
+      <% end %>
   	</tbody>
   </table>
+  <% if @user.id == current_user.id %>
+  <div>
+    <%= link_to '下書き一覧', drafts_path, class: 'btn btn-sm btn-success btn-block' %>
+    <%= link_to 'ブログ一覧', blogs_path, class: 'btn btn-sm btn-success btn-block' %>
+  </div>
+  <% end %>
 </div>
