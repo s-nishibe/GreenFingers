@@ -1,2 +1,10 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%= render partial: 'layouts/header' %>
+<div class="container">
+  <div class="row">
+  	<%= render partial: 'layouts/sidebar', user: @user %>
+  	<div class="col col-xs-10">
+  	  <h1>Users#show</h1>
+      <p>Find me in app/views/users/show.html.erb</p>
+  	</div>
+  </div>
+</div>

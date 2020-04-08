@@ -1,19 +1,22 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  add_flash_types :succcess, :danger, :info
 
   private
-  # 名前とパスワードでlog in
-  def configure_permitted_parameters
-  	devise_parameter_sanitizer.permit(:sign_up){|u| u.permit(:name, :email, :password, :password_confirmation)}
-  	devise_parameter_sanitizer.permit(:sign_in){|u| u.permit(:name, :password, :password_confirmation)}
-  end
 
   # login, logout後の遷移先
   def after_sign_in_path_for(resource)
-  	user_path(resource)
+  	case resource
+  	  when AdminUser
+  	  	admin_root_path
+  	  when User
+  	  	user_path(resource)
+  	end
   end
 
   def after_sign_out_path_for(resource)
-  	homes_top_path
+    if AdminUser
+      new_admin_user_session_path
+    end
   end
 end

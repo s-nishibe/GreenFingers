@@ -14,4 +14,6 @@ class User < ApplicationRecord
   validates :email, length: {minimum: 2, maximum: 50}
   validates :introduction, length: {maximum: 50}
 
+  attachment :profile_img
+
 end

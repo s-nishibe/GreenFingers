@@ -5,4 +5,6 @@ class Blog < ApplicationRecord
 
 	validates :title, length: {maximum: 100}
 	validates :content, length: {minimum: 2}
+
+	attachment :eyecatch_img
 end

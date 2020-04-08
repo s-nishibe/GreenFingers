@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_035400) do
     t.integer "user_id", null: false
     t.string "title"
     t.text "content", null: false
+    t.string "eyecatch_img_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_035400) do
     t.integer "user_id", null: false
     t.string "title"
     t.text "content", null: false
+    t.string "eyecatch_img_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

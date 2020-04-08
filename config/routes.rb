@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
+  root to: 'homes#top'
+
   get 'homes/top' => 'homes#top'
   get 'homes/about' => 'homes#about'
 
