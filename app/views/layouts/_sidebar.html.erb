@@ -6,14 +6,16 @@
   		</tr>
   	</thead>
   	<tbody>
+      <tr><%= attachment_image_tag(@user, :profile_img, :fill, 100, 100, fallback: 'no_img.jpg', size: '100x100') %></tr>
   		<tr>
-  			<td>name<br>
+  			<td><strong>name</strong><br>
   			  <%= @user.name %></td>
   		</tr>
   		<tr>
-  			<td>introduction<br>
+  			<td><strong>introduction</strong><br>
   			  <%= @user.introduction %></td>
   		</tr>
+      <tr><td><%= link_to '編集', edit_user_path(@user), class: 'btn btn-sm btn-primary' %></td></tr>
   	</tbody>
   </table>
 </div>

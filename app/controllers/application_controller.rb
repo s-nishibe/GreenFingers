@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  before_action :configure_permitted_parameters, if: :devise_controller?
   add_flash_types :succcess, :danger, :info
 
   private
@@ -15,8 +15,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    if AdminUser
-      new_admin_user_session_path
-    end
+    homes_top_path
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation])
   end
 end

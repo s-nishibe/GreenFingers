@@ -3,7 +3,7 @@
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-xs-10">
-  	<%= flash[:alert] %>
+  	<%= render partial: 'layouts/flash' %>
   	  <h1><%= @user.name %>さん のブログ一覧</h1>
         <table>
       	 <thead>
@@ -16,7 +16,7 @@
       	<tbody>
       	  <tr>
       	  	<% @user.blogs.each do |blog| %>
-      		  <td><%= attachment_image_tag(blog, :eyecatch_img, ) %></td>
+      		  <td><%= attachment_image_tag(blog, :eyecatch_img, :fill, 50, 50, fallback: 'no_img.jpg') %></td>
       		  <td><%= blog.updated_at %></td>
       		  <td><%= blog.title %></td>
       		<% end %>
