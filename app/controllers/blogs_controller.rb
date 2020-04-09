@@ -10,6 +10,8 @@ def edit
 end
 
 def show
+  @blog = Blog.find(params[:id])
+  @user = @blog.user
 end
 
 def update
@@ -24,7 +26,7 @@ def set_blog
 end
 
 def blog_params
-  params.require(:blog).permit(, :user_id, :title, :content, :eyecatch_img, :tag_list)
+  params.require(:blog).permit(:user_id, :title, :content, :eyecatch_img, :tag_list)
 end
 
 end

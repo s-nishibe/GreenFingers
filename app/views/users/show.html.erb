@@ -14,13 +14,13 @@
       	  </tr>
       	</thead>
       	<tbody>
+          <% @user.blogs.each do |blog| %>
       	  <tr>
-      	  	<% @user.blogs.each do |blog| %>
-      		  <td><%= attachment_image_tag(blog, :eyecatch_img, :fill, 50, 50, fallback: 'no_img.jpg') %></td>
+      		  <td><%= attachment_image_tag(blog, :eyecatch_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50') %></td>
       		  <td><%= blog.updated_at %></td>
       		  <td><%= blog.title %></td>
-      		<% end %>
-      	  </tr>
+      		</tr>
+          <% end %>
       	</tbody>
       </table>
   	</div>

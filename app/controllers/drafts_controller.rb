@@ -20,7 +20,7 @@ class DraftsController < ApplicationController
       @draft.title = params[:draft][:title]
       @draft.tag_list = params[:draft][:tag_list]
       @draft.content = params[:draft][:content]
-      render :prevew
+      render :preview
     elsif params[:draft_btn]
       @draft = Draft.new(save_params)
       @draft.user_id = current_user.id
@@ -32,7 +32,7 @@ class DraftsController < ApplicationController
          redirect_to drafts_path
          flash[:success] = '記事は下書きに保存されました！'
       else
-         render :prevew, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
+         render :preview, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
       end
     elsif params[:blog_btn]
       @blog = Blog.new(save_params)
@@ -42,10 +42,9 @@ class DraftsController < ApplicationController
       @blog.tag_list = params[:draft][:tag_list]
       @blog.content = params[:draft][:content]
       if @blog.save
-         redirect_to blog_path(@blog)
-         flash[:success] = 'ブログが公開されました！'
+         redirect_to blog_path(@blog), success: 'ブログが公開されました！'
       else
-         render :prevew, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
+         render :preview, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
       end
     end
   end
@@ -59,10 +58,40 @@ class DraftsController < ApplicationController
   end
 
   def update
-    @draft = Draft.find(params[:id])
-    @draft.update
-    redirect_to draft_path(@draft)
-    flash[:success] = '下書きを更新しました。'
+    if params[:preview_btn]
+      @draft = Draft.find(params[:id])
+      @draft.eyecatch_img = params[:draft][:eyecatch_img]
+      @draft.title = params[:draft][:title]
+      @draft.tag_list = params[:draft][:tag_list]
+      @draft.content = params[:draft][:content]
+      render :preview
+    elsif params[:draft_btn]
+      @draft = Draft.find(params[:id])
+      @draft.user_id = current_user.id
+      @draft.eyecatch_img = params[:draft][:eyecatch_img]
+      @draft.title = params[:draft][:title]
+      @draft.tag_list = params[:draft][:tag_list]
+      @draft.content = params[:draft][:content]
+      if @draft.update
+         redirect_to drafts_path
+         flash[:success] = '記事は下書きに保存されました！'
+      else
+         render :preview, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
+      end
+    elsif params[:blog_btn]
+      @blog = Blog.new(save_params)
+      @blog.user_id = current_user.id
+      @blog.eyecatch_img = params[:draft][:eyecatch_img]
+      @blog.title = params[:draft][:title]
+      @blog.tag_list = params[:draft][:tag_list]
+      @blog.content = params[:draft][:content]
+      if @blog.save
+         redirect_to blog_path(@blog)
+         flash[:success] = 'ブログが公開されました！'
+      else
+         render :preview, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
+      end
+    end
   end
 
   def destroy

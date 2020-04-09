@@ -12,12 +12,12 @@
         <%= attachment_image_tag(@draft, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
       </div>
 
-  	  <div class="preview_title" style="text-align: center;">
+  	  <div class="preview_title">
   	    <%= @draft.title %>
   	  </div>
 
   	  <div class="preview_tag">
-  	  	<h4>タグ</h4>
+  	  	<h5>タグ：</h5>
   	    <%= @draft.tag_list %>
   	  </div>
 
