@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
   resources :drafts, only: [:new, :create, :index, :edit, :update, :destroy]
-  post 'draft/:id/preview' => 'draft#preview', as: 'draft_preview'
-  get 'draft/:id/success' => 'draft#success', as: 'draft_success'
+  post 'drafts/preview' => 'drafts#preview', as: 'draft_preview'
+  get 'drafts/:id/success' => 'draft#success', as: 'draft_success'
 
   resources :blogs, only: [:create, :index, :show, :edit, :update, :destroy] do
     resource :blog_comments, only: [:new, :create, :edit, :update, :destroy]

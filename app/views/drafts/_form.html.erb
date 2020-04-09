@@ -1,37 +1,33 @@
-<%= form_with(model: @draft, local: true) do |f| %>
+<%= form_with(model: draft, url: {action: 'create'}, local: true) do |f| %>
+
+  <div>
+  	<%= f.label :アイキャッチ画像 %><br>
+  	<%= attachment_image_tag(@draft, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
+  	<%= f.attachment_field :eyecatch_img %>
+  </div>
+
   <div class="draft_field">
   	<%= f.label :タイトル %>
   	<%= f.text_field :title %>
   </div>
+
   <div class="draft_field">
-  	<%= f.label :タグ %>
+  	<%= f.label :タグ %><br>
   	<%= f.text_field :tag_list, value: @draft.tag_list.join(','), class: 'form-control' %>
   </div>
+
   <div class="draft_field">
+  	<%= f.label :本文 %>
 	<%= f.text_area :content, id: "summernote", class: 'form-control', required: true, placeholder: '', 'data-provider': :summernote %>
   </div>
-  <div>
-  	<%= f.submit '保存する' %>
-  </div>
-<% end %>
 
-<!-- <script type="text/javascript">
-	$(function(){
-		$('[data-provider="summernote"]').each(function(){
-			$(this).summernote({
-				lang: 'ja-JP',
-				height: 1000,
-				fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
-				fontNameIgnoreCheck: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
-				toolbar: [
-				['style', ['bold', 'italic', 'underline', 'clear']],
-				['fontsize', ['fontsize']],
-				['para', ['ul', 'ol']],
-				]
-			});
-		})
-	})
-</script> -->
+  <div class="draft_field">
+  	<%= f.submit 'プレビュー', name: 'preview_btn', class: 'btn-sm btn-info' %>
+  	<%= f.submit '下書き保存', name: 'draft_btn', class: 'btn-sm btn-primary' %>
+  	<%= f.submit '公開する！', name: 'blog_btn', class: 'btn-sm btn-success' %>
+  </div>
+
+<% end %>
 
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -45,5 +41,6 @@
 <script>
 	$(document).ready(function() {
 		$('#summernote').summernote();
-	}
+	})
+
 </script>

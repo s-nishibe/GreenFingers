@@ -18,22 +18,20 @@
   	</div>
 
   	<div class="col col-xs-4">
-      <nav class="navbar navbar-expand-sm">
       <% if user_signed_in? %>
       <div class="login_message">ようこそ <%= current_user.name %> さん！</div>
   	  <div class="navbar-nav navbar-middle">
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-dark" type="submit">Search</button>
         </form>
   	  </div>
       <% end %>
-      </nav>
   	</div>
 
   	<div class="col col-xs-5">
       <nav class="navbar navbar-expand-sm">
-  	  	<ul class="nav navbar-nav navbar-right">
+  	  	<ul class="navbar-nav navbar-right">
   	  	  <% if user_signed_in? %>
             <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'みんなのブログ', blogs_path, class: 'nav-link' %></li>

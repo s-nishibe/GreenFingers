@@ -2,31 +2,82 @@ class DraftsController < ApplicationController
   before_action :set_user
 
   def new
-  end
-
-  def create
-  end
-
-  def index
-  end
-
-  def edit
+    @draft = Draft.new
   end
 
   def preview
+    @draft = Draft.new
+    @draft.eyecatch_img = params[:draft][:eyecatch_img]
+    @draft.title = params[:draft][:title]
+    @draft.tag_list = params[:draft][:tag_list]
+    @draft.content = params[:draft][:content]
+  end
+
+  def create
+    if params[:preview_btn]
+      @draft = Draft.new(save_params)
+      @draft.eyecatch_img = params[:draft][:eyecatch_img]
+      @draft.title = params[:draft][:title]
+      @draft.tag_list = params[:draft][:tag_list]
+      @draft.content = params[:draft][:content]
+      render :prevew
+    elsif params[:draft_btn]
+      @draft = Draft.new(save_params)
+      @draft.user_id = current_user.id
+      @draft.eyecatch_img = params[:draft][:eyecatch_img]
+      @draft.title = params[:draft][:title]
+      @draft.tag_list = params[:draft][:tag_list]
+      @draft.content = params[:draft][:content]
+      if @draft.save
+         redirect_to drafts_path
+         flash[:success] = '記事は下書きに保存されました！'
+      else
+         render :prevew, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
+      end
+    elsif params[:blog_btn]
+      @blog = Blog.new(save_params)
+      @blog.user_id = current_user.id
+      @blog.eyecatch_img = params[:draft][:eyecatch_img]
+      @blog.title = params[:draft][:title]
+      @blog.tag_list = params[:draft][:tag_list]
+      @blog.content = params[:draft][:content]
+      if @blog.save
+         redirect_to blog_path(@blog)
+         flash[:success] = 'ブログが公開されました！'
+      else
+         render :prevew, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
+      end
+    end
+  end
+
+  def index
+    @drafts = @user.drafts
+  end
+
+  def edit
+    @draft = Draft.find(params[:id])
   end
 
   def update
+    @draft = Draft.find(params[:id])
+    @draft.update
+    redirect_to draft_path(@draft)
+    flash[:success] = '下書きを更新しました。'
   end
 
   def destroy
+    @draft = Draft.find(params[:id])
+    @draft.destroy
+    render :index
+    flash[:success] = '下書きを削除しました。'
   end
 
+  private
   def set_user
     @user = current_user
   end
 
-  def draft_params
-    params.require(:blog).permit(, :user_id, :title, :content, :eyecatch_img, :tag_list)
+  def save_params
+    params.permit(:user_id, :title, :content, :eyecatch_img, :tag_list)
   end
 end

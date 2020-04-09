@@ -1,13 +1,6 @@
 class BlogsController < ApplicationController
 before_action :set_blog, only: [:edit, :show, :destroy]
 
-def create
-  @blog = Blog.new
-  @blog.user.id = current_user.id
-  @blog.save
-  redeirect_to blog_path(@blog)
-  flash[:success] = 'ブログが公開されました！'
-end
 
 def index
   @blogs = Blog.all
