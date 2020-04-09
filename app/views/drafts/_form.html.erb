@@ -1,8 +1,11 @@
-<h2>編集</h2>
 <%= form_with(model: @draft, local: true) do |f| %>
   <div class="draft_field">
   	<%= f.label :タイトル %>
   	<%= f.text_field :title %>
+  </div>
+  <div class="draft_field">
+  	<%= f.label :タグ %>
+  	<%= f.text_field :tag_list, value: @draft.tag_list.join(','), class: 'form-control' %>
   </div>
   <div class="draft_field">
 	<%= f.text_area :content, id: "summernote", class: 'form-control', required: true, placeholder: '', 'data-provider': :summernote %>

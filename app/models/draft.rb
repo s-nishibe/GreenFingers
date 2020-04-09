@@ -5,4 +5,5 @@ class Draft < ApplicationRecord
 	validates :content, length: {minimum: 2}
 
     attachment :profile_img
+    acts_as_taggable
 end

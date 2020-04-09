@@ -17,6 +17,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require summernote-init
 //= require summernote/lang/summernote-ja-JP
 //= require_tree .

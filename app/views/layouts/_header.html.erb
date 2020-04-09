@@ -1,48 +1,52 @@
 <header class="container">
   <div class="row">
-  	<div class="col col-xs-3">
-  	  <nav>
-        <ul class="nav navbar-nav navbar-left">
-          <li>
+    <div class="col col-xs-3">
+      <nav class="navbar navbar-expand-sm">
+        <ul class="navbar-nav navbar-left">
+          <li class="nav-item">
             <%= link_to homes_top_path do %>
-  	  	    <h4>Green<br>Fingers</h4>
+  	  	    <span class="navbar-brand mb0 h1">Green<br>Fingers</span>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to homes_about_path do %>
-            <h4>Greenfingers<br>とは？</h4>
+            <span class="nav-link">Greenfingers<br>とは？</span>
             <% end %>
           </li>
-      </ul>
-  	  </nav>
+        </ul>
+      </nav>
   	</div>
 
   	<div class="col col-xs-4">
+      <nav class="navbar navbar-expand-sm">
       <% if user_signed_in? %>
       <div class="login_message">ようこそ <%= current_user.name %> さん！</div>
-  	  <nav class="nav navbar-nav navbar-middle">
-  	  	<p>あとでここに検索窓つける</p>
-  	  </nav>
+  	  <div class="navbar-nav navbar-middle">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+  	  </div>
       <% end %>
+      </nav>
   	</div>
 
   	<div class="col col-xs-5">
-  	  <nav>
+      <nav class="navbar navbar-expand-sm">
   	  	<ul class="nav navbar-nav navbar-right">
   	  	  <% if user_signed_in? %>
-            <li><%= link_to 'マイページ', user_path(current_user) %></li>
-            <li><%= link_to 'みんなのブログ', blogs_path %></li>
-  	  	    <li><%= link_to 'Topics', topics_path %></li>
-  	  	    <li><%= link_to 'Users', users_path %></li>
-  	  	    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+            <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to 'みんなのブログ', blogs_path, class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to 'Topics', topics_path, class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to 'Users', users_path, class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
   	  	  <% else %>
-  	  	    <li><%= link_to 'Topic', topics_path %></li>
-  	  	    <li><%= link_to 'Log in', new_user_session_path %></li>
-  	  	    <li><%= link_to 'Sign up', new_user_registration_path %></li>
+  	  	    <li class="nav-item"><%= link_to 'Topic', topics_path, class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %></li>
   	  	  <% end %>
   	  	</ul>
-  	  </nav>
+      </nav>
   	</div>
-
   </div>
 </header>

@@ -25,4 +25,8 @@ class DraftsController < ApplicationController
   def set_user
     @user = current_user
   end
+
+  def draft_params
+    params.require(:blog).permit(, :user_id, :title, :content, :eyecatch_img, :tag_list)
+  end
 end

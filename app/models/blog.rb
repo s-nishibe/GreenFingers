@@ -7,4 +7,5 @@ class Blog < ApplicationRecord
 	validates :content, length: {minimum: 2}
 
 	attachment :eyecatch_img
+	acts_as_taggable
 end

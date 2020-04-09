@@ -30,4 +30,8 @@ def set_blog
   @blog = Blog.find(params[:id])
 end
 
+def blog_params
+  params.require(:blog).permit(, :user_id, :title, :content, :eyecatch_img, :tag_list)
+end
+
 end
