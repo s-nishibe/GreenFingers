@@ -12,10 +12,9 @@
 //
 
 //= require rails-ujs
-//= require activestorage
-//= require popper
 //= require jquery
 //= require jquery_ujs
+//= require popper
 //= require bootstrap
-//= require summernote/lang/summernote-ja-JP
+//= require activestorage
 //= require_tree .

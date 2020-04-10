@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+before_action :set_user
 before_action :set_blog, only: [:edit, :show, :destroy]
 
 
@@ -21,6 +22,10 @@ def destroy
 end
 
 private
+def set_user
+	@user = current_user
+end
+
 def set_blog
   @blog = Blog.find(params[:id])
 end

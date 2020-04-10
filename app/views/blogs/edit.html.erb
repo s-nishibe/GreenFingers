@@ -1,3 +1,13 @@
 <%= render partial: 'layouts/header' %>
-<h1>Blogs#edit</h1>
-<p>Find me in app/views/blogs/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+  	<%= render partial: 'layouts/sidebar', user: @user %>
+
+  	<div class="col col-xs-10">
+  	<%= render partial: 'layouts/flash' %>
+  	<h2>ブログ編集</h2>
+  	<%= render 'drafts/form', draft: @blog %>
+    </div>
+
+  </div>
+</div>
