@@ -4,8 +4,8 @@
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-xs-10">
   	<%= render partial: 'layouts/flash' %>
+  	<h2>トピック 全<%= @topics.count %>件</h2>
+  	<%= render 'topics_index', topics: @topics %>
     </div>
   </div>
 </div>
-<h1>Topics#index</h1>
-<p>Find me in app/views/topics/index.html.erb</p>

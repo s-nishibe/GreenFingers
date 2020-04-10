@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  before_action :set_user
 
   def new
   end
@@ -7,6 +8,7 @@ class TopicsController < ApplicationController
   end
 
   def index
+    @topics = Topic.all
   end
 
   def edit
@@ -16,5 +18,10 @@ class TopicsController < ApplicationController
   end
 
   def update
+  end
+
+  private
+  def set_user
+    @user = current_user
   end
 end
