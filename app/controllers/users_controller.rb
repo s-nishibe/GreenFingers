@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @blogs = @user.blogs.order(updated_at: :DESC).limit(3)
+    @topics = @user.topics.order(updated_at: :DESC).limit(3)
   end
 
   def edit

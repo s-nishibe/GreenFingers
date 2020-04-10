@@ -3,26 +3,18 @@
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-xs-10">
-  	<%= render partial: 'layouts/flash' %>
-  	  <h1><%= @user.name %>さん のブログ一覧</h1>
-        <table>
-      	 <thead>
-      	  <tr>
-      	    <th></th>
-      	    <th>日付</th>
-      		<th>タイトル</th>
-      	  </tr>
-      	</thead>
-      	<tbody>
-          <% @user.blogs.each do |blog| %>
-      	  <tr>
-      		  <td><%= attachment_image_tag(blog, :eyecatch_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50') %></td>
-      		  <td><%= blog.updated_at %></td>
-      		  <td><%= blog.title %></td>
-      		</tr>
-          <% end %>
-      	</tbody>
-      </table>
+  	  <%= render partial: 'layouts/flash' %>
+
+      <div class="user_show_box">
+  	  <h2><%= @user.name %>さん のブログ 全<%= @user.blogs.count %> 件</h2>
+        <%= render 'blogs/blogs_index', blogs: @blogs %>
+        <%= link_to 'もっと見る→', blogs_path, name: 'users_blog', class: 'btn-sm btn-info' %>
+      </div>
+
+      <div class="user_show_box">
+        <h2><%= @user.name %>さんが立てたTopics 全<%= @user.topics.count %>件</h2>
+      </div>
+
   	</div>
   </div>
 </div>

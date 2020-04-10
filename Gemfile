@@ -72,7 +72,8 @@ gem 'pry-rails'
 
 gem 'activeadmin'
 
-gem 'omniauth-twitter'
+gem 'omniauth'
+gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 
 gem 'rubocop'
 
