@@ -78,7 +78,8 @@ class DraftsController < ApplicationController
          redirect_to drafts_path
          flash[:success] = '下書きが更新されました！'
       else
-         render :preview, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
+         render :preview
+         flash[:danger] = '記事が保存できません。タイトルや本文の文字数は適切ですか？'
       end
     elsif params[:blog_btn]
       @blog = Blog.new(save_params)
@@ -91,7 +92,8 @@ class DraftsController < ApplicationController
          redirect_to blog_path(@blog)
          flash[:success] = 'ブログが公開されました！'
       else
-         render :preview, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
+         render :preview
+         flash[:danger] = '記事が保存できません。タイトルや本文の文字数は適切ですか？'
       end
     end
   end
@@ -100,7 +102,7 @@ class DraftsController < ApplicationController
     @draft = Draft.find(params[:id])
     @draft.destroy
     redirect_to drafts_path
-    flash[:success] = '下書きを削除しました。'
+    flash[:info] = '下書きを削除しました。'
   end
 
   private

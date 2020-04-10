@@ -21,7 +21,7 @@
       		  <td><%= blog.title %></td>
             <td><%= link_to '読む', blog_path(blog), class: 'btn-sm btn-info' %></td>
             <% if blog.user_id == current_user.id %>
-              <td><%= link_to '編集', blog_path(blog), class: 'btn-sm btn-success' %></td>
+              <td><%= link_to '編集', edit_blog_path(blog), class: 'btn-sm btn-success' %></td>
               <td><%= link_to '削除', blog_path(blog), method: :delete, class: 'btn-sm btn-danger' %></td>
             <% end %>
       		</tr>
