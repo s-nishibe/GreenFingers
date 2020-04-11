@@ -3,9 +3,32 @@
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-xs-10">
-  	<%= render partial: 'layouts/flash' %>
+
+ 	<%= render partial: 'layouts/flash' %>
+
+ 	<div class="topic_form">
+ 	  <%= form_with(model: @topic, local: true) do |f| %>
+ 	    <div class="field">
+ 	      <%= f.label :アイキャッチ画像 %>
+ 	      <%= attachment_image_tag(@topic, :eyecatch_img, :fill, 100, 100, fallback: 'no_img.jpg', size: '100x100') %>
+ 	      <%= f.attachment_field :eyecatch_img %>
+ 	    </div>
+ 	    <div class="field">
+ 	      <%= f.label :タイトル %>
+ 	      <%= f.text_field :title %>
+ 	    </div>
+ 	    <div class="field">
+ 	      <%= f.fields_for @topic_comment do |tc| %>
+ 	        <%= tc.attachment_field :image %>
+ 	        <%= tc.text_field :comment %>
+ 	      <% end %>
+ 	    </div>
+ 	    <div class="field">
+ 	      <%= f.submit '送信', class: 'btn-sm btn-success' %>
+ 	    </div>
+ 	  <% end %>
+ 	</div>
+
     </div>
   </div>
 </div>
-<h1>Topics#new</h1>
-<p>Find me in app/views/topics/new.html.erb</p>

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :stamps, only: [:create, :destroy]
 
-  resources :topics, only: [:new, :create, :index,  :edit, :show, :update] do
+  resources :topics do
     resources :topic_comments, only: [:new, :create, :destroy]
   end
 end

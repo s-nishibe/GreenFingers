@@ -30,8 +30,7 @@ class DraftsController < ApplicationController
       @draft.content = params[:draft][:content]
       render :preview
     elsif params[:draft_btn]
-      @draft = Draft.new(save_params)
-      @draft.user_id = current_user.id
+      @draft = current_user.drafts.build(save_params)
       @draft.eyecatch_img = params[:draft][:eyecatch_img]
       @draft.title = params[:draft][:title]
       @draft.tag_list = params[:draft][:tag_list]
@@ -43,8 +42,7 @@ class DraftsController < ApplicationController
          render :preview, danger: '記事が保存できません。タイトルや本文の文字数は適切ですか？'
       end
     elsif params[:blog_btn]
-      @blog = Blog.new(save_params)
-      @blog.user_id = current_user.id
+      @blog = current_user.blogs.build(save_params)
       @blog.eyecatch_img = params[:draft][:eyecatch_img]
       @blog.title = params[:draft][:title]
       @blog.tag_list = params[:draft][:tag_list]
@@ -82,8 +80,7 @@ class DraftsController < ApplicationController
          flash[:danger] = '記事が保存できません。タイトルや本文の文字数は適切ですか？'
       end
     elsif params[:blog_btn]
-      @blog = Blog.new(save_params)
-      @blog.user_id = current_user.id
+      @blog = current_user.blogs.build(save_params)
       @blog.eyecatch_img = params[:draft][:eyecatch_img]
       @blog.title = params[:draft][:title]
       @blog.tag_list = params[:draft][:tag_list]

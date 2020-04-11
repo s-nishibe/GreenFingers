@@ -3,9 +3,15 @@
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-xs-10">
+
   	<%= render partial: 'layouts/flash' %>
+
+  	<div>
+      <%= attachment_image_tag(@topic, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
+  	  <h3><%= @topic.title %></h3>
+      <%= render 'topic_comments/tc_index', topic_comments: @topic_comments %>
+  	</div>
+
     </div>
   </div>
 </div>
-<h1>Topics#show</h1>
-<p>Find me in app/views/topics/show.html.erb</p>
