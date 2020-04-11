@@ -3,20 +3,18 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
-    @topic_comment = TopicComment.new
+    @topic_comment = @topic.topic_comments.build
   end
 
   def create
-    @topic = Topic.new(topic_params)
-    @topic.user_id = current_user.id
+    @topic = current_user.topics.build(topic_params)
     @topic.save
-    @topic_comment = TopicComment.new
+    @topic_comment = @topic.topic_comments.build
     @topic_comment.user_id = current_user.id
-    @topic_comment.topic_id = @topic.id
     @topic_comment.image = params[:topic][:topic_comment][:image]
     @topic_comment.comment = params[:topic][:topic_comment][:comment]
     @topic_comment.save
-    redirect_to topic_path(@topic)
+    redirect_to topic_path(@topic.id)
     flash[:success] = '新しいトピックが立ちました！'
   end
 
@@ -31,6 +29,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @topic_comments = @topic.topic_comments
+    @topic_comment = TopicComment.new
   end
 
   def update
