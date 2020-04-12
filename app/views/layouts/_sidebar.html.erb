@@ -17,6 +17,8 @@
   		</tr>
       <% if @user.id == current_user.id %>
       <tr><td><%= link_to '編集', edit_user_path(@user), class: 'btn btn-sm btn-primary btn-block' %></td></tr>
+      <% else %>
+      <tr><td><%= render 'layouts/follow_btn', user: @user %></td></tr>
       <% end %>
   	</tbody>
   </table>

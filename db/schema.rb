@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 2020_04_12_011440) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "relations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relations_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relations_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relations_on_user_id"
+  end
+
   create_table "stamps", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "blog_id", null: false
@@ -113,13 +123,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_011440) do
     t.integer "user_id", null: false
     t.string "title", null: false
     t.string "eyecatch_img_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_relations", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "follow_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
