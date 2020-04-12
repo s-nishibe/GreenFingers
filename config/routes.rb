@@ -22,6 +22,5 @@ Rails.application.routes.draw do
     resource :topic_comments, only: [:create, :destroy]
   end
 
-  resources :user_relationships, only:[:create, :destroy]
+  resources :relationships, only:[:create, :destroy]
 end
-

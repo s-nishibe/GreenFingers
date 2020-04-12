@@ -15,10 +15,10 @@ class User < ApplicationRecord
   has_many :topics
   has_many :topic_comments, through: :topics
 
-  has_many :user_relations
-  has_many :followings, through: :user_relations, source: :follow
-  has_many :reverse_of_user_relations, class_name: 'UserRelation', foreign_key: 'follow_id'
-  has_many :followers, through: :reverse_of_user_relations, source: :user
+  has_many :relationships
+  has_many :followings, through: :relationships, source: :follow
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationships, source: :user
 
   validates :name, uniqueness: true, length: {minimum: 1, maximum: 20}
   validates :email, length: {minimum: 2, maximum: 50}
@@ -43,13 +43,13 @@ class User < ApplicationRecord
   # フォロー機能
   def follow(other_user)
     unless self == other_user
-      self.user_relations.find_or_create_by(follow_id: other_user.id)
+      self.relationships.find_or_create_by(follow_id: other_user.id)
     end
   end
 
   def unfollow(other_user)
-    user_relation = self.user_relations.find_by(follow_id: other_user.id)
-    user_relation.destroy if user_relation
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
   end
 
   def following?(other_user)
