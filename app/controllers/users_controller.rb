@@ -1,8 +1,18 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:index, :edit, :destroy]
+  before_action :set_user, only: [:edit, :destroy]
 
   def index
-    @users = User.all
+    @from = params[:from].to_i
+    if @from == 1
+       @user = current_user
+       @users = User.all
+    elsif @from == 2
+       @user = User.find(params[:user_id])
+       @users = @user.followings
+    else @from == 3
+      @user = User.find(params[:user_id])
+      @users = @user.followers
+    end
   end
 
   def show
