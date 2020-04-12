@@ -4,11 +4,15 @@
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-xs-10">
       <%= render partial: 'layouts/flash' %>
+      <div>
   	  <%= attachment_image_tag(@blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %><br>
   	  <%= @blog.title %><br>
   	  <span>タグ：</span>
   	  <%= @blog.tag_list %><br>
   	  <%= raw @blog.content %>
+      <div>
+        <%= render 'blog_comments/bc_index', blog_comments: @blog_comments %>
+      </div>
   	</div>
   </div>
 </div>

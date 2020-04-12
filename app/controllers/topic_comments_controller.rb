@@ -18,6 +18,6 @@ class TopicCommentsController < ApplicationController
 
   private
   def tc_params
-  	params.require(:topic_comment).permit(:topic_id, :image, :comment)
+  	params.require(:topic_comment).permit(:image, :comment)
   end
 end

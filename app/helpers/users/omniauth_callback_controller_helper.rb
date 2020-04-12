@@ -1,0 +1,2 @@
+module Users::OmniauthCallbackControllerHelper
+end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
   root to: 'homes#top'
 
@@ -11,16 +11,15 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
   resources :drafts, only: [:new, :create, :index, :edit, :update, :destroy]
-  patch 'drafts' => 'drafts#preview', as: 'update_draft_preview'
   post 'drafts/preview' => 'drafts#preview', as: 'draft_preview'
 
   resources :blogs, only: [:create, :index, :show, :edit, :update, :destroy] do
-    resource :blog_comments, only: [:new, :create, :edit, :update, :destroy]
+    resource :blog_comments, only: [:create, :destroy]
     resource :stamps, only: [:create, :destroy]
   end
 
   resources :topics do
-    resources :topic_comments, only: [:new, :create, :destroy]
+    resource :topic_comments, only: [:create, :destroy]
   end
 end
 

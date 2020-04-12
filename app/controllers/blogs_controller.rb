@@ -14,6 +14,8 @@ end
 def show
   @blog = Blog.find(params[:id])
   @user = @blog.user
+  @blog_comments = @blog.blog_comments
+  @blog_comment = BlogComment.new
 end
 
 def update

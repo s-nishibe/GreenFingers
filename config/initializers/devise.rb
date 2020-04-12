@@ -26,6 +26,8 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
+  config.omniauth :twitter, ENV['twitter_API_key'], ENV['twitter_secret_API'], scope: 'email', oauth_callback: "#{ENV['OAUTH_CALLBACK']}/users/auth/twitter/callback"
+
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
