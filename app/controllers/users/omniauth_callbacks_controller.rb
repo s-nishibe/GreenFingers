@@ -1,4 +1,4 @@
-class Users::OmniauthCallbackControllerController < ApplicationController
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
   	callback_for(:twitter)
   end
