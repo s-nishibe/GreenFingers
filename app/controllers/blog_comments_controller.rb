@@ -5,15 +5,14 @@ class BlogCommentsController < ApplicationController
     @blog_comment = @blog.blog_comments.build(bc_params)
     @blog_comment.user_id = current_user.id
     @blog_comment.save
-    redirect_to request.referer
-    flash[:success] = 'コメントを送信しました！'
+    render :index
   end
 
   def destroy
-    @blog_comment = BlogComment.find(params[:blog_id])
+    @blog_comment = BlogComment.find(params[:bc_id])
     @blog_comment.destroy
-    redirect_to request.referer
-    flash[:info] = 'コメントを削除しました。'
+    @blog = Blog.find(params[:blog_id])
+    render :index
   end
 
   private

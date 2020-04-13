@@ -22,11 +22,11 @@
       <div id="stamps-<%= @blog.id %>" class="stamps clearfix">
         <%= render 'stamps/stamp', stamp: @stamp %>
       </div>
-      <div>
+      <div id="comments_for_blog-<%= @blog.id %>">
         <%= render 'blog_comments/bc_index', blog_comments: @blog_comments %>
       </div>
       <div>
-        <%= form_with(model: @blog_comment, url: blog_blog_comments_path(@blog), local: true) do |f| %>
+        <%= form_with(model: @blog_comment, url: blog_blog_comments_path(@blog), remote: true) do |f| %>
           <h6>新規コメント</h6><br>
           <%= attachment_image_tag(current_user, :profile_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50') %>
           <%= current_user.name %>

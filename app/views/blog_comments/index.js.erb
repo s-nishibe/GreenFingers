@@ -1,0 +1,2 @@
+$('#comments_for_blog-<%= @blog.id %>').html("<%= j(render partial: 'blog_comments/bc_index', locals: {blog: @blog, blog_comments: @blog.blog_comments}) %>");
+document.getElementById('blog_comment_comment').value = ''
