@@ -1,0 +1,1 @@
+$('#stamps-<%= @blog.id %>').html("<%= j(render partial: 'stamps/stamp', locals: {blog: @blog, stamp: @stamp}) %>");

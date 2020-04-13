@@ -19,7 +19,7 @@
       <div class="clearfix">
   	    <%= raw @blog.content %>
       </div>
-      <div class="stamps clearfix" style="text-align: right;">
+      <div id="stamps-<%= @blog.id %>" class="stamps clearfix">
         <%= render 'stamps/stamp', stamp: @stamp %>
       </div>
       <div>
