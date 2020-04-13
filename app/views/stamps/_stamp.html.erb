@@ -1,50 +1,85 @@
+<!--^^-------------------------------- いいね -------------------------------------->
 <% unless @user.stamps.where(stamp_img: 1).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :post do %>
-  <span><i class="far fa-thumbs-up fa-3x"></i></span>
+  <span style="float: left; text-align: center; padding: 10px;">
+  	<i class="far fa-thumbs-up fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 1).count %>いいね</p>
+  </span>
   <% end %>
 <% else %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :delete do %>
-  <span><i class="fas fa-thumbs-up fa-3x"></i></span>
+  <span style="float: left; text-align: center; padding: 10px;">
+  	<i class="fas fa-thumbs-up fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 1).count %>いいね</p>
+  </span>
   <% end %>
 <% end %>
 
+<!----------------------------------- なるほど -------------------------------------->
 <% unless @user.stamps.where(stamp_img: 2).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :post do %>
-  <span><i class="far fa-lightbulb fa-3x"></i></span>
+  <span style="float: left; text-align: center; padding: 10px;">
+  	<i class="far fa-lightbulb fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 2).count %>なるほど</p>
+  </span>
   <% end %>
 <% else %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :delete do %>
-  <span><i class="fas fa-lightbulb fa-3x"></i></span>
+  <span style="float: left; text-align: center; padding: 10px;">
+  	<i class="fas fa-lightbulb fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 2).count %>なるほど</p>
+  </span>
   <% end %>
 <% end %>
 
+<!------------------------------------ ウケる --------------------------------------->
 <% unless @user.stamps.where(stamp_img: 3).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :post do %>
-  <span><i class="far fa-grin-squint-tears fa-3x"></i></span>
+  <span style="float: left; text-align: center;">
+  	<i class="far fa-grin-squint-tears fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 3).count %>ウケる</p>
+  </span>
   <% end %>
 <% else %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :delete do %>
-  <span><i class="fas fa-grin-squint-tears fa-3x"></i></span>
+  <span style="float: left; text-align: center; padding: 10px;">
+  	<i class="fas fa-grin-squint-tears fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 3).count %>ウケる</p>
+  </span>
   <% end %>
 <% end %>
 
+<!------------------------------------- スター -------------------------------------->
 <% unless @user.stamps.where(stamp_img: 4).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :post do %>
-  <span><i class="far fa-star fa-3x"></i></span>
+  <span style="float: left; text-align: center; padding: 10px;">
+  	<i class="far fa-star fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 4).count %>スター</p>
+  </span>
   <% end %>
 <% else %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :delete do %>
-  <span><i class="fas fa-sta fa-3xr"></i></span>
+  <span style="float: left; text-align: center; padding: 10px;">
+  	<i class="fas fa-sta fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 4).count %>スター</p>
+  </span>
   <% end %>
 <% end %>
 
+<!------------------------------------ ありがとう ------------------------------------->
 <% unless @user.stamps.where(stamp_img: 5).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :post do %>
-  <span><i class="far fa-smile fa-3x"></i></span>
+  <span style="float: left; text-align: center; padding: 10px;">
+  	<i class="far fa-smile fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 5).count %>ありがとう</p>
+  </span>
   <% end %>
 <% else %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :delete do %>
-  <span><i class="fas fa-smile fa-3x"></i></span>
+  <span style="float: left; text-align: center; padding: 10px;">
+  	<i class="fas fa-smile fa-2x"></i>
+  	<p><%= @blog.stamps.where(stamp_img: 5).count %>ありがとう<p>
+  </span>
   <% end %>
 <% end %>
 

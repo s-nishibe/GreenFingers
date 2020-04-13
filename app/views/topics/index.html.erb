@@ -5,7 +5,7 @@
 
   	<div class="col col-xs-10">
   	<%= render partial: 'layouts/flash' %>
-  	<h2>トピック 全<%= topics.count %>件</h2>
+  	<h2>トピック 全<%= @topics.count %>件</h2>
   	<%= render 'topics_index', topics: @topics %>
     </div>
 

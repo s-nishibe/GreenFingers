@@ -5,12 +5,21 @@
   	<div class="col col-xs-10">
       <%= render partial: 'layouts/flash' %>
       <div>
-  	  <%= attachment_image_tag(@blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %><br>
-  	  <%= @blog.title %><br>
-  	  <span>タグ：</span>
-  	  <%= @blog.tag_list %><br>
-  	  <%= raw @blog.content %>
-      <div>
+      <div class="clearfix">
+        <div style="float: left;">
+  	      <%= attachment_image_tag(@blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %><br>
+  	    </div>
+        <div style="float: left;">
+          <h3><%= @blog.title %></h3>
+          <br>
+  	      <span>タグ：</span>
+  	      <%= @blog.tag_list %>
+        </div>
+      </div>
+      <div class="clearfix">
+  	    <%= raw @blog.content %>
+      </div>
+      <div class="stamps clearfix" style="text-align: right;">
         <%= render 'stamps/stamp', stamp: @stamp %>
       </div>
       <div>

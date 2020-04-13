@@ -3,9 +3,14 @@
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-xs-10">
-  	<%= render partial: 'layouts/flash' %>
+  	  <%= render partial: 'layouts/flash' %>
+  	  <div>
+  	  	<%= form_with(model: @topic, local: true) do |f| %>
+  	  	  <%= f.label :タイトル %>
+  	  	  <%= f.text_field :title, size: '45x2' %>
+  	  	  <%= f.submit '変更', class: 'btn-sm btn-success' %>
+  	  	<% end %>
+  	  </div>
     </div>
   </div>
 </div>
-<h1>Topics#edit</h1>
-<p>Find me in app/views/topics/edit.html.erb</p>
