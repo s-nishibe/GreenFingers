@@ -4,12 +4,81 @@
   	<% if user_signed_in? %>
   	  <%= render partial: 'layouts/sidebar', user: @user %>
   	<% end %>
-  	<div class="col col-xs-10">
+  	<div class="col col-xs-10" style="max-width: 80%;">
   	  <%= render partial: 'layouts/flash' %>
-  	  <div>新着記事</div>
-  	  <div>人気記事</div>
-  	  <div>回答受付中の質問</div>
+
+      <!-- 新着記事swiper -->
+  	  <div>
+        <h3>新着記事</h3>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <% @new_blogs.each do |blog| %>
+              <div class="swiper-slide">
+                <%= link_to blog_path(blog) do %>
+                <%= attachment_image_tag(blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
+                <p><%= blog.title %></p>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+  	  </div>
+
+      <!-- 注目記事swiper -->
+  	  <div>
+        <h3>注目記事</h3>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <% @featured_blogs.each do |blog| %>
+              <div class="swiper-slide">
+                <%= link_to blog_path(blog) do %>
+                <%= attachment_image_tag(blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+  	  </div>
+
+      <!-- Topicsのswiper -->
+  	  <div>
+        <h3>回答受付中の質問</h3>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <% @topics.each do |blog| %>
+              <div class="swiper-slide">
+                <%= link_to blog_path(blog) do %>
+                <%= attachment_image_tag(blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+  	  </div>
     </div>
   </div>
 </div>
 
+<!-- swiper初期化・各種設定 -->
+<script type="text/javascript">
+  var MySwiper = new Swiper ('.swiper-container', {
+    speed: 500,
+    effect: 'slide',
+    spaceBetween: 5,
+    loop: true,
+    slidesPerView: 4,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+      delay: 1000,
+    },
+  });
+</script>

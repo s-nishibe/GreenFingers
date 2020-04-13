@@ -1,5 +1,6 @@
+<h5>スタンプ合計<%= @blog.stamps.count %>個</h5>
 <!--^^-------------------------------- いいね -------------------------------------->
-<% unless current_user.stamps.where(stamp_img: 1).exists? %>
+<% unless current_user.stamps.where(blog_id: @blog.id, stamp_img: 1).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :post, remote: true do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-thumbs-up fa-2x"></i>
@@ -16,7 +17,7 @@
 <% end %>
 
 <!----------------------------------- なるほど -------------------------------------->
-<% unless current_user.stamps.where(stamp_img: 2).exists? %>
+<% unless current_user.stamps.where(blog_id: @blog.id, stamp_img: 2).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :post, remote: true do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-lightbulb fa-2x"></i>
@@ -33,7 +34,7 @@
 <% end %>
 
 <!------------------------------------ ウケる --------------------------------------->
-<% unless current_user.stamps.where(stamp_img: 3).exists? %>
+<% unless current_user.stamps.where(blog_id: @blog.id, stamp_img: 3).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :post, remote: true do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-grin-squint-tears fa-2x"></i>
@@ -50,7 +51,7 @@
 <% end %>
 
 <!------------------------------------- スター -------------------------------------->
-<% unless current_user.stamps.where(stamp_img: 4).exists? %>
+<% unless current_user.stamps.where(blog_id: @blog.id, stamp_img: 4).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :post, remote: true do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-star fa-2x"></i>
@@ -67,7 +68,7 @@
 <% end %>
 
 <!------------------------------------ ありがとう ------------------------------------->
-<% unless current_user.stamps.where(stamp_img: 5).exists? %>
+<% unless current_user.stamps.where(blog_id: @blog.id, stamp_img: 5).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :post, remote: true do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-smile fa-2x"></i>

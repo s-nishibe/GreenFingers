@@ -18,7 +18,7 @@
   	      <% @drafts.each do |draft| %>
   	      	<tr>
               <td><%= attachment_image_tag(draft, :eyecatch_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50') %></td>
-  	      	  <td><%= draft.updated_at %></td>
+  	      	  <td><%= simple_time(draft[:updated_at]) %></td>
   	      	  <td><%= draft.title %></td>
   	      	  <td><%= link_to '編集', edit_draft_path(draft), class: 'btn-sm btn-info' %></td>
               <td><%= link_to '削除', draft_path(draft), method: :delete, class: 'btn-sm btn-danger' %></td>

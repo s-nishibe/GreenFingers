@@ -5,7 +5,11 @@
 
   	<div class="col col-xs-10">
   	<%= render partial: 'layouts/flash' %>
-  	<h2>トピック 全<%= @topics.count %>件</h2>
+  	<% if params[:from] == 'header' %>
+  	  <h2>トピック 全<%= @topics.count %>件</h2>
+  	<% else params[:from] == 'sidebar' %>
+  	  <h2><%= @user.name %>さんのトピック 全<%= @topics.count %>件</h2>
+  	<% end %>
   	<%= render 'topics_index', topics: @topics %>
     </div>
 

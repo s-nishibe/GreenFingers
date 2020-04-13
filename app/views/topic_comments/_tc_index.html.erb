@@ -5,6 +5,7 @@
         <td>
           <%= attachment_image_tag(tc.user, :profile_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50') %>
           <%= tc.user.name %>
+          <%= simple_time(tc[:created_at]) %>
         </td>
       </tr>
       <tr>

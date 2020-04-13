@@ -34,12 +34,12 @@
   	  	<ul class="navbar-nav navbar-right">
   	  	  <% if user_signed_in? %>
             <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to 'みんなのブログ', blogs_path, class: 'nav-link' %></li>
-  	  	    <li class="nav-item"><%= link_to 'Topics', topics_path, class: 'nav-link' %></li>
-  	  	    <li class="nav-item"><%= link_to 'Users', users_path(from: 1), class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to 'みんなのブログ', blogs_path(from: 'header'), class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to 'Topics', topics_path(from: 'header'), class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to 'Users', users_path(from: 'header'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
   	  	  <% else %>
-  	  	    <li class="nav-item"><%= link_to 'Topic', topics_path, class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to 'Topic', topics_path(from: 'header'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %></li>
   	  	  <% end %>

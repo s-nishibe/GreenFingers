@@ -19,7 +19,12 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all
+    if params[:from] == 'header'
+    @topics = Topic.order(updated_at: :DESC)
+    else params[:from] == 'sidebar'
+      @user = User.find(params[:id])
+      @topics = @user.topics.order(updated_at: :DESC)
+    end
   end
 
   def edit

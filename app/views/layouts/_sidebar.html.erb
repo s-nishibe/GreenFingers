@@ -15,15 +15,19 @@
   			<td><strong>introduction</strong><br>
   			  <%= @user.introduction %></td>
   		</tr>
-      <tr><td><%= link_to "フォロー#{@user.followings.count}人", users_path(from: 2, user_id: @user.id) %></td></tr>
-      <tr><td><%= link_to "フォロワー#{@user.followers.count}人", users_path(from: 3, user_id: @user.id) %></td></tr>
+      <tr><td>
+        <%= link_to "#{@user.followings.count}フォロー", users_path(from: 'followings', user_id: @user.id) %>
+      </td></tr>
+      <tr><td>
+        <%= link_to "#{@user.followers.count}フォロワー", users_path(from: 'followers', user_id: @user.id) %>
+      </td></tr>
   	</tbody>
   </table>
   <% if @user.id == current_user.id %>
   <div>
     <%= link_to '編集', edit_user_path(@user), class: 'btn btn-sm btn-primary btn-block' %>
     <%= link_to '下書き一覧', drafts_path, class: 'btn-sm btn-success btn-block' %>
-    <%= link_to 'ブログ一覧', blogs_path, class: 'btn-sm btn-success btn-block' %>
+    <%= link_to 'ブログ一覧', blogs_path(id: @user.id, from: 'sidebar'), class: 'btn-sm btn-success btn-block' %>
     <%= link_to '新しい記事を書く', new_draft_path, class: 'btn-sm btn-info btn-block' %>
     <%= link_to '新しいトピを立てる', new_topic_path, class: 'btn-sm btn-info btn-block' %>
   </div>
@@ -31,5 +35,7 @@
     <div>
       <%= render 'relationships/follow_btn', user: @user %>
     </div>
+      <%= link_to 'ブログ一覧', blogs_path(id: @user.id, from: 'sidebar'), class: 'btn-sm btn-success btn-block' %>
+      <%= link_to 'トピック一覧', topics_path(id: @user.id, from: 'sidebar'), class: 'btn-sm btn-success btn-block' %>
   <% end %>
 </div>

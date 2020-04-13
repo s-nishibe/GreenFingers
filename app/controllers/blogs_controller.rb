@@ -6,9 +6,12 @@ before_action :set_blog, only: [:edit, :show, :update, :destroy]
 def index
   if params[:tag_name]
     @tag = params[:tag_name]
-    @blogs = Blog.tagged_with("#{params[:tag_name]}")
-  else
-    @blogs = Blog.all
+    @blogs = Blog.tagged_with("#{params[:tag_name]}").order(updated_at: :DESC)
+  elsif params[:from] == 'sidebar'
+    @user = User.find(params[:id])
+    @blogs = @user.blogs.order(updated_At: :DESC)
+  else params[:from] == 'header'
+    @blogs = Blog.order(updated_at: :DESC)
   end
 end
 

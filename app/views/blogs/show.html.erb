@@ -10,6 +10,7 @@
   	      <%= attachment_image_tag(@blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %><br>
   	    </div>
         <div style="float: left;">
+          <h5><%= simple_time(@blog[:updated_at]) %></h5>
           <h3><%= @blog.title %></h3>
           <br>
   	      <span>タグ：</span>
