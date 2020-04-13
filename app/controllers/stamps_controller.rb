@@ -5,6 +5,7 @@ class StampsController < ApplicationController
   	@stamp = @blog.stamps.build(stamp_params)
   	@stamp.user_id = current_user.id
   	@stamp.save
+    render :index
   end
 
   def destroy
@@ -12,6 +13,7 @@ class StampsController < ApplicationController
   	@stamp_img = params[:stamp_img].to_i
   	@stamp = Stamp.find_by(user_id: current_user.id, stamp_img: @stamp_img)
   	@stamp.destroy
+    render :index
   end
 
   private

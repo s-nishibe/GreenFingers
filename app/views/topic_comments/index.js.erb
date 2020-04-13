@@ -1,0 +1,2 @@
+$('#comments_for_topic-<%= @topic.id %>').html("<%= j(render partial: 'topic_comments/tc_index', locals: {topic: @topic, topic_comments: @topic.topic_comments}) %>");
+document.getElementById('topic_comment_comment').value = ''

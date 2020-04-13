@@ -12,8 +12,21 @@
       <%= link_to 'タイトルを変更', edit_topic_path(@topic.id), class: 'btn-sm btn-success' %>
       <% end %>
       <h3><%= @topic.title %></h3>
-      <%= render 'topic_comments/tc_index', topic_comments: @topic_comments %>
+      <div id="comments_for_topic-<%= @topic.id %>">
+        <%= render 'topic_comments/tc_index', topic_comments: @topic_comments %>
+      </div>
   	</div>
+
+    <div>
+      <%= form_with(model: @topic_comment, url: topic_topic_comments_path(@topic), remote: true) do |f| %>
+        <h6>新規コメント</h6><br>
+        <%= attachment_image_tag(current_user, :profile_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50') %>
+        <%= current_user.name %>
+        <%= f.attachment_field :image %>
+        <%= f.text_area :comment, size: '90x5' %>
+        <%= f.submit '送信！', class: 'btn-sm btn-info' %>
+      <% end %>
+    </div>
 
     </div>
   </div>
