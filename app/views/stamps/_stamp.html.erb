@@ -1,0 +1,30 @@
+<% unless @user.stamps.where(stamp_img: 1).exists? %>
+  <%= link_to '1', blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :post %>
+<% else %>
+  <%= link_to 'x1', blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :delete %>
+<% end %>
+
+<% unless @user.stamps.where(stamp_img: 2).exists? %>
+  <%= link_to '2', blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :post %>
+<% else %>
+  <%= link_to 'x2', blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :delete %>
+<% end %>
+
+<% unless @user.stamps.where(stamp_img: 3).exists? %>
+  <%= link_to '3', blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :post %>
+<% else %>
+  <%= link_to 'x3', blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :delete %>
+<% end %>
+
+<% unless @user.stamps.where(stamp_img: 4).exists? %>
+  <%= link_to '4', blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :post %>
+<% else %>
+  <%= link_to 'x4', blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :delete %>
+<% end %>
+
+<% unless @user.stamps.where(stamp_img: 5).exists? %>
+  <%= link_to '5', blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :post %>
+<% else %>
+  <%= link_to 'x5', blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :delete %>
+<% end %>
+

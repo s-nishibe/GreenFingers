@@ -16,6 +16,7 @@ def show
   @user = @blog.user
   @blog_comments = @blog.blog_comments
   @blog_comment = BlogComment.new
+  @stamp = Stamp.new
 end
 
 def update

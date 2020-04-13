@@ -11,6 +11,9 @@
   	  <%= @blog.tag_list %><br>
   	  <%= raw @blog.content %>
       <div>
+        <%= render 'stamps/stamp', stamp: @stamp %>
+      </div>
+      <div>
         <%= render 'blog_comments/bc_index', blog_comments: @blog_comments %>
       </div>
   	</div>
