@@ -1,30 +1,50 @@
 <% unless @user.stamps.where(stamp_img: 1).exists? %>
-  <%= link_to '1', blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :post %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :post do %>
+  <span><i class="far fa-thumbs-up fa-3x"></i></span>
+  <% end %>
 <% else %>
-  <%= link_to 'x1', blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :delete %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :delete do %>
+  <span><i class="fas fa-thumbs-up fa-3x"></i></span>
+  <% end %>
 <% end %>
 
 <% unless @user.stamps.where(stamp_img: 2).exists? %>
-  <%= link_to '2', blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :post %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :post do %>
+  <span><i class="far fa-lightbulb fa-3x"></i></span>
+  <% end %>
 <% else %>
-  <%= link_to 'x2', blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :delete %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :delete do %>
+  <span><i class="fas fa-lightbulb fa-3x"></i></span>
+  <% end %>
 <% end %>
 
 <% unless @user.stamps.where(stamp_img: 3).exists? %>
-  <%= link_to '3', blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :post %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :post do %>
+  <span><i class="far fa-grin-squint-tears fa-3x"></i></span>
+  <% end %>
 <% else %>
-  <%= link_to 'x3', blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :delete %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :delete do %>
+  <span><i class="fas fa-grin-squint-tears fa-3x"></i></span>
+  <% end %>
 <% end %>
 
 <% unless @user.stamps.where(stamp_img: 4).exists? %>
-  <%= link_to '4', blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :post %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :post do %>
+  <span><i class="far fa-star fa-3x"></i></span>
+  <% end %>
 <% else %>
-  <%= link_to 'x4', blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :delete %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :delete do %>
+  <span><i class="fas fa-sta fa-3xr"></i></span>
+  <% end %>
 <% end %>
 
 <% unless @user.stamps.where(stamp_img: 5).exists? %>
-  <%= link_to '5', blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :post %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :post do %>
+  <span><i class="far fa-smile fa-3x"></i></span>
+  <% end %>
 <% else %>
-  <%= link_to 'x5', blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :delete %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :delete do %>
+  <span><i class="fas fa-smile fa-3x"></i></span>
+  <% end %>
 <% end %>
 
