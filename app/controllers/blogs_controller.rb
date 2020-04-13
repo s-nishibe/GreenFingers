@@ -4,7 +4,12 @@ before_action :set_blog, only: [:edit, :show, :update, :destroy]
 
 
 def index
-  @blogs = Blog.all
+  if params[:tag_name]
+    @tag = params[:tag_name]
+    @blogs = Blog.tagged_with("#{params[:tag_name]}")
+  else
+    @blogs = Blog.all
+  end
 end
 
 def edit

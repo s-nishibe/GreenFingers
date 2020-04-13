@@ -17,19 +17,19 @@
   		</tr>
       <tr><td><%= link_to "フォロー#{@user.followings.count}人", users_path(from: 2, user_id: @user.id) %></td></tr>
       <tr><td><%= link_to "フォロワー#{@user.followers.count}人", users_path(from: 3, user_id: @user.id) %></td></tr>
-      <% if @user.id == current_user.id %>
-      <tr><td><%= link_to '編集', edit_user_path(@user), class: 'btn btn-sm btn-primary btn-block' %></td></tr>
-      <% else %>
-      <tr><td><%= render 'relationships/follow_btn', user: @user %></td></tr>
-      <% end %>
   	</tbody>
   </table>
   <% if @user.id == current_user.id %>
   <div>
+    <%= link_to '編集', edit_user_path(@user), class: 'btn btn-sm btn-primary btn-block' %>
     <%= link_to '下書き一覧', drafts_path, class: 'btn-sm btn-success btn-block' %>
     <%= link_to 'ブログ一覧', blogs_path, class: 'btn-sm btn-success btn-block' %>
     <%= link_to '新しい記事を書く', new_draft_path, class: 'btn-sm btn-info btn-block' %>
     <%= link_to '新しいトピを立てる', new_topic_path, class: 'btn-sm btn-info btn-block' %>
   </div>
+  <% else %>
+    <div>
+      <%= render 'relationships/follow_btn', user: @user %>
+    </div>
   <% end %>
 </div>

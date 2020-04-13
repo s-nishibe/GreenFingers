@@ -12,8 +12,8 @@
   </div>
 
   <div class="draft_field">
-  	<%= f.label :タグ %><br>
-  	<%= f.text_field :tag_list, value: draft.tag_list.join('、'), class: 'form-control' %>
+  	<%= f.label :タグ（カンマ区切り） %><br>
+  	<%= f.text_field :tag_list, value: draft.tag_list.join(','), class: 'form-control' %>
   </div>
 
   <div class="draft_field">

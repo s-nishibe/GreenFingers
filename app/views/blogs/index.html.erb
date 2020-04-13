@@ -3,9 +3,13 @@
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-xs-10">
-  	<%= render partial: 'layouts/flash' %>
-  	  <h1>ブログ一覧 全 <%= @blogs.count %> 件</h1>
-        <%= render 'blogs_index', blogs: @blogs %>
+  	  <%= render partial: 'layouts/flash' %>
+  	  <% if params[:tag_name] %>
+  	    <h1>タグ「<%= @tag %>」の記事 全<%= @blogs.count %>件</h1>
+  	  <% else %>
+  	    <h1>ブログ一覧 全 <%= @blogs.count %> 件</h1>
+  	  <% end %>
+      <%= render 'blogs_index', blogs: @blogs %>
   	</div>
   </div>
 </div>
