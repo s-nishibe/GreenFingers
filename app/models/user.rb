@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :plants, dependent: :destroy
 
-  has_many :draftsdependent: :destroy
+  has_many :drafts, dependent: :destroy
 
   has_many :blogs
   has_many :blog_comments, through: :blogs
@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :topics
   has_many :topic_comments, through: :topics
 
-  has_many :relationships dependent: :destroy
+  has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user

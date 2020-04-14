@@ -1,0 +1,9 @@
+Stamp.create!(
+  [
+  	{
+  	  user_id:
+  	  blog_id:
+  	  stamp_img:
+  	}
+  ]
+)

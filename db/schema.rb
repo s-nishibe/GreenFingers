@@ -76,11 +76,10 @@ ActiveRecord::Schema.define(version: 2020_04_14_005242) do
   end
 
   create_table "plants", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "name"
     t.integer "type", default: 0, null: false
-    t.integer "weather", default: 0, null: false
-    t.string "temperature", default: "", null: false
-    t.integer "water", default: 0, null: false
+    t.text "memo", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

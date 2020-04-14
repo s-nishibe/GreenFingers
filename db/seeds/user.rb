@@ -37,7 +37,7 @@ User.create!(
 	password_confirmation: 'earthearth'
 
 	{
-	id: 5,
+	id: 4,
 	name: '星井直木',
 	email: 'jupiter@gmail.com',
 	introduction: '俺のパフォーマンス、見せてやるぜっ！',
@@ -47,7 +47,7 @@ User.create!(
 	},
 
 	{
-	id: 6,
+	id: 5,
 	name: '土屋一星',
 	email: 'saturn@gmail.com',
 	introduction: '友情とやらを感じた時もあったやも知れぬ。だが友情も命と同じ。時が立てば消え失せる儚い幻よ。',
@@ -57,7 +57,7 @@ User.create!(
 	},
 
 	{
-	id: 7,
+	id: 6,
 	name: '星沢天音',
 	email: 'uranus@gmail.com',
 	introduction: 'どうしたんだ、ハリー？NASAが天王星で油田を発見したか？',
@@ -67,7 +67,7 @@ User.create!(
 	},
 
 	{
-	id: 8,
+	id: 7,
 	name: '成海星弥',
 	email: 'neptune@gmail.com',
 	introduction: '何の慈愛か……我々もまた当然という顔をして……、太陽の恵みに生かされておるんじゃもん!!',
@@ -77,10 +77,12 @@ User.create!(
 	},
 
 	{
-	id: 9,
+	id: 8,
 	name: '星乃谷メイ',
 	email: 'pluto@gmail.com',
 	introduction: '間違う頭脳こそが完璧なんだ。',
 	password: 'plutopluto',
 	password_confirmation: 'plutopluto'
-	},
+	}
+  ]
+ )

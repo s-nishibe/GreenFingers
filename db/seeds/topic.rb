@@ -1,0 +1,13 @@
+Topic.create!(
+  [
+  	{
+  	  user_id:
+  	  title:
+  	  eyecatch_img:
+  	  category:
+  	  status:
+  	  created_at:
+  	  updated_at:
+  	}
+  ]
+)
