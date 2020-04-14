@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_075629) do
+ActiveRecord::Schema.define(version: 2020_04_14_005242) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -41,43 +41,53 @@ ActiveRecord::Schema.define(version: 2020_04_12_075629) do
   create_table "blog_comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "blog_id", null: false
-    t.string "comment"
-    t.string "image_id"
+    t.string "comment", default: "", null: false
+    t.string "image_id", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "blogs", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "title"
-    t.text "content", null: false
-    t.string "eyecatch_img_id"
+    t.string "title", default: "", null: false
+    t.text "content", default: "", null: false
+    t.string "eyecatch_img_id", default: "", null: false
+    t.string "plant_name", default: "", null: false
+    t.integer "plant_type", default: 1, null: false
+    t.integer "weather", default: 1, null: false
+    t.string "temperature", default: "", null: false
+    t.boolean "water", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "drafts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "title"
-    t.text "content", null: false
-    t.string "eyecatch_img_id"
+    t.string "title", default: "", null: false
+    t.text "content", default: "", null: false
+    t.string "eyecatch_img_id", default: "", null: false
+    t.string "plant_name", default: "", null: false
+    t.integer "plant_type", default: 1, null: false
+    t.integer "weather", default: 1, null: false
+    t.string "temperature", default: "", null: false
+    t.boolean "water", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "relations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "follow_id"
+  create_table "plants", force: :cascade do |t|
+    t.string "name"
+    t.integer "type", default: 0, null: false
+    t.integer "weather", default: 0, null: false
+    t.string "temperature", default: "", null: false
+    t.integer "water", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follow_id"], name: "index_relations_on_follow_id"
-    t.index ["user_id", "follow_id"], name: "index_relations_on_user_id_and_follow_id", unique: true
-    t.index ["user_id"], name: "index_relations_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "follow_id"
+    t.integer "user_id", null: false
+    t.integer "follow_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
@@ -88,7 +98,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_075629) do
   create_table "stamps", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "blog_id", null: false
-    t.integer "stamp_img"
+    t.integer "stamp_img", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -123,8 +133,8 @@ ActiveRecord::Schema.define(version: 2020_04_12_075629) do
   create_table "topic_comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "topic_id", null: false
-    t.string "image_id"
-    t.string "comment"
+    t.string "image_id", default: "", null: false
+    t.string "comment", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -132,7 +142,9 @@ ActiveRecord::Schema.define(version: 2020_04_12_075629) do
   create_table "topics", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
-    t.string "eyecatch_img_id"
+    t.string "eyecatch_img_id", default: "", null: false
+    t.integer "category", default: 1, null: false
+    t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -140,16 +152,16 @@ ActiveRecord::Schema.define(version: 2020_04_12_075629) do
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
-    t.string "introduction"
-    t.string "profile_img_id"
+    t.string "introduction", default: "", null: false
+    t.string "profile_img_id", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
+    t.string "provider", default: "", null: false
+    t.string "uid", default: "", null: false
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
