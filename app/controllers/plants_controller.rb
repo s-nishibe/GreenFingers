@@ -3,15 +3,24 @@ class PlantsController < ApplicationController
 
   def create
   	@plant = @user.plant.build(plant_params)
+    @plant.save
+    redirect_back(fallback_location: root_path)
   end
 
   def edit
+    @plant.find(params[:id])
   end
 
   def update
+    @plant.find(params[:id])
+    @plant.update(plant_params)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
+    @plant.find(params[:id])
+    @plant.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private

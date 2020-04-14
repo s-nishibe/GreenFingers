@@ -5,18 +5,17 @@
   	<div class="col col-xs-10">
   	  <%= render partial: 'layouts/flash' %>
 
-      <div class="user_show_box clearfix">
-  	  <h2><%= @user.name %>さん のブログ 全<%= @user.blogs.count %> 件</h2>
-        <%= render 'blogs/blogs_index', blogs: @blogs %>
-        <%= link_to 'もっと見る→', blogs_path, name: 'users_blog', class: 'btn-sm btn-info', style: 'float: right;' %>
+      <div>
+        <%= render 'plants/form', plant: @plant %>
       </div>
 
-      <div class="user_show_box clearfix">
-        <h2><%= @user.name %>さんが立てたTopics 全<%= @user.topics.count %>件</h2>
-        <%= render 'topics/topics_index', topics: @topics %>
-        <%= link_to 'もっと見る→', topics_path, name: 'users_topics', class: 'btn-sm btn-info', style: 'float: right;' %>
+      <div>
+        <p><%= @user.name %>さんが育てている植物</p>
+        <% @user.plants.each do |plant| %>
+          <span>
+            <h4><%= plant.name %></h4>
+            <%= plant.memo %>
+          </span>
+        <% end %>
       </div>
 
-  	</div>
-  </div>
-</div>
