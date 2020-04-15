@@ -1,0 +1,4 @@
+<td>
+  <%= link_to "#{@user.followings.count}フォロー", users_path(from: 'followings', user_id: @user.id) %>
+  <%= link_to "#{@user.followers.count}フォロワー", users_path(from: 'followers', user_id: @user.id) %>
+</td>
