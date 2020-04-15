@@ -8,6 +8,8 @@
   	    <h1>タグ「<%= @tag %>」の記事 全<%= @blogs.count %>件</h1>
       <% elsif params[:page] == 'user_blogs' %>
         <h1><%= @user.name %>さんのブログ 全<%= @blogs.count %>件</h1>
+      <% elsif params[:page] == 'drafts' %>
+        <h1>下書き一覧</h1>
   	  <% else %>
   	    <h1>ブログ一覧 全 <%= @blogs.count %> 件</h1>
   	  <% end %>

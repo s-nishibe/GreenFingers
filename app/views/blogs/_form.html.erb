@@ -12,7 +12,7 @@
   </div>
 
   <div>
-    <%= f.label :植物 %>
+    <%= f.label :花 %>
     <%= f.collection_select :plant, @user.plants, :id, :name %>
   </div>
 
@@ -46,7 +46,9 @@
   </div>
 
   <div class="field">
-  	<%= f.submit 'プレビュー', name: 'preview_btn', class: 'btn-sm btn-info' %>
+    <% if @blog.id.nil? %>
+  	  <%= f.submit 'プレビュー', name: 'preview_btn', class: 'btn-sm btn-info' %>
+    <% end %>
     <%= f.submit '下書き保存', name: 'draft_btn', class: 'btn-sm btn-primary' %>
     <%= f.submit 'ブログを公開', name: 'blog_btn', class: 'btn-sm btn-success' %>
   </div>

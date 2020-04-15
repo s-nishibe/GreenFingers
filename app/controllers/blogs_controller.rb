@@ -1,9 +1,10 @@
 class BlogsController < ApplicationController
-before_action :set_user
+before_action :set_user, except: [:show]
 before_action :set_blog, only: [:edit, :show, :update, :destroy]
 
 def new
   @blog = Blog.new
+  @plant = Plant.new
 end
 
 def create
@@ -13,7 +14,7 @@ def create
     @blog.title = params[:blog][:title]
     @blog.eyecatch_img = params[:blog][:eyecatch_img]
     @blog.weather = params[:blog][:weather]
-    @blog.temperature = params[:blog][:tempearture]
+    @blog.temperature = params[:blog][:temperature]
     @blog.plant_name = @plant.name
     @blog.plant_kind = @plant.kind
     @blog.tag_list = params[:blog][:tag_list]
@@ -24,6 +25,7 @@ def create
     @plant = Plant.find(params[:blog][:plant])
     @blog.plant_name = @plant.name
     @blog.plant_kind = @plant.kind
+    @blog.status = false
     if @blog.save
       redirect_to blog_path(@blog)
       flash[:success] = 'ブログを下書き保存しました。'
@@ -39,7 +41,7 @@ def create
     @blog.status = true
     if @blog.save
       redirect_to blog_path(@blog)
-      flash[:success] = 'blog created!'
+      flash[:success] = 'ブログを公開しました！'
     else
       render :new
       flash[:danger] = 'ブログを保存できません。空欄になっている箇所はありませんか？'
@@ -54,12 +56,14 @@ end
 def index
   if params[:tag_name]
     @tag = params[:tag_name]
-    @blogs = Blog.tagged_with("#{params[:tag_name]}").order(updated_at: :DESC)
+    @blogs = Blog.tagged_with("#{params[:tag_name]}").where(status: true).order(updated_at: :DESC)
   elsif params[:page] == 'user_blogs'
     @user = User.find(params[:id])
-    @blogs = @user.blogs.order(updated_At: :DESC)
+    @blogs = @user.blogs.where(status: true).order(updated_at: :DESC)
+  elsif params[:page] == 'drafts'
+    @blogs = current_user.blogs.where(status: false).order(updated_at: :DESC)
   else params[:page] == 'all_blogs'
-    @blogs = Blog.order(updated_at: :DESC)
+    @blogs = Blog.where(status: true).order(updated_at: :DESC)
   end
 end
 
@@ -77,42 +81,25 @@ def show
 end
 
 def update
-  if params[:preview_btn]
-    @blog = Blog.new
-    @plant = Plant.find(params[:blog][:plant])
-    @blog.title = params[:blog][:title]
-    @blog.eyecatch_img = params[:blog][:eyecatch_img]
-    @blog.weather = params[:blog][:weather]
-    @blog.temperature = params[:blog][:tempearture]
-    @blog.plant_name = @plant.name
-    @blog.plant_kind = @plant.kind
-    @blog.tag_list = params[:blog][:tag_list]
-    @blog.content = params[:blog][:content]
-    render :preview
-  elsif params[:draft_btn]
+  if params[:draft_btn]
     @blog = Blog.find(params[:id])
-    @plant = Plant.find(params[:blog][:plant])
-    @blog.plant_name = @plant.name
-    @blog.plant_kind = @plant.kind
-    if @blog.save
+    @blog.status = false
+    if @blog.update(blog_params)
       redirect_to blog_path(@blog)
-      flash[:success] = 'ブログを下書き保存しました。'
+      flash[:success] = '下書きを更新しました。'
     else
       render :new
-      flash[:danger] = 'ブログを保存できません。空欄になっている箇所はありませんか？'
+      flash[:danger] = '下書きを更新できません。空欄になっている箇所はありませんか？'
     end
   else params[:blog_btn]
     @blog = Blog.find(params[:id])
-    @plant = Plant.find(params[:blog][:plant])
-    @blog.plant_name = @plant.name
-    @blog.plant_kind = @plant.kind
     @blog.status = true
-    if @blog.save
+    if @blog.update(blog_params)
       redirect_to blog_path(@blog)
-      flash[:success] = 'blog created!'
+      flash[:success] = 'ブログを更新しました！'
     else
       render :new
-      flash[:danger] = 'ブログを保存できません。空欄になっている箇所はありませんか？'
+      flash[:danger] = 'ブログを更新できません。空欄になっている箇所はありませんか？'
     end
   end
 end
