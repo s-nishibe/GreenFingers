@@ -57,7 +57,7 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:topic).permit(:eyecatch_img, :title, :user_id)
+    params.require(:topic).permit(:eyecatch_img, :title, :category, :user_id)
   end
 
 end

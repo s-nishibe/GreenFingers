@@ -1,0 +1,35 @@
+<%= form_with(model: @topic, local: true) do |f| %>
+  <div class="field clearfix">
+ 	<%= attachment_image_tag(@topic, :eyecatch_img, :fill, 100, 100, fallback: 'no_img.jpg', size: '100x100', style: 'float: left;') %>
+ 	<div style="float: left; padding-top: 20px; margin-left: 20px;">
+      <%= f.label :アイキャッチ画像 %><br>
+      <%= f.attachment_field :eyecatch_img %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :タイトル %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+ 	<%= f.label :カテゴリ %>
+ 	<div>
+ 	  <label><%= f.radio_button :category, 0 %>育て方全般</label>
+ 	  <label><%= f.radio_button :category, 1 %>剪定</label>
+ 	  <label><%= f.radio_button :category, 2 %>土作り</label><br>
+ 	  <label><%= f.radio_button :category, 3 %>肥料</label>
+ 	  <label><%= f.radio_button :category, 4 %>病害虫</label>
+ 	  <label><%= f.radio_button :category, 5 %>その他</label>
+ 	</div>
+  </div>
+  <% if @topic.id.nil? %>
+    <div class="field">
+      <%= f.fields_for @topic_comment do |tc| %>
+        <%= tc.attachment_field :image %>
+        <%= tc.text_field :comment %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.submit '送信', class: 'btn-sm btn-success' %>
+  </div>
+<% end %>
