@@ -3,8 +3,13 @@ class PlantsController < ApplicationController
 
   def create
   	@plant = @user.plants.build(plant_params)
-    @plant.save
-    redirect_back(fallback_location: root_path)
+    if @plant.save
+      render :index
+      flash[:success] = '新しい花が登録されました！'
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = '花の登録に失敗しました。'
+    end
   end
 
   def edit

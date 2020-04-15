@@ -8,13 +8,9 @@
       <div>
         <h3><%= @user.name %>さんが育てている植物</h3>
         <% if @user.plants.exists? %>
-          <% @user.plants.each do |plant| %>
-            <span>
-              <h4><%= plant.name %></h4>
-              <%= plant.memo %>
-              <%= link_to '編集', edit_plant_path(plant), class: 'btn-sm btn-success' %>
-            </span>
-          <% end %>
+          <div id="plant-<%= @user.id %>">
+          <%= render 'plants/index', user: @user %>
+          </div>
         <% else %>
           <h6>まだ植物が登録されていません。</h6>
         <% end %>

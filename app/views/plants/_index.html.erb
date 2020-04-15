@@ -1,0 +1,7 @@
+<% @user.plants.each do |plant| %>
+  <span>
+    <h4><%= plant.name %></h4>
+    <%= plant.memo %>
+    <%= link_to '編集', edit_plant_path(plant), class: 'btn-sm btn-success' %>
+  </span>
+<% end %>

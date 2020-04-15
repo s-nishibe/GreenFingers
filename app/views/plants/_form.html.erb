@@ -1,4 +1,4 @@
-<%= form_with(model: @plant, local: true) do |f| %>
+<%= form_with(model: @plant, url: plants_path, remote: true) do |f| %>
 
   <div>
   	<%= f.label :花の名前 %><br>

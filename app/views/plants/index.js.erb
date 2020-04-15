@@ -1,0 +1,4 @@
+$("#plant-<%= @user.id %> ").html("<%= j(render partial: 'plants/index', locals: {user: @user}) %>");
+document.getElementById('plant_name').value = ''
+document.getElementById('plant_kind').value = 0
+document.getElementById('plant_memo').value = ''
