@@ -1,0 +1,14 @@
+<%= render partial: 'layouts/header' %>
+<div class="container">
+  <div class="row">
+  	<%= render partial: 'layouts/sidebar', user: @user %>
+  	<div class="col col-xs-10">
+      <%= render partial: 'layouts/flash' %>
+
+      <div>
+        <%= render 'form', plant: @plant %>
+      </div>
+
+  	</div>
+  </div>
+</div>

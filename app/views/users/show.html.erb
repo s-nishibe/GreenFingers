@@ -6,16 +6,26 @@
   	  <%= render partial: 'layouts/flash' %>
 
       <div>
-        <%= render 'plants/form', plant: @plant %>
+        <h3><%= @user.name %>さんが育てている植物</h3>
+        <% if @user.plants.exists? %>
+          <% @user.plants.each do |plant| %>
+            <span>
+              <h4><%= plant.name %></h4>
+              <%= plant.memo %>
+              <%= link_to '編集', edit_plant_path(plant), class: 'btn-sm btn-success' %>
+            </span>
+          <% end %>
+        <% else %>
+          <h6>まだ植物が登録されていません。</h6>
+        <% end %>
       </div>
 
       <div>
-        <p><%= @user.name %>さんが育てている植物</p>
-        <% @user.plants.each do |plant| %>
-          <span>
-            <h4><%= plant.name %></h4>
-            <%= plant.memo %>
-          </span>
-        <% end %>
+        <h3>新しく登録</h3>
+        <%= render 'plants/form', plant: @plant %>
       </div>
+
+    </div>
+  </div>
+</div>
 
