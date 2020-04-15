@@ -6,7 +6,7 @@
   	  <%= render partial: 'layouts/flash' %>
   	  <% if params[:tag_name] %>
   	    <h1>タグ「<%= @tag %>」の記事 全<%= @blogs.count %>件</h1>
-      <% elsif params[:from] == 'sidebar' %>
+      <% elsif params[:page] == 'user_blogs' %>
         <h1><%= @user.name %>さんのブログ 全<%= @blogs.count %>件</h1>
   	  <% else %>
   	    <h1>ブログ一覧 全 <%= @blogs.count %> 件</h1>

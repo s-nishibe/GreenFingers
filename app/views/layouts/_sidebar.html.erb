@@ -26,8 +26,8 @@
   <% if @user.id == current_user.id %>
   <div>
     <%= link_to '編集', edit_user_path(@user), class: 'btn btn-sm btn-primary btn-block' %>
-    <%= link_to '下書き一覧', '#', class: 'btn-sm btn-success btn-block' %>
-    <%= link_to 'ブログ一覧', blogs_path(id: @user.id, from: 'sidebar'), class: 'btn-sm btn-success btn-block' %>
+    <%= link_to '下書き一覧', blogs_path(id: @user.id, page: 'drafts'), class: 'btn-sm btn-success btn-block' %>
+    <%= link_to 'ブログ一覧', blogs_path(id: @user.id, page: 'user_blogs'), class: 'btn-sm btn-success btn-block' %>
     <%= link_to '新しい記事を書く', new_blog_path, class: 'btn-sm btn-info btn-block' %>
     <%= link_to '新しいトピを立てる', new_topic_path, class: 'btn-sm btn-info btn-block' %>
   </div>
@@ -35,7 +35,7 @@
     <div id="follow_btn-<%= @user.id %>">
       <%= render 'relationships/follow_btn', user: @user %>
     </div>
-      <%= link_to 'ブログ一覧', blogs_path(id: @user.id, from: 'sidebar'), class: 'btn-sm btn-success btn-block' %>
-      <%= link_to 'トピック一覧', topics_path(id: @user.id, from: 'sidebar'), class: 'btn-sm btn-success btn-block' %>
+      <%= link_to 'ブログ一覧', blogs_path(id: @user.id, from: 'user_blogs'), class: 'btn-sm btn-success btn-block' %>
+      <%= link_to 'この人が立てたトピ', topics_path(id: @user.id, from: 'user_topics'), class: 'btn-sm btn-success btn-block' %>
   <% end %>
 </div>

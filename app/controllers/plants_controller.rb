@@ -5,10 +5,8 @@ class PlantsController < ApplicationController
   	@plant = @user.plants.build(plant_params)
     if @plant.save
       render :index
-      flash[:success] = '新しい花が登録されました！'
     else
       redirect_back(fallback_location: root_path)
-      flash[:danger] = '花の登録に失敗しました。'
     end
   end
 
@@ -19,13 +17,13 @@ class PlantsController < ApplicationController
   def update
     @plant = Plant.find(params[:id])
     @plant.update(plant_params)
-    redirect_to user_path(@user)
+    render :index
   end
 
   def destroy
     @plant = Plant.find(params[:id])
     @plant.destroy
-    redirect_to user_path(@user)
+    render :index
   end
 
   private
@@ -34,6 +32,6 @@ class PlantsController < ApplicationController
   end
 
   def plant_params
-  	params.require(:plant).permit(:user_id, :name, :name, :memo)
+  	params.require(:plant).permit(:user_id, :name, :kind, :memo)
   end
 end

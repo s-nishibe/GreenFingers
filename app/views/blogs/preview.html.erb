@@ -10,6 +10,7 @@
 
       <%= render 'blogs/article', blog: @blog %>
 
+      <%= f.hidden_field :blog_id, :value => @blog.id %>
       <%= f.hidden_field :eyecatch_img, :value => @blog.eyecatch_img %>
       <%= f.hidden_field :title, :value => @blog.title %>
       <%= f.hidden_field :tag_list, :value => @blog.tag_list %>
