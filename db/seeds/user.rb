@@ -35,6 +35,7 @@ User.create!(
 	profile_img: File.open('./app/assets/images/profile_img/earth.jpg'),
 	password: 'earthearth',
 	password_confirmation: 'earthearth'
+    },
 
 	{
 	id: 4,
