@@ -11,10 +11,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
-  resources :drafts, only: [:new, :create, :index, :edit, :update, :destroy]
-  post 'drafts/preview' => 'drafts#preview', as: 'draft_preview'
-
-  resources :blogs, only: [:create, :index, :show, :edit, :update, :destroy] do
+  resources :blogs do
+    member do
+      get :preview
+    end
     resource :blog_comments, only: [:create, :destroy]
     resource :stamps, only: [:create, :destroy]
   end

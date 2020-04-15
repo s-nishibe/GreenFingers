@@ -5,27 +5,17 @@
   	<div class="col col-xs-10">
       <%= render partial: 'layouts/flash' %>
       <div>
-      <div class="clearfix">
-        <div style="float: left;">
-  	      <%= attachment_image_tag(@blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %><br>
-  	    </div>
-        <div style="float: left;">
-          <h5><%= simple_time(@blog[:updated_at]) %></h5>
-          <h3><%= @blog.title %></h3>
-          <br>
-  	      <span>タグ：</span>
-  	      <%= render 'tag_list', tag_list: @blog.tag_list %>
+
+        <%= render 'blogs/article', blog: @blog %>
+
+        <div id="stamps-<%= @blog.id %>" class="stamps clearfix">
+          <%= render 'stamps/stamp', stamp: @stamp %>
         </div>
-      </div>
-      <div class="clearfix">
-  	    <%= raw @blog.content %>
-      </div>
-      <div id="stamps-<%= @blog.id %>" class="stamps clearfix">
-        <%= render 'stamps/stamp', stamp: @stamp %>
-      </div>
-      <div id="comments_for_blog-<%= @blog.id %>">
-        <%= render 'blog_comments/bc_index', blog_comments: @blog_comments %>
-      </div>
+
+        <div id="comments_for_blog-<%= @blog.id %>">
+          <%= render 'blog_comments/bc_index', blog_comments: @blog_comments %>
+        </div>
+
       <div>
         <%= form_with(model: @blog_comment, url: blog_blog_comments_path(@blog), remote: true) do |f| %>
           <h6>新規コメント</h6><br>
@@ -36,6 +26,8 @@
           <%= f.submit '送信！', class: 'btn-sm btn-info' %>
         <% end %>
       </div>
-  	</div>
+
+  	  </div>
+    </div>
   </div>
 </div>

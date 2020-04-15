@@ -1,0 +1,29 @@
+<%= render partial: 'layouts/header' %>
+<div class="container">
+  <div class="row">
+  	<%= render partial: 'layouts/sidebar', user: @user %>
+
+  	<div class="col col-xs-10">
+  	  <h4>この画面はプレビューです。保存はされていないのでご注意ください。</h4>
+
+      <%= form_with(model: @blog, url: {action: 'create'}, local: true) do |f| %>
+
+      <%= render 'blogs/article', blog: @blog %>
+
+      <%= f.hidden_field :eyecatch_img, :value => @blog.eyecatch_img %>
+      <%= f.hidden_field :title, :value => @blog.title %>
+      <%= f.hidden_field :tag_list, :value => @blog.tag_list %>
+      <%= f.hidden_field :content, :value => @blog.content %>
+      <%= f.hidden_field :plant, :value => @plant.id %>
+      <%= f.hidden_field :weather, :value => @blog.weather %>
+      <%= f.hidden_field :temperature, :value => @blog.temperature %>
+
+  	  <div class="preview_submits">
+  	  	<%= f.submit '下書き保存', name: 'draft_btn', class: 'btn-sm btn-primary' %>
+  	  	<%= f.submit '公開する', name: 'blog_btn', class: 'btn-sm btn-success' %>
+  	  </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

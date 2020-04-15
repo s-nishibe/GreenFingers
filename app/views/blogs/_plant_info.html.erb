@@ -1,0 +1,9 @@
+<% if @blog.plant_kind == 0 %>
+<%= @blog.plant_name %>（一年草）
+<% elsif @blog.plant_kind == 1 %>
+<%= @blog.plant_name %>（多年草）
+<% elsif @blog.plant_kind == 2 %>
+<%= @blog.plant_name %>（低木）
+<% else @blog.plant_kind == 3 %>
+<%= @blog.plant_name %>（高木）
+<% end %>

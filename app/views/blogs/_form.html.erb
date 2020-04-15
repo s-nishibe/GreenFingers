@@ -1,35 +1,54 @@
-<%= form_with(model: draft, local: true) do |f| %>
+<%= form_with(model: blog, local: true) do |f| %>
 
   <div>
   	<%= f.label :アイキャッチ画像 %><br>
-  	<%= attachment_image_tag(draft, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
+  	<%= attachment_image_tag(blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
   	<%= f.attachment_field :eyecatch_img %>
   </div>
 
-  <div class="draft_field">
+  <div class="field">
   	<%= f.label :タイトル %>
   	<%= f.text_field :title %>
   </div>
 
-  <div class="draft_field">
-  	<%= f.label :タグ（カンマ区切り） %><br>
-  	<%= f.text_field :tag_list, value: draft.tag_list.join(','), class: 'form-control' %>
+  <div>
+    <%= f.label :植物 %>
+    <%= f.collection_select :plant, @user.plants, :id, :name %>
   </div>
 
-  <div class="draft_field">
+  <div>
+    <%= f.label :水やり %>
+    <label><%= f.radio_button :water, true, checked: true %>あげた</label>
+    <label><%= f.radio_button :water, false %>あげてない</label>
+  </div>
+
+  <div>
+    <%= f.label :天気 %>
+    <label><%= f.radio_button :weather, 0, checked: true %>晴れ</label>
+    <label><%= f.radio_button :weather, 1 %>曇り</label>
+    <label><%= f.radio_button :weather, 2 %>雨</label>
+    <label><%= f.radio_button :weather, 3 %>雪</label>
+  </div>
+
+  <div>
+    <%= f.label :気温 %>
+    <%= f.text_field :temperature, class: 'form-control w-25' %>℃
+  </div>
+
+  <div class="field">
+    <%= f.label :タグ（カンマ区切り） %><br>
+    <%= f.text_field :tag_list, value: blog.tag_list.join(','), class: 'form-control' %>
+  </div>
+
+  <div class="field">
   	<%= f.label :本文 %>
 	<%= f.text_area :content, id: "summernote", class: 'form-control', required: true, placeholder: '', 'data-provider': :summernote %>
   </div>
 
-  <div class="draft_field">
-    <% if draft.id == nil %>
+  <div class="field">
   	<%= f.submit 'プレビュー', name: 'preview_btn', class: 'btn-sm btn-info' %>
     <%= f.submit '下書き保存', name: 'draft_btn', class: 'btn-sm btn-primary' %>
     <%= f.submit 'ブログを公開', name: 'blog_btn', class: 'btn-sm btn-success' %>
-    <% else %>
-    <%= f.submit '下書き保存', name: 'draft_btn', class: 'btn-sm btn-primary' %>
-    <%= f.submit 'ブログを公開', name: 'blog_btn', class: 'btn-sm btn-success' %>
-    <% end %>
   </div>
 
 <% end %>

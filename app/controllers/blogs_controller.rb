@@ -2,6 +2,48 @@ class BlogsController < ApplicationController
 before_action :set_user
 before_action :set_blog, only: [:edit, :show, :update, :destroy]
 
+def new
+  @blog = Blog.new
+end
+
+def create
+  if params[:preview_btn]
+    @blog = Blog.new
+    @plant = Plant.find(params[:blog][:plant])
+    @blog.title = params[:blog][:title]
+    @blog.eyecatch_img = params[:blog][:eyecatch_img]
+    @blog.weather = params[:blog][:weather]
+    @blog.temperature = params[:blog][:tempearture]
+    @blog.plant_name = @plant.name
+    @blog.plant_kind = @plant.kind
+    @blog.tag_list = params[:blog][:tag_list]
+    @blog.content = params[:blog][:content]
+    render :preview
+  elsif params[:draft_btn]
+    @blog = current_user.blogs.build(blog_params)
+    @plant = Plant.find(params[:blog][:plant])
+    @blog.plant_name = @plant.name
+    @blog.plant_kind = @plant.kind
+    binding.pry
+    @blog.save
+    redirect_to blog_path(@blog)
+    flash[:success] = 'ブログを下書き保存しました。'
+  else params[:blog_btn]
+    @blog = current_user.blogs.build(blog_params)
+    @plant = Plant.find(params[:blog][:plant])
+    @blog.plant_name = @plant.name
+    @blog.plant_kind = @plant.kind
+    @blog.status = true
+    binding.pry
+    @blog.save
+    redirect_to blog_path(@blog)
+    flash[:success] = 'blog created!'
+  end
+end
+
+def preview
+  @blog = Blog.new
+end
 
 def index
   if params[:tag_name]
@@ -70,7 +112,7 @@ def set_blog
   @blog = Blog.find(params[:id])
 end
 
-def save_params
+def blog_params
   params.require(:blog).permit(:user_id, :title, :content, :eyecatch_img, :tag_list)
 end
 

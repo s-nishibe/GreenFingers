@@ -1,0 +1,17 @@
+<div class="clearfix">
+  <div style="float: left;">
+    <%= attachment_image_tag(@blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %><br>
+  </div>
+  <div style="float: left; margin-left: 30px;">
+    <h5><%= simple_time(@blog[:updated_at]) %></h5>
+    <h3><%= @blog.title %></h3><br>
+      <%= render 'blogs/plant_info', blog: @blog %><br>
+      <%= render 'blogs/weather_info', blog: @blog %><br>
+    <span>タグ：</span>
+    <%= render 'tag_list', tag_list: @blog.tag_list %>
+  </div>
+</div>
+
+<div class="clearfix" style="padding-top: 30px;">
+  <%= raw @blog.content %>
+</div>

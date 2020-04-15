@@ -53,31 +53,18 @@ ActiveRecord::Schema.define(version: 2020_04_14_005242) do
     t.text "content", null: false
     t.string "eyecatch_img_id", default: "", null: false
     t.string "plant_name", default: "", null: false
-    t.integer "plant_type", default: 1, null: false
-    t.integer "weather", default: 1, null: false
+    t.integer "plant_kind", default: 0, null: false
+    t.integer "weather", default: 0, null: false
     t.string "temperature", default: "", null: false
     t.boolean "water", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "drafts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "title", default: "", null: false
-    t.text "content", null: false
-    t.string "eyecatch_img_id", default: "", null: false
-    t.string "plant_name", default: "", null: false
-    t.integer "plant_type", default: 1, null: false
-    t.integer "weather", default: 1, null: false
-    t.string "temperature", default: "", null: false
-    t.boolean "water", default: false, null: false
+    t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "plants", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "name"
+    t.string "name", default: "", null: false
     t.integer "kind", default: 0, null: false
     t.text "memo", null: false
     t.datetime "created_at", null: false
@@ -134,7 +121,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_005242) do
     t.integer "user_id", null: false
     t.string "title", null: false
     t.string "eyecatch_img_id", default: "", null: false
-    t.integer "category", default: 1, null: false
+    t.integer "category", default: 0, null: false
     t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

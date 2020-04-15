@@ -1,0 +1,13 @@
+<%= render partial: 'layouts/header' %>
+<div class="container">
+  <div class="row">
+  	<%= render partial: 'layouts/sidebar', user: @user %>
+
+  	<div class="col col-xs-10">
+  	<%= render partial: 'layouts/flash' %>
+  	<h2>新しい記事を書く</h2>
+  	<%= render 'blogs/form', blog: @blog %>
+    </div>
+
+  </div>
+</div>
