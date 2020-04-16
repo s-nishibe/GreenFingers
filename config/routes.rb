@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   resources :relationships, only:[:create, :destroy]
 
   resources :plants, only:[:create, :edit, :update, :destroy]
+
+  get 'search/search' => 'search#search', as: 'search'
 end

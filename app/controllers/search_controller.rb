@@ -5,7 +5,7 @@ class SearchController < ApplicationController
   	@topic = Topic.new
   	@model = params[:search][:model]
   	@word = params[:search][:word]
-  	@datas = search_for(@model, @content)
+  	@datas = search_for(@model, @word)
   end
 
   private

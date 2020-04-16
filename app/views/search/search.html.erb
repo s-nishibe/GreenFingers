@@ -6,7 +6,18 @@
   	  <%= render partial: 'layouts/flash' %>
 
       <div>
-        <h3>検索結果画面</h3>
+        <div>
+          <% if @model == 'user' %>
+            <h3>「<%= @word %>」でのユーザ検索結果です！</h3>
+            <%= render 'users/index', users: @datas %>
+          <% elsif @model == 'blog' %>
+            <h3>「<%= @word %>」でのブログ検索結果です！</h3>
+            <%= render 'blogs/blogs_index', blogs: @datas %>
+          <% else @model == 'topic' %>
+            <h3>「<%= @word %>」でのトピック検索結果です！</h3>
+            <%= render 'topics/topics_index', topics: @datas %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>

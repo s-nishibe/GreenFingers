@@ -10,28 +10,7 @@
       <% else @who == 'followers' %>
         <h2><%= @user.name %>さんのフォロワー一覧（<%= @users.count %>名）</h2>
       <% end %>
-  	  <table>
-  	  	<thead>
-  	  	  <tr>
-  	  	    <th></th>
-  	  	    <th>名前</th>
-  	  	    <th>ひとこと</th>
-  	  	  </tr>
-  	  	</thead>
-  	  	<tbody>
-  	  	  <% @users.each do |user| %>
-  	  	  <tr>
-  	  	    <td>
-  	  	      <%= link_to user_path(user) do %>
-  	  	      <%= attachment_image_tag(user, :profile_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50') %>
-  	  	      <% end %>
-  	  	    </td>
-  	  	    <td><%= user.name %></td>
-  	  	    <td><%= user.introduction %></td>
-  	  	  </tr>
-  	  	  <% end %>
-  	  	</tbody>
-  	  </table>
+      <%= render 'users/index', users: @users %>
   	</div>
   </div>
 </div>
