@@ -13,7 +13,7 @@ module GreenFingers
     config.load_defaults 5.2
 
      config.assets.paths << config.root.join("vendor/assets/javascripts")
-  config.assets.paths << config.root.join("vendor/assets/stylesheets")
+     config.assets.paths << config.root.join("vendor/assets/stylesheets")
 
 
     # Settings in config/environments/* take precedence over those specified here.
