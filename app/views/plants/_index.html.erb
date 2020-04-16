@@ -2,7 +2,9 @@
   <span>
     <h4><%= plant.name %></h4>
     <%= plant.memo %>
-    <%= link_to '編集', edit_plant_path(plant), remote: true, class: 'btn-sm btn-success' %>
-    <%= link_to '削除', plant_path(plant), method: :delete, class: 'btn-sm btn-danger' %>
+    <% if @user.id == current_user.id %>
+      <%= link_to '編集', edit_plant_path(plant), remote: true, class: 'btn-sm btn-success' %>
+      <%= link_to '削除', plant_path(plant), method: :delete, class: 'btn-sm btn-danger' %>
+    <% end %>
   </span>
 <% end %>
