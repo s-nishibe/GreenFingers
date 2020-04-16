@@ -14,7 +14,7 @@ Blog.create!(
       temperature: '20.0',
       water: true,
       status: true,
-      eyecatch_img: File.open("./app/assets/images/seed_img/rose/red1.jpg")
+      eyecatch_img: File.open("./public/seed_img/rose/red1.jpg")
       },
 
     {
@@ -31,7 +31,7 @@ Blog.create!(
       temperature: '17.5',
       water: true,
       status: true,
-      eyecatch_img: File.open("./app/assets/images/seed_img/u_plant/carnation.jpg")
+      eyecatch_img: File.open("./public/seed_img/u_plant/carnation.jpg")
     },
 
     {
@@ -48,7 +48,7 @@ Blog.create!(
       temperature: '18',
       water: true,
       status: true,
-      eyecatch_img: File.open("./app/assets/images/seed_img/carrot_melon/carrot1.jpg"),
+      eyecatch_img: File.open("./public/seed_img/carrot_melon/carrot1.jpg"),
     },
 
     {
@@ -65,7 +65,7 @@ Blog.create!(
       temperature: '10',
       water: false,
       status: true,
-      eyecatch_img: File.open("./app/assets/images/seed_img/u_plant/plum1.jpg")
+      eyecatch_img: File.open("./public/seed_img/u_plant/plum1.jpg")
     },
 
     {
@@ -82,7 +82,7 @@ Blog.create!(
       temperature: '25.3',
       water: true,
       status: true,
-      eyecatch_img: File.open("./app/assets/images/seed_img/u_plant/blueberry1.jpg")
+      eyecatch_img: File.open("./public/seed_img/u_plant/blueberry1.jpg")
     },
 
     {
@@ -99,7 +99,7 @@ Blog.create!(
       temperature: '15.3',
       water: false,
       status: true,
-      eyecatch_img: File.open("./app/assets/images/seed_img/rose/ry1.jpg")
+      eyecatch_img: File.open("./public/seed_img/rose/ry1.jpg")
     },
 
     {
@@ -116,7 +116,7 @@ Blog.create!(
       temperature: '18.4',
       water: true,
       status: true,
-      eyecatch_img: File.open("./app/assets/images/seed_img/u_plant/coffee1.jpg")
+      eyecatch_img: File.open("./public/seed_img/u_plant/coffee1.jpg")
     },
 
     {
@@ -133,7 +133,7 @@ Blog.create!(
       temperature: '15.7',
       water: true,
       status: true,
-      eyecatch_img: File.open("./app/assets/images/seed_img/carrot_melon/melon1.jpg")
+      eyecatch_img: File.open("./public/seed_img/carrot_melon/melon1.jpg")
     }
   ]
 )
