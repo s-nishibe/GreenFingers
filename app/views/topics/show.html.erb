@@ -1,7 +1,9 @@
 <%= render partial: 'layouts/header' %>
 <div class="container">
   <div class="row">
+    <% if user_signed_in? %>
   	<%= render partial: 'layouts/sidebar', user: @user %>
+    <% end %>
   	<div class="col col-xs-10">
 
   	<%= render partial: 'layouts/flash' %>
