@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: [:index]
 
   def new
     @topic = Topic.new
@@ -19,9 +19,11 @@ class TopicsController < ApplicationController
   end
 
   def index
-    if params[:from] == 'header'
-    @topics = Topic.order(updated_at: :DESC)
-    else params[:from] == 'sidebar'
+    @page = params[:page]
+    if @page == 'all_topics'
+      @user = current_user
+      @topics = Topic.order(updated_at: :DESC)
+    else @page == 'user_topics'
       @user = User.find(params[:id])
       @topics = @user.topics.order(updated_at: :DESC)
     end

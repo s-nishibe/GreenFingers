@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :destroy]
 
   def index
-    @from = params[:from]
-    if @from == 'header'
+    @who = params[:who]
+    if @who == 'all_users'
        @user = current_user
        @users = User.all
-    elsif @from == 'followings'
+    elsif @who == 'followings'
        @user = User.find(params[:user_id])
        @users = @user.followings
-    else @from == 'followers'
+    else @who == 'followers'
       @user = User.find(params[:user_id])
       @users = @user.followers
     end

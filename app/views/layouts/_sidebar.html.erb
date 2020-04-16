@@ -17,8 +17,8 @@
   		</tr>
         <tr id="relation-<%= @user.id %>" style="font-size: 0.8em;">
           <td>
-            <%= link_to "#{@user.followings.count}フォロー", users_path(from: 'followings', user_id: @user.id) %>
-            <%= link_to "#{@user.followers.count}フォロワー", users_path(from: 'followers', user_id: @user.id) %>
+            <%= link_to "#{@user.followings.count}フォロー", users_path(who: 'followings', user_id: @user.id) %>
+            <%= link_to "#{@user.followers.count}フォロワー", users_path(who: 'followers', user_id: @user.id) %>
           </td>
         </tr>
   	</tbody>
@@ -35,7 +35,7 @@
     <div id="follow_btn-<%= @user.id %>">
       <%= render 'relationships/follow_btn', user: @user %>
     </div>
-      <%= link_to 'ブログ一覧', blogs_path(id: @user.id, from: 'user_blogs'), class: 'btn-sm btn-success btn-block' %>
-      <%= link_to 'この人が立てたトピ', topics_path(id: @user.id, from: 'user_topics'), class: 'btn-sm btn-success btn-block' %>
+      <%= link_to 'ブログ一覧', blogs_path(id: @user.id, page: 'user_blogs'), class: 'btn-sm btn-success btn-block' %>
+      <%= link_to 'この人が立てたトピ', topics_path(id: @user.id, page: 'user_topics'), class: 'btn-sm btn-success btn-block' %>
   <% end %>
 </div>
