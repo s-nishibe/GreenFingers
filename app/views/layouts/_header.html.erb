@@ -1,14 +1,14 @@
 <header class="container">
   <div class="row">
-    <div class="col col-3">
+    <div class="col col-3 col-header">
       <nav class="navbar navbar-expand-sm">
-        <ul class="navbar-nav navbar-left">
+        <ul class="navbar-nav navbar-left col-header">
           <li class="nav-item">
             <%= link_to homes_top_path do %>
-  	  	    <span class="navbar-brand mb0 h1" style="background-color: #fa4659;">Green<br>Fingers</span>
+  	  	    <%= image_tag 'logo.jpg', alt: 'GreenFingers', size: '200x100', id: 'Greenfingers' %>
             <% end %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item w-100 nav-justified">
             <%= link_to homes_about_path do %>
             <span class="nav-link">Greenfingers<br>とは？</span>
             <% end %>
@@ -17,18 +17,9 @@
       </nav>
   	</div>
 
-  	<div class="col col-3">
-      <% if user_signed_in? %>
-      <div class="login_message">ようこそ <%= current_user.name %> さん！</div>
-  	  <div class="navbar-nav navbar-middle">
-        <%= render 'search/form' %>
-  	  </div>
-      <% end %>
-  	</div>
-
-  	<div class="col col-6">
-      <nav class="navbar navbar-expand-sm">
-  	  	<ul class="navbar-nav navbar-right">
+  	<div class="col col-6x col-header">
+      <nav class="navbar navbar-expand-sm w-100">
+  	  	<ul class="navbar-nav navbar-right w-100 nav-justified">
   	  	  <% if user_signed_in? %>
             <li class="nav-item"><%= link_to 'TL', blogs_path(page: 'TL'), class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %></li>
@@ -44,5 +35,17 @@
   	  	</ul>
       </nav>
   	</div>
+
+    <div class="col col-3 col-header">
+      <% if user_signed_in? %>
+      <div>
+        <div class="login_message nav-link" style="font-size: 20px;">ようこそ <%= current_user.name %> さん！</div>
+          <div class="navbar-nav navbar-middle">
+          <%= render 'search/form' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </header>

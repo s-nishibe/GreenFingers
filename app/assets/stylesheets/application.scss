@@ -81,6 +81,11 @@ footer {
 }
 
 /* ヘッダー */
+.col-header {
+  display: flex;
+  align-items: center;
+}
+
 .nav-link {
   color: #feffe4;
 }
