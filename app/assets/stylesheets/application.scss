@@ -25,22 +25,22 @@
 }
 
 .clearfix::after{
-	content: "";
-	display:block;
-	clear:both;
+    content: "";
+    display:block;
+    clear:both;
 }
 
 /* summernote */
 .note-editing-area {
-	height: 1000px;
+    height: 500px;
 }
 
 /* swiper */
 .swiper-container {
-	height: 200px;
+    height: 200px;
 }
 
- .swiper-slide-content{
+.swiper-slide-content{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -50,9 +50,62 @@
  }
 
 .swiper-slide p {
-	position: absolute;
+    position: absolute;
     top: 10%;
     left: 10%;
     color: #ffffff;
     font-size: 2rem;
+}
+
+.container {
+  max-width: 2560px;
+}
+
+/* パーツ毎の設定 */
+
+header {
+  background-color: #2eb872;
+}
+
+body {
+  background-color: #feffe4;
+}
+
+.col-xs-10 {
+  padding: 32px;
+}
+
+footer {
+  background-color: #2eb872;
+  height: 100px;
+}
+
+/* sidebar */
+#sidebar {
+  background-color: #fff;
+  margin: 10px;
+  padding: 32px;
+  position: relative;
+  z-index: 1;
+}
+#sidebar::before,
+#sidebar::after {
+  border-radius: 4px;
+  box-shadow: 0 1px 4px #a3de83;
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+#sidebar::before {
+  background-color: #a4f5c8;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+#sidebar::after {
+  background-color: #2eb872;
+  top: 5px;
+  left: 5px;
+  z-index: -2;
 }

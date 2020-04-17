@@ -5,7 +5,7 @@
         <ul class="navbar-nav navbar-left">
           <li class="nav-item">
             <%= link_to homes_top_path do %>
-  	  	    <span class="navbar-brand mb0 h1">Green<br>Fingers</span>
+  	  	    <span class="navbar-brand mb0 h1" style="background-color: #fa4659;">Green<br>Fingers</span>
             <% end %>
           </li>
           <li class="nav-item">
@@ -30,6 +30,7 @@
       <nav class="navbar navbar-expand-sm">
   	  	<ul class="navbar-nav navbar-right">
   	  	  <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to 'TL', blogs_path(page: 'TL'), class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'みんなのブログ', blogs_path(page: 'all_blogs'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to 'Topics', topics_path(page: 'all_topics'), class: 'nav-link' %></li>

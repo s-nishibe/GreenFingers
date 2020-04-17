@@ -1,4 +1,4 @@
-<div class="col col-2">
+<div id="sidebar" class="col col-2">
   <table>
   	<thead>
   		<tr>
@@ -24,12 +24,13 @@
   	</tbody>
   </table>
   <% if @user.id == current_user.id %>
-  <div>
+  <div style="text-align: center;">
     <%= link_to '編集', edit_user_path(@user), class: 'btn btn-sm btn-primary btn-block' %>
     <%= link_to '下書き一覧', blogs_path(id: @user.id, page: 'drafts'), class: 'btn-sm btn-success btn-block' %>
     <%= link_to 'ブログ一覧', blogs_path(id: @user.id, page: 'user_blogs'), class: 'btn-sm btn-success btn-block' %>
-    <%= link_to '新しい記事を書く', new_blog_path, class: 'btn-sm btn-info btn-block' %>
-    <%= link_to '新しいトピを立てる', new_topic_path, class: 'btn-sm btn-info btn-block' %>
+    <%= link_to 'トピック一覧', topics_path(id: current_user.id, page: 'user_topics'), class: 'btn-sm btn-success btn-block' %>
+    <%= link_to '新しい記事', new_blog_path, class: 'btn-sm btn-info btn-block' %>
+    <%= link_to '新しいトピ', new_topic_path, class: 'btn-sm btn-info btn-block' %>
   </div>
   <% else %>
     <div id="follow_btn-<%= @user.id %>">

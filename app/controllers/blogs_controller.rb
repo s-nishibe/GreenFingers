@@ -57,6 +57,10 @@ def index
   if params[:tag_name]
     @tag = params[:tag_name]
     @blogs = Blog.tagged_with("#{params[:tag_name]}").where(status: true).order(updated_at: :DESC)
+  elsif params[:page] == 'TL'
+    @user = current_user
+    @followers = @user.followings
+    @blogs = Blog.where(user_id: @followers).order(updated_at: :DESC)
   elsif params[:page] == 'user_blogs'
     @user = User.find(params[:id])
     @blogs = @user.blogs.where(status: true).order(updated_at: :DESC)

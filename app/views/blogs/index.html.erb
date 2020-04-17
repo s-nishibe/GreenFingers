@@ -5,13 +5,15 @@
   	<div class="col col-xs-10">
   	  <%= render partial: 'layouts/flash' %>
   	  <% if params[:tag_name] %>
-  	    <h1>タグ「<%= @tag %>」の記事 全<%= @blogs.count %>件</h1>
+  	    <h2>タグ「<%= @tag %>」の記事 全<%= @blogs.count %>件</h2>
+      <% elsif params[:page] == 'TL' %>
+        <h2><%= @user.name %>さんのタイムライン</h2>
       <% elsif params[:page] == 'user_blogs' %>
-        <h1><%= @user.name %>さんのブログ 全<%= @blogs.count %>件</h1>
+        <h2><%= @user.name %>さんのブログ 全<%= @blogs.count %>件</h2>
       <% elsif params[:page] == 'drafts' %>
-        <h1>下書き一覧</h1>
+        <h2>下書き一覧</h2>
   	  <% else %>
-  	    <h1>ブログ一覧 全 <%= @blogs.count %> 件</h1>
+  	    <h2>ブログ一覧 全 <%= @blogs.count %> 件</h2>
   	  <% end %>
       <%= render 'blogs_index', blogs: @blogs %>
   	</div>

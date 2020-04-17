@@ -38,14 +38,14 @@
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :post, remote: true do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-grin-squint-tears fa-2x"></i>
-  	<p><%= @blog.stamps.where(stamp_img: 3).count %>ウケる</p>
+  	<p><%= @blog.stamps.where(stamp_img: 3).count %>おもしろい！</p>
   </span>
   <% end %>
 <% else %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :delete, remote: true do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="fas fa-grin-squint-tears fa-2x"></i>
-  	<p><%= @blog.stamps.where(stamp_img: 3).count %>ウケる</p>
+  	<p><%= @blog.stamps.where(stamp_img: 3).count %>おもしろい！</p>
   </span>
   <% end %>
 <% end %>
