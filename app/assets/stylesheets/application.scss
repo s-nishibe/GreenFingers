@@ -62,7 +62,7 @@
 }
 
 /* パーツ毎の設定 */
-
+/* 全体のレイアウト */
 header {
   background-color: #2eb872;
 }
@@ -80,7 +80,12 @@ footer {
   height: 100px;
 }
 
-/* sidebar */
+/* ヘッダー */
+.nav-link {
+  color: #feffe4;
+}
+
+/* サイドバー */
 #sidebar {
   background-color: #fff;
   margin: 10px;
@@ -109,3 +114,4 @@ footer {
   left: 5px;
   z-index: -2;
 }
+

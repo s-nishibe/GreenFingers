@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   	  when AdminUser
   	  	admin_root_path
   	  when User
-  	  	user_path(resource)
+  	  	blogs_path(user_path: resource, page: 'TL')
   	end
   end
 

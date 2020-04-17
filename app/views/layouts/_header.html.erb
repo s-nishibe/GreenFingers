@@ -1,6 +1,6 @@
 <header class="container">
   <div class="row">
-    <div class="col col-xs-3">
+    <div class="col col-3">
       <nav class="navbar navbar-expand-sm">
         <ul class="navbar-nav navbar-left">
           <li class="nav-item">
@@ -17,7 +17,7 @@
       </nav>
   	</div>
 
-  	<div class="col col-xs-4">
+  	<div class="col col-3">
       <% if user_signed_in? %>
       <div class="login_message">ようこそ <%= current_user.name %> さん！</div>
   	  <div class="navbar-nav navbar-middle">
@@ -26,18 +26,18 @@
       <% end %>
   	</div>
 
-  	<div class="col col-xs-5">
+  	<div class="col col-6">
       <nav class="navbar navbar-expand-sm">
   	  	<ul class="navbar-nav navbar-right">
   	  	  <% if user_signed_in? %>
             <li class="nav-item"><%= link_to 'TL', blogs_path(page: 'TL'), class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to 'みんなのブログ', blogs_path(page: 'all_blogs'), class: 'nav-link' %></li>
-  	  	    <li class="nav-item"><%= link_to 'Topics', topics_path(page: 'all_topics'), class: 'nav-link' %></li>
-  	  	    <li class="nav-item"><%= link_to 'Users', users_path(who: 'all_users'), class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to 'みんなの日記', blogs_path(page: 'all_blogs'), class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to '花の広場', topics_path(page: 'all_topics'), class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to '会員一覧', users_path(who: 'all_users'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
   	  	  <% else %>
-  	  	    <li class="nav-item"><%= link_to 'Topic', topics_path(page: 'all_topics'), class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to '花の広場', topics_path(page: 'all_topics'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to 'Log in', new_user_session_path, class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %></li>
   	  	  <% end %>
