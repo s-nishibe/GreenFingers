@@ -30,12 +30,24 @@
     clear:both;
 }
 
-/* summernote */
+/* フォント(class'himaji' or font-family: himaji;で呼び出せる) */
+@font-face {
+  font-family: 'himaji';
+  src: font-url('himaji.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.himaji {
+  font-family: 'himaji';
+}
+
+/* リッチテキストsummernote */
 .note-editing-area {
     height: 500px;
 }
 
-/* swiper */
+/* スライドswiper */
 .swiper-container {
     height: 200px;
 }
@@ -71,8 +83,9 @@ body {
   background-color: #feffe4;
 }
 
-.col-xs-10 {
+.col-10 {
   padding: 32px;
+  max-width: 80%;
 }
 
 footer {
@@ -120,3 +133,14 @@ footer {
   z-index: -2;
 }
 
+/* フォーム */
+
+.field {
+  padding-top: 30px;
+  font-family: 'himaji';
+}
+
+.action {
+  padding-top: 50px;
+  font-family: 'himaji';
+}

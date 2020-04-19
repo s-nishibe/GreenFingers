@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
-  	<div class="col col-xs-10">
+  	<div class="col col-10">
   	  <%= render partial: 'layouts/flash' %>
   	  <% if params[:tag_name] %>
   	    <h2>タグ「<%= @tag %>」の記事 全<%= @blogs.count %>件</h2>
