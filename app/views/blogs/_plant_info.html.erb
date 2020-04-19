@@ -1,9 +1,9 @@
 <% if @blog.plant_kind == 0 %>
-<%= @blog.plant_name %>（種別：一年草）
+<p class="himaji"><%= @blog.plant_name %>（種別：一年草）</p>
 <% elsif @blog.plant_kind == 1 %>
-<%= @blog.plant_name %>（種別：多年草）
+<p class="himaji"><%= @blog.plant_name %>（種別：多年草）</p>
 <% elsif @blog.plant_kind == 2 %>
-<%= @blog.plant_name %>（種別：低木）
+<p class="himaji"><%= @blog.plant_name %>（種別：低木）</p>
 <% else @blog.plant_kind == 3 %>
-<%= @blog.plant_name %>（種別：高木）
+<p class="himaji"><%= @blog.plant_name %>（種別：高木）</p>
 <% end %>

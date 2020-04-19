@@ -2,12 +2,12 @@
   <% if current_user.following?(@user) %>
     <%= form_with(url: relationship_path(@user), method: :delete, remote: true) do |f| %>
       <%= f.hidden_field :following_id %>
-      <%= f.submit 'フォロー中', class: 'btn btn-unfollow btn-block' %>
+      <%= f.submit 'フォロー中', class: 'btn btn-brown btn-block' %>
     <% end %>
   <% else %>
     <%= form_with(url: relationships_path(@user), method: :post, remote: true) do |f| %>
       <%= f.hidden_field :following_id, value: @user.id %>
-      <%= f.submit 'フォローする', class: 'btn btn-follow btn-block' %>
+      <%= f.submit 'フォローする', class: 'btn btn-brown-outline btn-block' %>
     <% end %>
   <% end %>
 <% else %>

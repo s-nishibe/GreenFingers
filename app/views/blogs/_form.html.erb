@@ -1,56 +1,58 @@
 <%= form_with(model: blog, local: true) do |f| %>
 
-  <div>
-  	<%= f.label :アイキャッチ画像 %><br>
-  	<%= attachment_image_tag(blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
-  	<%= f.attachment_field :eyecatch_img %>
+  <div class="field clearfix">
+  	<%= attachment_image_tag(blog, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200', style: 'float: left;') %>
+    <div style="float: left; padding-top: 50px; margin-left: 20px;">
+      <%= f.label :アイキャッチ画像, class: 'field-content' %>
+  	  <%= f.attachment_field :eyecatch_img %>
+    </div>
   </div>
 
   <div class="field">
-  	<%= f.label :タイトル %>
-  	<%= f.text_field :title %>
+  	<%= f.label :タイトル, class: 'field-content' %>
+  	<%= f.text_field :title, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= f.label :花 %>
+  <div class="field">
+    <%= f.label :花の種類, class: 'himaji field-content' %>
     <%= f.collection_select :plant, @user.plants, :id, :name %>
   </div>
 
-  <div>
-    <%= f.label :水やり %>
+  <div class="field">
+    <%= f.label :水やり, class: 'field-content' %>
     <label><%= f.radio_button :water, true, checked: true %>あげた</label>
     <label><%= f.radio_button :water, false %>あげてない</label>
   </div>
 
-  <div>
-    <%= f.label :天気 %>
+  <div class="field">
+    <%= f.label :天気, class: 'field-content' %>
     <label><%= f.radio_button :weather, 0, checked: true %>晴れ</label>
     <label><%= f.radio_button :weather, 1 %>曇り</label>
     <label><%= f.radio_button :weather, 2 %>雨</label>
     <label><%= f.radio_button :weather, 3 %>雪</label>
   </div>
 
-  <div>
-    <%= f.label :気温 %>
+  <div class="field">
+    <%= f.label :気温, class: 'field-content' %>
     <%= f.text_field :temperature, class: 'form-control w-25' %>℃
   </div>
 
   <div class="field">
-    <%= f.label :タグ（カンマ区切り） %><br>
+    <%= f.label :タグ（カンマ区切り）, class: 'field-content' %><br>
     <%= f.text_field :tag_list, value: blog.tag_list.join(','), class: 'form-control' %>
   </div>
 
   <div class="field">
-  	<%= f.label :本文 %>
+  	<%= f.label :本文, class: 'field-content' %>
 	<%= f.text_area :content, id: "summernote", class: 'form-control', required: true, placeholder: '', 'data-provider': :summernote %>
   </div>
 
-  <div class="field">
+  <div class="action w-50 offset-7">
     <% if @blog.id.nil? %>
-  	  <%= f.submit 'プレビュー', name: 'preview_btn', class: 'btn-sm btn-info' %>
+  	  <%= f.submit 'プレビュー', name: 'preview_btn', class: 'btn-crud-brown' %>
     <% end %>
-    <%= f.submit '下書き保存', name: 'draft_btn', class: 'btn-sm btn-primary' %>
-    <%= f.submit 'ブログを公開', name: 'blog_btn', class: 'btn-sm btn-success' %>
+    <%= f.submit '下書き保存', name: 'draft_btn', class: 'btn-crud-green' %>
+    <%= f.submit 'ブログを公開', name: 'blog_btn', class: 'btn-crud-green' %>
   </div>
 
 <% end %>

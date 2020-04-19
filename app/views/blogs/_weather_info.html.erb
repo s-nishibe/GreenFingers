@@ -1,9 +1,9 @@
 <% if @blog.weather == 0 %>
 晴れ（<%= @blog.temperature %>℃）
-<%elsif @blog.weather == 1 %>
+<% elsif @blog.weather == 1 %>
 曇り（<%= @blog.temperature %>℃）
-<%elsif @blog.weather == 2 %>
+<% elsif @blog.weather == 2 %>
 雨（<%= @blog.temperature %>℃）
-<%else @blog.weather == 3 %>
+<% else @blog.weather == 3 %>
 雪（<%= @blog.temperature %>℃）
 <% end %>

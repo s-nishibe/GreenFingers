@@ -1,31 +1,31 @@
 <%= render partial: 'layouts/header' %>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-10">
       <%= render partial: 'layouts/flash' %>
   	  <%= form_with(model: @user, local: true) do |f| %>
   	    <div class="user_field">
-  	    <%= f.label :お名前 %>
-  	    <%= f.text_field :name %>
+  	    <%= f.label :お名前, class: 'field-content' %>
+  	    <%= f.text_field :name, class: 'form-control' %>
   	    </div>
 
   	    <div class="user_field">
-  	    <%= f.label :ひとこと %>
-  	    <%= f.text_field :introduction %>
+  	    <%= f.label :ひとこと, class: 'field-content' %>
+  	    <%= f.text_field :introduction, class: 'form-control' %>
   	    </div>
 
   	    <div class="user_field">
-  	    <%= f.label :アイコン画像 %><br>
+  	    <%= f.label :アイコン画像, class: 'field-content' %><br>
   	    <%= attachment_image_tag(@user, :profile_img, :fill, 100, 100, fallback: 'no_img.jpg', size: '100x100') %>
   	    <%= f.attachment_field :profile_img %>
   	    </div>
 
   	    <div class="user_field">
-  	    <%= f.submit '更新する！' %>
+  	    <%= f.submit '更新する！', class: 'btn btn-green btn-block w-25 offset-9' %>
   	    </div>
   	  <% end %>
-      <%= link_to '退会する', user_path, method: :delete, class: 'btn btn-sm btn-danger' %>
+      <%= link_to '退会する', user_path, method: :delete, data: {confirm: '本当に退会しますか？'}, class: 'btn btn-crud-red btn-block w-25 offset-9', style: 'margin-top: 10px;' %>
   	</div>
   </div>
 </div>

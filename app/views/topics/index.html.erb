@@ -1,18 +1,22 @@
 <%= render partial: 'layouts/header' %>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <% if user_signed_in? %>
   	<%= render partial: 'layouts/sidebar', user: @user %>
     <% end %>
 
   	<div class="col col-10">
-  	<%= render partial: 'layouts/flash' %>
-  	<% if @page == 'all_topics' %>
-  	  <h2>トピック 全<%= @topics.count %>件</h2>
-  	<% else @page == 'user_topics' %>
-  	  <h2><%= @user.name %>さんのトピック 全<%= @topics.count %>件</h2>
-  	<% end %>
-  	<%= render 'topics_index', topics: @topics %>
+    	<%= render partial: 'layouts/flash' %>
+
+    	<% if @page == 'all_topics' %>
+    	  <h2>トピック 全<%= @topics.count %>件</h2>
+    	<% else @page == 'user_topics' %>
+  	    <h2><%= @user.name %>さんのトピック 全<%= @topics.count %>件</h2>
+  	  <% end %>
+
+      <div>
+  	  <%= render 'topics_index', topics: @topics %>
+      </div>
     </div>
 
   </div>

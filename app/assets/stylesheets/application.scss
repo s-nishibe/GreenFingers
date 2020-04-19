@@ -30,6 +30,10 @@
     clear:both;
 }
 
+p {
+  margin: 0;
+}
+
 /* フォント(class'himaji' or font-family: himaji;で呼び出せる) */
 @font-face {
   font-family: 'himaji';
@@ -69,18 +73,9 @@
     font-size: 2rem;
 }
 
-.container {
-  max-width: 2560px;
-}
-
-/* パーツ毎の設定 */
 /* 全体のレイアウト */
 header {
   background-color: #2eb872;
-}
-
-body {
-  background-color: #feffe4;
 }
 
 .col-10 {
@@ -95,6 +90,10 @@ footer {
 
 .letter {
   color: #664539;
+}
+
+.attachment {
+  border-radius: 10%;
 }
 
 /* ヘッダー */
@@ -138,6 +137,22 @@ footer {
   z-index: -2;
 }
 
+/* フォーム */
+
+.field {
+  padding-top: 30px;
+}
+
+.field-content {
+  font-family: 'himaji';
+  font-size: 1.5em;
+}
+
+
+.action {
+  padding-top: 50px;
+  font-family: 'himaji';
+}
 
 /* ボタン */
 .btn-green {
@@ -156,7 +171,7 @@ footer {
   border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
 }
 
-.btn-follow {
+.btn-brown-outline {
   padding: 0.5em;
   color: #664539;
   background-color: #a4f5c8;
@@ -164,7 +179,7 @@ footer {
   border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
 }
 
-.btn-unfollow {
+.btn-brown {
   padding: 0.5em;
   color: #feffe4;
   background-color: #664539;
@@ -173,8 +188,8 @@ footer {
 }
 
 .btn-crud-green {
-  padding:10px;
-  font-size:20px;
+  padding: 0.3em;
+  font-size: 20px;
   color: #feffe4;
   background-color: #2eb872;
   border:2px solid #2eb872;
@@ -182,22 +197,26 @@ footer {
 }
 
 .btn-crud-red {
-  padding:10px;
-  font-size:20px;
+  padding: 0.3em;
+  font-size: 20px;
   color: #feffe4;
   background-color: #F94659;
   border:2px solid #F94659;
   border-radius: 20px 10px 40px 15px/50px 40px 10px 20px;
 }
 
-/* フォーム */
-
-.field {
-  padding-top: 30px;
-  font-family: 'himaji';
+.btn-crud-brown {
+  padding: 0.3em;
+  font-size: 20px;
+  color: #feffe4;
+  background-color: #664539;
+  border:2px solid #664539;
+  border-radius: 20px 10px 40px 15px/50px 40px 10px 20px;
 }
 
-.action {
-  padding-top: 50px;
-  font-family: 'himaji';
+/* aboutページ機能一覧 */
+.about-content {
+  float: left;
+  text-align: center;
+  padding-top: 30px;
 }

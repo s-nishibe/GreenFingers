@@ -2,17 +2,17 @@
   <table>
   	<thead>
   		<tr>
-  			<th>User Info</th>
+  			<th style="font-size: 20px;">User Info</th>
   		</tr>
   	</thead>
   	<tbody>
       <tr><%= attachment_image_tag(@user, :profile_img, :fill, 100, 100, fallback: 'no_img.jpg', size: '100x100') %></tr>
   		<tr>
-  			<td><strong>name</strong><br>
+  			<td><strong style="font-size: 20px;">name</strong><br>
   			  <%= @user.name %></td>
   		</tr>
   		<tr>
-  			<td><strong>introduction</strong><br>
+  			<td><strong style="font-size: 20px;">introduction</strong><br>
   			  <%= @user.introduction %></td>
   		</tr>
         <tr id="relation-<%= @user.id %>" style="font-size: 0.8em;">
@@ -22,20 +22,20 @@
   </table>
   <% if @user.id == current_user.id %>
   <div style="text-align: center;">
-    <%= link_to '会員情報編集', edit_user_path(@user), class: 'btn btn-sm btn-green btn-block' %>
-    <%= link_to '下書き一覧', blogs_path(id: @user.id, page: 'drafts'), class: 'btn-sm btn-green btn-block' %>
-    <%= link_to '日記一覧', blogs_path(id: @user.id, page: 'user_blogs'), class: 'btn-sm btn-green btn-block' %>
-    <%= link_to 'トピック一覧', topics_path(id: current_user.id, page: 'user_topics'), class: 'btn-sm btn-green btn-block' %>
-    <%= link_to '新しい日記', new_blog_path, class: 'btn-sm btn-green-new btn-block' %>
-    <%= link_to '新しいトピ', new_topic_path, class: 'btn-sm btn-green-new btn-block' %>
+    <%= link_to '会員情報編集', edit_user_path(@user), class: 'btn-green btn-block' %>
+    <%= link_to '下書き一覧', blogs_path(id: @user.id, page: 'drafts'), class: 'btn-green btn-block' %>
+    <%= link_to '日記一覧', blogs_path(id: @user.id, page: 'user_blogs'), class: 'btn-green btn-block' %>
+    <%= link_to 'トピック一覧', topics_path(id: current_user.id, page: 'user_topics'), class: 'btn-green btn-block' %>
+    <%= link_to '新しい日記', new_blog_path, class: 'btn-green-new btn-block' %>
+    <%= link_to '新しいトピ', new_topic_path, class: 'btn-green-new btn-block' %>
   </div>
   <% else %>
   <div style="text-align: center;">
     <div id="follow_btn-<%= @user.id %>">
       <%= render 'relationships/follow_btn', user: @user %>
     </div>
-      <%= link_to 'この人の日記', blogs_path(id: @user.id, page: 'user_blogs'), class: 'btn-sm btn-green btn-block' %>
-      <%= link_to 'この人が立てたトピ', topics_path(id: @user.id, page: 'user_topics'), class: 'btn-sm btn-green btn-block' %>
+      <%= link_to 'この人の日記', blogs_path(id: @user.id, page: 'user_blogs'), class: 'btn-green btn-block' %>
+      <%= link_to 'この人のトピ', topics_path(id: @user.id, page: 'user_topics'), class: 'btn-green btn-block' %>
   </div>
   <% end %>
 </div>
