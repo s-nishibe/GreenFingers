@@ -93,6 +93,10 @@ footer {
   height: 100px;
 }
 
+.letter {
+  color: #664539;
+}
+
 /* ヘッダー */
 .col-header {
   display: flex;
@@ -101,6 +105,7 @@ footer {
 
 .nav-link {
   color: #feffe4;
+  font-family: 'himaji';
 }
 
 /* サイドバー */
@@ -131,6 +136,58 @@ footer {
   top: 5px;
   left: 5px;
   z-index: -2;
+}
+
+
+/* ボタン */
+.btn-green {
+  padding: 0.5em;
+  color: #feffe4;
+  background-color: #2eb872;
+  border: 3px solid #2eb872;
+  border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
+}
+
+.btn-green-new {
+  padding: 0.5em;
+  color: #2eb872;
+  background-color: #a4f5c8;
+  border: 3px solid #2eb872;
+  border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
+}
+
+.btn-follow {
+  padding: 0.5em;
+  color: #664539;
+  background-color: #a4f5c8;
+  border: 3px solid #664539;
+  border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
+}
+
+.btn-unfollow {
+  padding: 0.5em;
+  color: #feffe4;
+  background-color: #664539;
+  border: 3px solid #664539;
+  border-radius: 3em .7em 2em .7em/.7em 2em .7em 3em;
+}
+
+.btn-crud-green {
+  padding:10px;
+  font-size:20px;
+  color: #feffe4;
+  background-color: #2eb872;
+  border:2px solid #2eb872;
+  border-radius: 20px 10px 40px 15px/50px 40px 10px 20px;
+}
+
+.btn-crud-red {
+  padding:10px;
+  font-size:20px;
+  color: #feffe4;
+  background-color: #F94659;
+  border:2px solid #F94659;
+  border-radius: 20px 10px 40px 15px/50px 40px 10px 20px;
 }
 
 /* フォーム */

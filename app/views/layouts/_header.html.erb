@@ -23,7 +23,7 @@
   	  	  <% if user_signed_in? %>
             <li class="nav-item"><%= link_to 'TL', blogs_path(page: 'TL'), class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to 'みんなの日記', blogs_path(page: 'all_blogs'), class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to '皆の日記', blogs_path(page: 'all_blogs'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to '花の広場', topics_path(page: 'all_topics'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to '会員一覧', users_path(who: 'all_users'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
@@ -39,7 +39,7 @@
     <div class="col col-3 col-header">
       <% if user_signed_in? %>
       <div>
-        <div class="login_message nav-link" style="font-size: 20px;">ようこそ <%= current_user.name %> さん！</div>
+        <div class="login_message nav-link" style="font-size: 15px;">ようこそ <%= current_user.name %> さん！</div>
           <div class="navbar-nav navbar-middle">
           <%= render 'search/form' %>
           </div>
