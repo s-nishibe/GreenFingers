@@ -18,11 +18,11 @@ class TopicsController < ApplicationController
         flash[:success] = '新しいトピックが立ちました！'
       else
         redirect_back(fallback_location: root_path)
-        flash[:danger] = 'トピックのコメントを送信できませんでした。'
+        flash[:danger] = 'トピックのコメントを送信できませんでした。コメントの文字数は500字までです。'
       end
     else
       redirect_back(fallback_location: root_path)
-      flash[:danger] = 'トピックを立てるのに失敗しました。'
+      flash[:danger] = 'トピックを立てられません。タイトルの文字数は100字までです。'
     end
   end
 
@@ -31,9 +31,13 @@ class TopicsController < ApplicationController
     if @page == 'all_topics'
       @user = current_user
       @topics = Topic.order(updated_at: :DESC)
-    else @page == 'user_topics'
+    elsif @page == 'user_topics'
       @user = User.find(params[:id])
       @topics = @user.topics.order(updated_at: :DESC)
+    else @page == 'category'
+      @user = current_user
+      @category = params[:category].to_i
+      @topics = Topic.where(category: @category).order(updated_at: :DESC)
     end
   end
 

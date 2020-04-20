@@ -10,8 +10,10 @@
 
     	<% if @page == 'all_topics' %>
     	  <h2>トピック 全<%= @topics.count %>件</h2>
-    	<% else @page == 'user_topics' %>
+    	<% elsif @page == 'user_topics' %>
   	    <h2><%= @user.name %>さんのトピック 全<%= @topics.count %>件</h2>
+      <% else @page == 'category' %>
+        <h2>カテゴリ「<%= render 'topics/category', category: @category %>」のトピック</h2>
   	  <% end %>
 
       <div>

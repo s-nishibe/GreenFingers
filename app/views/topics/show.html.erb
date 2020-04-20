@@ -14,7 +14,7 @@
       <%= link_to 'タイトルを変更', edit_topic_path(@topic.id), class: 'btn-sm btn-success' %>
       <% end %>
       <h3><%= @topic.title %></h3>
-      <h5><%= simple_time(@topic[:updated_at]) %></h5>
+      <h5>カテゴリ：<%= render 'topics/category', category: @topic.category %>、<%= simple_time(@topic[:updated_at]) %></h5>
       <div id="comments_for_topic-<%= @topic.id %>" style="padding-top: 30px;">
       </style>
         <%= render 'topic_comments/tc_index', topic_comments: @topic_comments %>

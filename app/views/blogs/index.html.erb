@@ -9,11 +9,11 @@
       <% elsif params[:page] == 'TL' %>
         <h2><%= @user.name %>さんのタイムライン</h2>
       <% elsif params[:page] == 'user_blogs' %>
-        <h2><%= @user.name %>さんのブログ 全<%= @blogs.count %>件</h2>
+        <h2><%= @user.name %>さんの日記 全<%= @blogs.count %>件</h2>
       <% elsif params[:page] == 'drafts' %>
         <h2>下書き一覧</h2>
   	  <% else %>
-  	    <h2>ブログ一覧 全 <%= @blogs.count %> 件</h2>
+  	    <h2>皆の日記 全 <%= @blogs.count %> 件</h2>
   	  <% end %>
       <%= render 'blogs_index', blogs: @blogs %>
   	</div>

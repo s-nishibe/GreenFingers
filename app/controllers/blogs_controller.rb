@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+before_action :authenticate_user!
 before_action :set_user, except: [:show]
 
 def new
@@ -80,21 +81,16 @@ def edit
 end
 
 def show
-  if user_signed_in?
-    @blog = Blog.find(params[:id])
-    # 他者の下書きを見られないようアクセス制限をかける
-    if @blog.status == true
-      @user = @blog.user
-      @blog_comments = @blog.blog_comments
-      @blog_comment = BlogComment.new
-      @stamp = Stamp.new
-    else
-      redirect_back(fallback_location)
-      flash[:danger] = 'お探しのページにはアクセスできません。'
-    end
+  @blog = Blog.find(params[:id])
+  # 他者の下書きを見られないようアクセス制限をかける
+  if @blog.status == true
+    @user = @blog.user
+    @blog_comments = @blog.blog_comments
+    @blog_comment = BlogComment.new
+    @stamp = Stamp.new
   else
-    redirect_back(fallback_location: root_path)
-    flash[:info] = '日記を読むにはログインが必要です。'
+    redirect_back(fallback_location)
+    flash[:danger] = 'お探しのページにはアクセスできません。'
   end
 end
 
