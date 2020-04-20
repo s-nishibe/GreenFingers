@@ -5,7 +5,7 @@ class HomesController < ApplicationController
   	@blogs = Blog.all
   	@new_blogs = Blog.order(updated_at: :DESC).limit(5)
   	@featured_blogs = Blog.find(Stamp.group(:blog_id).order('count(blog_id) desc').limit(5).pluck(:blog_id))
-  	@topics = Topic.all
+  	@topics = Topic.where(status: false).order(updated_at: :DESC).limit(5)
   end
 
   def about

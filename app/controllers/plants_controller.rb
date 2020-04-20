@@ -7,23 +7,36 @@ class PlantsController < ApplicationController
       render :index
     else
       redirect_back(fallback_location: root_path)
+      flash[:danger] = '花を登録できませんでした。'
     end
   end
 
   def edit
     @plant = Plant.find(params[:id])
+    if @plant.user_id != current_user.id
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = '花の情報を編集できません。'
+    end
   end
 
   def update
     @plant = Plant.find(params[:id])
-    @plant.update(plant_params)
-    render :index
+    if @plant.update(plant_params)
+      render :index
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:success] = '花の情報を更新しました！'
+    end
   end
 
   def destroy
     @plant = Plant.find(params[:id])
-    @plant.destroy
-    render :index
+    if @plant.destroy
+      render :index
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = '花の情報を破棄できませんでした。'
+    end
   end
 
   private

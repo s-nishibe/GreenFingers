@@ -1,6 +1,5 @@
 class BlogsController < ApplicationController
 before_action :set_user, except: [:show]
-before_action :set_blog, only: [:edit, :show, :update, :destroy]
 
 def new
   @blog = Blog.new
@@ -8,6 +7,7 @@ def new
 end
 
 def create
+  # 「プレビュー」「下書き」「公開」ボタン毎に処理を分岐（プレビューのみモデルへの保存はなし）
   if params[:preview_btn]
     @blog = Blog.new
     @plant = Plant.find(params[:blog][:plant])
@@ -73,15 +73,29 @@ end
 
 def edit
   @blog = Blog.find(params[:id])
-  render :edit
+  if @blog.user_id != current_user.id
+    redirect_back(fallback_location: root_path)
+    flash[:danger] = 'お探しのページにはアクセスできません。'
+  end
 end
 
 def show
-  @blog = Blog.find(params[:id])
-  @user = @blog.user
-  @blog_comments = @blog.blog_comments
-  @blog_comment = BlogComment.new
-  @stamp = Stamp.new
+  if user_signed_in?
+    @blog = Blog.find(params[:id])
+    # 他者の下書きを見られないようアクセス制限をかける
+    if @blog.status == true
+      @user = @blog.user
+      @blog_comments = @blog.blog_comments
+      @blog_comment = BlogComment.new
+      @stamp = Stamp.new
+    else
+      redirect_back(fallback_location)
+      flash[:danger] = 'お探しのページにはアクセスできません。'
+    end
+  else
+    redirect_back(fallback_location: root_path)
+    flash[:info] = '日記を読むにはログインが必要です。'
+  end
 end
 
 def update
@@ -110,18 +124,18 @@ end
 
 def destroy
   @blog = Blog.find(params[:id])
-  @blog.destroy
-  redirect_to blogs_path
-  flash[:info] = 'ブログ記事を削除しました。'
+  if @blog.destroy
+    redirect_to blogs_path
+    flash[:info] = 'ブログ記事を削除しました。'
+  else
+    redirect_back(fallback_location: root_path)
+    flash[:danger] = '記事を削除できませんでした。'
+  end
 end
 
 private
 def set_user
 	@user = current_user
-end
-
-def set_blog
-  @blog = Blog.find(params[:id])
 end
 
 def blog_params

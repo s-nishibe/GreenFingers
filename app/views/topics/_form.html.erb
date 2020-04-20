@@ -1,9 +1,9 @@
 <%= form_with(model: @topic, local: true) do |f| %>
   <div class="field clearfix">
- 	  <%= attachment_image_tag(@topic, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200', style: 'float: left;') %>
+ 	  <%= attachment_image_tag(@topic, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200', style: 'float: left;', id: 'topic_eyecatch_prev') %>
  	  <div style="float: left; padding-top: 50px; margin-left: 20px;">
       <%= f.label :アイキャッチ画像, class: 'field-content' %><br>
-      <%= f.attachment_field :eyecatch_img %>
+      <%= f.attachment_field :eyecatch_img, id: 'topic_eyecatch' %>
     </div>
   </div>
   <div class="field">
@@ -33,3 +33,21 @@
     <%= f.submit 'トピを立てる！', class: 'w-25 offset-9 btn-block btn-crud-green' %>
   </div>
 <% end %>
+
+<!-- アイキャッチ写真プレビュー表示 -->
+<script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#topic_eyecatch_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#topic_eyecatch").change(function(){
+        readURL(this);
+    });
+  });
+</script>

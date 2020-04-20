@@ -8,14 +8,22 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.build(topic_params)
-    @topic.save
-    @topic_comment = @topic.topic_comments.build
-    @topic_comment.user_id = current_user.id
-    @topic_comment.image = params[:topic][:topic_comment][:image]
-    @topic_comment.comment = params[:topic][:topic_comment][:comment]
-    @topic_comment.save
-    redirect_to topic_path(@topic.id)
-    flash[:success] = '新しいトピックが立ちました！'
+    if @topic.save
+      @topic_comment = @topic.topic_comments.build
+      @topic_comment.user_id = current_user.id
+      @topic_comment.image = params[:topic][:topic_comment][:image]
+      @topic_comment.comment = params[:topic][:topic_comment][:comment]
+      if @topic_comment.save
+        redirect_to topic_path(@topic.id)
+        flash[:success] = '新しいトピックが立ちました！'
+      else
+        redirect_back(fallback_location: root_path)
+        flash[:danger] = 'トピックのコメントを送信できませんでした。'
+      end
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = 'トピックを立てるのに失敗しました。'
+    end
   end
 
   def index
@@ -31,6 +39,10 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:id])
+    if @topic.user_id != current_user.id
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = 'お探しのページにアクセスできませんでした。'
+    end
   end
 
   def show
@@ -41,16 +53,24 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
-    @topic.update(topic_params)
-    redirect_to topic_path(@topic)
-    flash[:success] = 'トピックのタイトルが変更されました！'
+    if @topic.update(topic_params)
+      redirect_to topic_path(@topic)
+      flash[:success] = 'トピックのタイトルが変更されました！'
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = 'トピックのタイトルを変更できませんでした。'
+    end
   end
 
   def destroy
     @topic = Topic.find(params[:id])
-    @topic.destroy
-    redirect_to topics_path
-    flash[:info] = 'トピックが削除されました。'
+    if @topic.destroy
+      redirect_to topics_path
+      flash[:info] = 'トピックが削除されました。'
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = 'トピックを削除できませんでした。'
+    end
   end
 
   private

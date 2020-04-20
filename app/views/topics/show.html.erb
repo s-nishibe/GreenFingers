@@ -10,7 +10,7 @@
 
   	<div>
       <%= attachment_image_tag(@topic, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200') %>
-      <% if @topic.user_id == current_user.id %>
+      <% if user_signed_in? && @topic.user_id == current_user.id %>
       <%= link_to 'タイトルを変更', edit_topic_path(@topic.id), class: 'btn-sm btn-success' %>
       <% end %>
       <h3><%= @topic.title %></h3>
@@ -21,6 +21,7 @@
       </div>
   	</div>
 
+    <% if user_signed_in? %>
     <div style="padding-top: 50px;">
       <%= form_with(model: @topic_comment, url: topic_topic_comments_path(@topic), remote: true) do |f| %>
         <h4>新規コメント</h4><br>
@@ -33,6 +34,7 @@
         <%= f.submit '送信！', class: 'btn-sm btn-info' %>
       <% end %>
     </div>
+    <% end %>
 
     </div>
   </div>

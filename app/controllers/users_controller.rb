@@ -21,10 +21,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if @user.id != current_user.id
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = 'お探しのページにアクセスできませんでした。'
+    end
   end
 
   def update
     @user = User.find(params[:id])
+    binding.pry
     if @user.update(user_params)
     redirect_to user_path(@user)
     flash[:success] = '会員情報が更新されました！'
@@ -35,9 +40,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to homes_top_path
-    flash[:info] = '退会処理は正常に行われました。ご利用ありがとうございました。'
+    if @user.destroy
+      redirect_to homes_top_path
+      flash[:info] = '退会処理は正常に行われました。ご利用ありがとうございました。'
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = '退会の処理に失敗しました。'
+    end
   end
 
   private
@@ -46,6 +55,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :introduction, :profile_img_id)
+    params.require(:user).permit(:name, :email, :introduction, :profile_img)
   end
 end

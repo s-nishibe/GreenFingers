@@ -16,7 +16,7 @@
 	    </td>
 		<td><%= simple_time(topic[:updated_at]) %></td>
 		<td><%= topic.title %></td>
-		<% if topic.user_id == current_user.id %>
+		<% if user_signed_in? && topic.user_id == current_user.id %>
 	      <td><%= link_to 'タイトルを編集', edit_topic_path(topic), class: 'btn-sm btn-success' %></td>
 		  <td><%= link_to 'トピを削除', topic_path(topic), method: :delete, class: 'btn-sm btn-danger' %></td>
 	    <% end %>
