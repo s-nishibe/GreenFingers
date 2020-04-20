@@ -13,7 +13,7 @@
 
       <div class="field">
         <%= f.label :パスワード %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control w-100' %>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control w-100 sans' %>
       </div>
 
       <% if devise_mapping.rememberable? %>
@@ -28,7 +28,9 @@
       </div>
       <% end %>
 
+      <div style="text-align: right; margin: 20px 0;">
       <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
