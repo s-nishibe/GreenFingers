@@ -28,7 +28,7 @@ def create
     @blog.plant_kind = @plant.kind
     @blog.status = false
     if @blog.save
-      redirect_to blog_path(@blog)
+      redirect_to blogs_path(page: 'drafts')
       flash[:success] = 'ブログを下書き保存しました。'
     else
       render :new
@@ -89,7 +89,7 @@ def show
     @blog_comment = BlogComment.new
     @stamp = Stamp.new
   else
-    redirect_back(fallback_location)
+    redirect_back(fallback_location: root_path)
     flash[:danger] = 'お探しのページにはアクセスできません。'
   end
 end
@@ -99,8 +99,8 @@ def update
     @blog = Blog.find(params[:id])
     @blog.status = false
     if @blog.update(blog_params)
-      redirect_to blog_path(@blog)
-      flash[:success] = '下書きを更新しました。'
+      redirect_to blogs_path(page: 'drafts')
+      flash[:success] = '下書きを更新しました！'
     else
       render :new
       flash[:danger] = '下書きを更新できません。空欄になっている箇所はありませんか？'

@@ -1,10 +1,13 @@
 <div class="clearfix">
   <div style="float: left;">
-    <%= attachment_image_tag(@blog, :eyecatch_img, :fill, 220, 220, fallback: 'no_img.jpg', size: '220x220') %><br>
+    <%= attachment_image_tag(@blog, :eyecatch_img, fallback: 'no_img.jpg', size: '220x220') %><br>
   </div>
   <div style="float: left; margin-left: 30px;">
     <% unless @blog.updated_at.nil? %>
-      <h5><%= simple_time(@blog[:updated_at]) %></h5>
+      <h5>
+        <%= simple_time(@blog[:updated_at]) %>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+      </h5>
     <% else %>
       <h5>〇月〇日</h5>
     <% end %>
@@ -18,4 +21,5 @@
 
 <div class="clearfix" style="padding-top: 30px;">
   <%= raw @blog.content %>
+  <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
 </div>

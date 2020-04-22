@@ -14,7 +14,7 @@
   	  <tr>
    		  <td>
           <%= link_to blog_path(blog) do %>
-          <%= attachment_image_tag(blog, :eyecatch_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50') %>
+          <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
           <% end %>
         </td>
    		  <td><%= simple_time(blog[:updated_at]) %></td>

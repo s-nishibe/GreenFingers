@@ -48,6 +48,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :test do
@@ -77,8 +79,6 @@ gem 'activeadmin'
 gem 'omniauth'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 
-gem 'rubocop'
-
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'simple_form'
@@ -87,6 +87,8 @@ gem 'summernote-rails', '~> 0.8.12.0'
 gem 'kaminari'
 
 gem 'acts-as-taggable-on', '~> 6.0'
+
+gem 'rails-i18n', '~> 5.1'
 
 group :production do
   gem 'mysql2'

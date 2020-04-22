@@ -1,6 +1,6 @@
 <%= form_with(model: @topic, local: true) do |f| %>
   <div class="field clearfix">
- 	  <%= attachment_image_tag(@topic, :eyecatch_img, :fill, 200, 200, fallback: 'no_img.jpg', size: '200x200', style: 'float: left;', id: 'topic_eyecatch_prev') %>
+ 	  <%= attachment_image_tag(@topic, :eyecatch_img, fallback: 'no_img.jpg', size: '200x200', style: 'float: left;', id: 'topic_eyecatch_prev') %>
  	  <div style="float: left; padding-top: 50px; margin-left: 20px;">
       <%= f.label :アイキャッチ画像, class: 'field-content' %><br>
       <%= f.attachment_field :eyecatch_img, id: 'topic_eyecatch' %>

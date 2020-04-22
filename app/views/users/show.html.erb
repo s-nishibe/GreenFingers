@@ -12,10 +12,12 @@
           </div>
       </div>
 
+      <% if @user.id == current_user.id %>
       <div id="edit-plant-<%= @user.id %>" style='padding-top: 100px;'>
         <h3>新しく登録</h3>
         <%= render 'plants/form', plant: @plant %>
       </div>
+      <% end %>
 
     </div>
   </div>

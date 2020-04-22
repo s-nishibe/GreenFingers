@@ -9,19 +9,20 @@
         <%= render 'blogs/article', blog: @blog %>
 
         <% if @blog.status == true %>
-          <div id="stamps-<%= @blog.id %>" class="stamps clearfix">
+          <div id="stamps-<%= @blog.id %>" class="stamps clearfix" style="padding-top: 30px;">
             <%= render 'stamps/stamp', stamp: @stamp %>
           </div>
 
-          <div id="comments_for_blog-<%= @blog.id %>" class="himaji">
+          <div id="comments_for_blog-<%= @blog.id %>" class="himaji" style="padding-top: 30px;">
+            <h4>コメント</h4>
             <%= render 'blog_comments/bc_index', blog_comments: @blog_comments %>
           </div>
 
-          <div>
+          <div style="padding-top: 30px;">
             <%= form_with(model: @blog_comment, url: blog_blog_comments_path(@blog), remote: true) do |f| %>
               <h4>新規コメント</h4>
               <div class="clearfix">
-                <%= attachment_image_tag(current_user, :profile_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50', style: 'float: left;') %>
+                <%= attachment_image_tag(current_user, :profile_img, fallback: 'no_img.jpg', size: '50x50', style: 'float: left;') %>
                 <p style="float: left; margin-left: 20px; padding-top: 20px;"><%= current_user.name %></p>
                 <div style="float: left; margin-left: 20px; padding-top: 15px;">
                   <%= f.attachment_field :image %>

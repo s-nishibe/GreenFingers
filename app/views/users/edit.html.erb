@@ -17,7 +17,7 @@
 
   	    <div class="user_field">
   	    <%= f.label :アイコン画像, class: 'field-content' %><br>
-  	    <%= attachment_image_tag(@user, :profile_img, :fill, 100, 100, fallback: 'no_img.jpg', size: '100x100', id: 'profile_prev') %>
+  	    <%= attachment_image_tag(@user, :profile_img, fallback: 'no_img.jpg', size: '100x100', id: 'profile_prev') %>
   	    <%= f.attachment_field :profile_img, id: 'profile' %>
   	    </div>
 

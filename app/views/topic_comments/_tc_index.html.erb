@@ -3,13 +3,13 @@
     <% topic_comments.each do |tc| %>
       <tr>
         <td>
-          <%= attachment_image_tag(tc.user, :profile_img, :fill, 50, 50, fallback: 'no_img.jpg', size: '50x50') %>
+          <%= attachment_image_tag(tc.user, :profile_img, fallback: 'no_img.jpg', size: '50x50') %>
           <%= tc.user.name %>
           <%= simple_time(tc[:created_at]) %>
         </td>
       </tr>
       <tr>
-        <td><%= attachment_image_tag(tc, :image, :fill, 200, 200) %></td>
+        <td><%= attachment_image_tag(tc, :image, size: '200x200') %></td>
       </tr>
       <tr>
         <td><%= tc.comment %></td>
