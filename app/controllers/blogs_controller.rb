@@ -15,16 +15,10 @@ end
 def create
   # 「プレビュー」「下書き」「公開」ボタン毎に処理を分岐（プレビューのみモデルへの保存はなし）
   if params[:preview_btn]
-    @blog = Blog.new
+    @blog = Blog.new(blog_params)
     @plant = Plant.find(params[:blog][:plant])
-    @blog.title = params[:blog][:title]
-    @blog.eyecatch_img = params[:blog][:eyecatch_img]
-    @blog.weather = params[:blog][:weather]
-    @blog.temperature = params[:blog][:temperature]
     @blog.plant_name = @plant.name
     @blog.plant_kind = @plant.kind
-    @blog.tag_list = params[:blog][:tag_list]
-    @blog.content = params[:blog][:content]
     render :preview
   elsif params[:draft_btn]
     @blog = current_user.blogs.build(blog_params)
@@ -56,7 +50,7 @@ def create
 end
 
 def preview
-  @blog = Blog.new
+  @blog = Blog.new(blog_params)
 end
 
 def index
@@ -140,7 +134,7 @@ def set_user
 end
 
 def blog_params
-  params.require(:blog).permit(:user_id, :title, :content, :eyecatch_img, :tag_list)
+  params.require(:blog).permit(:user_id, :title, :content, :eyecatch_img, :eyecatch_img_cache_id, :tag_list, :weather, :temperature, :water)
 end
 
 end
