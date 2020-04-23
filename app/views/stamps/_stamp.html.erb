@@ -1,14 +1,14 @@
 <h4 class="himaji">スタンプ合計<%= @blog.stamps.count %>個</h4>
 <!--^^-------------------------------- いいね -------------------------------------->
 <% unless Stamp.where(user_id: current_user.id, blog_id: @blog.id, stamp_img: 1).exists? %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :post, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :post, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-thumbs-up fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 1).count %>いいね</p>
   </span>
   <% end %>
 <% else %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :delete, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :delete, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="fas fa-thumbs-up fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 1).count %>いいね</p>
@@ -18,14 +18,14 @@
 
 <!----------------------------------- なるほど -------------------------------------->
 <% unless Stamp.where(user_id: current_user.id, blog_id: @blog.id, stamp_img: 2).exists? %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :post, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :post, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-lightbulb fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 2).count %>なるほど</p>
   </span>
   <% end %>
 <% else %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :delete, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 2), method: :delete, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="fas fa-lightbulb fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 2).count %>なるほど</p>
@@ -35,14 +35,14 @@
 
 <!------------------------------------ ウケる --------------------------------------->
 <% unless Stamp.where(user_id: current_user.id, blog_id: @blog.id, stamp_img: 3).exists? %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :post, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :post, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-grin-squint-tears fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 3).count %>おもしろい！</p>
   </span>
   <% end %>
 <% else %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :delete, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :delete, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="fas fa-grin-squint-tears fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 3).count %>おもしろい！</p>
@@ -52,14 +52,14 @@
 
 <!------------------------------------- スター -------------------------------------->
 <% unless Stamp.where(user_id: current_user.id, blog_id: @blog.id, stamp_img: 4).exists? %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :post, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :post, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-star fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 4).count %>スター</p>
   </span>
   <% end %>
 <% else %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :delete, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 4), method: :delete, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="fas fa-star fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 4).count %>スター</p>
@@ -69,14 +69,14 @@
 
 <!------------------------------------ ありがとう ------------------------------------->
 <% unless Stamp.where(user_id: current_user.id, blog_id: @blog.id, stamp_img: 5).exists? %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :post, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :post, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="far fa-smile fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 5).count %>ありがとう</p>
   </span>
   <% end %>
 <% else %>
-  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :delete, remote: true do %>
+  <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 5), method: :delete, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">
   	<i class="fas fa-smile fa-2x"></i>
   	<p><%= @blog.stamps.where(stamp_img: 5).count %>ありがとう<p>
