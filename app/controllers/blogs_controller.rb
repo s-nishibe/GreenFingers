@@ -75,7 +75,7 @@ end
 def show
   @blog = Blog.find(params[:id])
   # 他者の下書きを見られないようアクセス制限をかける
-  if @blog.status == true
+  if @blog.status == true || @blog.user_id == current_user.id
     @user = @blog.user
     @blog_comments = @blog.blog_comments
     @blog_comment = BlogComment.new
