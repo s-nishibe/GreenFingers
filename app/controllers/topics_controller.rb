@@ -77,6 +77,16 @@ class TopicsController < ApplicationController
     end
   end
 
+  def status
+    @topic = Topic.find(params[:id])
+    if @topic.update(status_params)
+       render :status
+    else
+       redirect_back(fallback_location: root_path)
+       flash[:danger] = 'トピックのステータスを変更できませんでした。'
+    end
+  end
+
   private
   def set_user
     @user = current_user
@@ -84,6 +94,10 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:eyecatch_img, :title, :category, :user_id)
+  end
+
+  def status_params
+    params.permit(:status)
   end
 
 end

@@ -3,8 +3,13 @@ before_action :authenticate_user!
 before_action :set_user, except: [:show]
 
 def new
-  @blog = Blog.new
-  @plant = Plant.new
+  if @user.plants.exists?
+    @blog = Blog.new
+    @plant = Plant.new
+  else
+    redirect_back(fallback_location: root_path)
+    flash[:info] = '育てているお花のご登録はお済みですか？　マイページよりご登録いただけます。'
+  end
 end
 
 def create

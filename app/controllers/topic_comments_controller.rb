@@ -9,6 +9,7 @@ class TopicCommentsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
       flash[:danger] = 'コメントを送信できませんでした。'
+    end
   end
 
   def destroy
@@ -19,6 +20,7 @@ class TopicCommentsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
       flash[:danger] = 'コメントを削除できませんでした。'
+    end
   end
 
   private

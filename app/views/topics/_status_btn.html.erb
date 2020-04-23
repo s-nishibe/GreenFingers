@@ -1,0 +1,5 @@
+<% if @topic.status == false %>
+  <%= link_to '解決済みにする', status_topic_path(id: @topic.id, status: true), method: :patch, remote: true, class: 'btn-green-new' %>
+<% else @topic.status == true %>
+  <%= link_to '回答受付中に戻す', status_topic_path(id: @topic.id, status: false), method: :patch, remote: true, class: 'btn-green' %>
+<% end %>

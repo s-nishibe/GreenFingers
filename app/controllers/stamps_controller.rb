@@ -10,6 +10,7 @@ class StampsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
       flash[:danger] = 'スタンプを押せませんでした。'
+    end
   end
 
   def destroy
@@ -21,6 +22,7 @@ class StampsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
       flash[:danger] = 'スタンプを消せませんでした。'
+    end
   end
 
   private

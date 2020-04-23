@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   resources :topics do
     resource :topic_comments, only: [:create, :destroy]
+    member do
+      patch :status, as: 'status'
+    end
   end
 
   resources :relationships, only:[:create, :destroy]
