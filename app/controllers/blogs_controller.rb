@@ -13,14 +13,7 @@ def new
 end
 
 def create
-  # 「プレビュー」「下書き」「公開」ボタン毎に処理を分岐（プレビューのみモデルへの保存はなし）
-  if params[:preview_btn]
-    @blog = Blog.new(blog_params)
-    @plant = Plant.find(params[:blog][:plant])
-    @blog.plant_name = @plant.name
-    @blog.plant_kind = @plant.kind
-    render :preview
-  elsif params[:draft_btn]
+  if params[:draft_btn]
     @blog = current_user.blogs.build(blog_params)
     @plant = Plant.find(params[:blog][:plant])
     @blog.plant_name = @plant.name
@@ -28,10 +21,10 @@ def create
     @blog.status = false
     if @blog.save
       redirect_to blogs_path(page: 'drafts')
-      flash[:success] = 'ブログを下書き保存しました。'
+      flash[:success] = '日記を下書き保存しました。'
     else
       render :new
-      flash[:danger] = 'ブログを保存できません。空欄になっている箇所はありませんか？'
+      flash[:danger] = '日記を保存できません。空欄になっている箇所はありませんか？'
     end
   else params[:blog_btn]
     @blog = current_user.blogs.build(blog_params)
@@ -41,10 +34,10 @@ def create
     @blog.status = true
     if @blog.save
       redirect_to blog_path(@blog)
-      flash[:success] = 'ブログを公開しました！'
+      flash[:success] = '日記を公開しました！ 下のツイートボタンで友達に知らせましょう！'
     else
       render :new
-      flash[:danger] = 'ブログを保存できません。空欄になっている箇所はありませんか？'
+      flash[:danger] = '日記を保存できません。空欄になっている箇所はありませんか？'
     end
   end
 end
@@ -109,10 +102,10 @@ def update
     @blog.status = true
     if @blog.update(blog_params)
       redirect_to blog_path(@blog)
-      flash[:success] = 'ブログを更新しました！'
+      flash[:success] = '日記を公開しました！ 下のツイートボタンから更新のお知らせをしましょう！'
     else
       render :new
-      flash[:danger] = 'ブログを更新できません。空欄になっている箇所はありませんか？'
+      flash[:danger] = '日記を更新できません。空欄になっている箇所はありませんか？'
     end
   end
 end
@@ -134,7 +127,7 @@ def set_user
 end
 
 def blog_params
-  params.require(:blog).permit(:user_id, :title, :content, :eyecatch_img, :eyecatch_img_cache_id, :tag_list, :weather, :temperature, :water)
+  params.require(:blog).permit(:user_id, :title, :content, :eyecatch_img, :tag_list, :weather, :temperature, :water)
 end
 
 end
