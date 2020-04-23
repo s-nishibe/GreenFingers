@@ -1,12 +1,13 @@
 class SearchController < ApplicationController
   before_action :authenticate_user!
   def search
-  	@user = User.new
+  	@new_user = User.new
   	@blog = Blog.new
   	@topic = Topic.new
   	@model = params[:search][:model]
   	@word = params[:search][:word]
   	@datas = search_for(@model, @word)
+    @user = current_user
   end
 
   private
