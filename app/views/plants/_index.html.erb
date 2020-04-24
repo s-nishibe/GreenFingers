@@ -1,6 +1,10 @@
 <% @user.plants.each do |plant| %>
   <span>
-    <h4><%= plant.name %></h4>
+    <h4 style="padding-top: 30px;">
+      <%= link_to plant_path(plant), style: 'color: #664539;' do %>
+      <%= plant.name %><%= render 'plants/info', plant: @plant %>
+      <% end %>
+     </h4>
     <%= plant.memo %>
     <% if @user.id == current_user.id %>
       <%= link_to '編集', edit_plant_path(plant), remote: true, class: 'btn-sm btn-success' %>

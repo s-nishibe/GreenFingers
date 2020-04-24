@@ -12,6 +12,12 @@ class PlantsController < ApplicationController
     end
   end
 
+  def show
+    @plant = Plant.find(params[:id])
+    @user = @plant.user
+    @blogs = @plant.blogs
+  end
+
   def edit
     @plant = Plant.find(params[:id])
     if @plant.user_id != current_user.id

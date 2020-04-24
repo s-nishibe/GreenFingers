@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :花の種類, class: 'himaji field-content' %>
-    <%= f.collection_select :plant, @user.plants, :id, :name %>
+    <%= f.collection_select :plant_id, @user.plants, :id, :name %>
   </div>
 
   <div class="field">

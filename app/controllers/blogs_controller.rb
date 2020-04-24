@@ -14,10 +14,9 @@ end
 
 def create
   if params[:draft_btn]
-    @blog = current_user.blogs.build(blog_params)
-    @plant = Plant.find(params[:blog][:plant])
-    @blog.plant_name = @plant.name
-    @blog.plant_kind = @plant.kind
+    @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
+    @blog.plant_id = params[:blog][:plant_id]
     @blog.status = false
     if @blog.save
       redirect_to blogs_path(page: 'drafts')
@@ -27,10 +26,9 @@ def create
       flash[:danger] = '日記を保存できません。空欄になっている箇所はありませんか？'
     end
   else params[:blog_btn]
-    @blog = current_user.blogs.build(blog_params)
-    @plant = Plant.find(params[:blog][:plant])
-    @blog.plant_name = @plant.name
-    @blog.plant_kind = @plant.kind
+    @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
+    @blog.plant_id = params[:blog][:plant_id]
     @blog.status = true
     if @blog.save
       redirect_to blog_path(@blog)
@@ -127,7 +125,7 @@ def set_user
 end
 
 def blog_params
-  params.require(:blog).permit(:user_id, :title, :content, :eyecatch_img, :tag_list, :weather, :temperature, :water)
+  params.require(:blog).permit(:user_id, :plant_id, :title, :content, :eyecatch_img, :tag_list, :weather, :temperature, :water)
 end
 
 end

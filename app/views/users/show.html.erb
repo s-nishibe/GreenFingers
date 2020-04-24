@@ -6,7 +6,7 @@
   	  <%= render partial: 'layouts/flash' %>
 
       <div>
-        <h3><%= @user.name %>さんが育てている植物</h3>
+        <h3><%= @user.name %>さんが育てている花</h3>
           <div id="plant-<%= @user.id %>">
           <%= render 'plants/index', user: @user %>
           </div>

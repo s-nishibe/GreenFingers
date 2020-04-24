@@ -1,0 +1,9 @@
+<% if @plant_kind == 0 %>
+（種別：一年草）
+<% elsif @plant.kind == 1 %>
+（種別：多年草）
+<% elsif @plant.kind == 2 %>
+（種別：低木）
+<% else @plant.kind == 3 %>
+（種別：高木）
+<% end %>

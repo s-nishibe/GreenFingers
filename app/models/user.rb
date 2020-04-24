@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :plants, dependent: :destroy
 
-  has_many :blogs, dependent: :destroy
+  has_many :blogs, through: :plants, dependent: :destroy
   has_many :blog_comments, through: :blogs
 
   has_many :stamps, through: :blogs
