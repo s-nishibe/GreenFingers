@@ -12,7 +12,8 @@
       <h5>〇月〇日</h5>
     <% end %>
     <h3 class="himaji"><%= @blog.title %></h3><br>
-      <%= @blog.plant.name %>(種別：<%= @blog.plant.kind %>)<br>
+      <%= @blog.plant.name %>(種別：<%= render 'plants/info', plant: @blog.plant %>)<br>
+      <br>
       <%= render 'blogs/weather_info', blog: @blog %><br>
     <span class="himaji">タグ：</span>
     <%= render 'tag_list', tag_list: @blog.tag_list %>

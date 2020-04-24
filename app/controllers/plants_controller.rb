@@ -5,7 +5,7 @@ class PlantsController < ApplicationController
   def create
   	@plant = @user.plants.build(plant_params)
     if @plant.save
-      render :index
+       render :index
     else
       redirect_back(fallback_location: root_path)
       flash[:danger] = '花を登録できませんでした。'

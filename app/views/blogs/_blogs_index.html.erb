@@ -24,7 +24,11 @@
           <%= blog.title %>
           <% end %>
         </td>
-        <td><%= blog.plant.name %></td>
+        <td>
+          <%= link_to plant_path(blog.plant), style: 'color: #664539;' do %>
+          <%= blog.plant.name %>
+          <% end %>
+        </td>
         <td><%= render 'blogs/tag_list', tag_list: blog.tag_list %></td>
         <td style="text-align: center;"><%= blog.stamps.count %></td>
         <% if blog.user_id == current_user.id %>

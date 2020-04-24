@@ -3,14 +3,14 @@
     <h4 style="padding-top: 30px;">
       <%= link_to plant_path(plant), style: 'color: #664539;' do %>
       <p>
-        <%= plant.name %>（種別：<%= render 'plants/info', plant: @plant %>）
+        <%= plant.name %>（種別：<%= render 'plants/info', plant: plant %>）
       </p>
       <% end %>
      </h4>
     <%= plant.memo %>
     <% if @user.id == current_user.id %>
       <%= link_to '編集', edit_plant_path(plant), remote: true, class: 'btn-sm btn-success' %>
-      <%= link_to '削除', plant_path(plant), method: :delete, class: 'btn-sm btn-danger' %>
+      <%= link_to '削除', plant_path(plant), method: :delete, remote: true, class: 'btn-sm btn-danger' %>
     <% end %>
   </span>
 <% end %>
