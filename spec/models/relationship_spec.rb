@@ -1,23 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Relationship, type: :model do
-
-  describe 'バリデーションのテスト' do
-    let!(:user) { create(:user) }
-
-    context 'カラム' do
-      it '空欄でないこと' do
-      end
-    end
-  end
+RSpec.describe 'Relationshipモデルのテスト', type: :model do
 
   describe 'アソシエーションのテスト' do
     context 'Userモデルとの関係' do
       it 'N:1となっている' do
-        expect(Blog_comment.reflect_on_association(:blog).macro).to eq :belongs_to
+        expect(Relationship.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
   end
-
-
 end

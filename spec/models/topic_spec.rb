@@ -1,12 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe Topic, type: :model do
+RSpec.describe 'Topicモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
     let!(:user) { create(:user) }
+    let!(:topic) { create(:topic, user_id: user.id) }
 
-    context 'カラム' do
+    context 'titleカラム' do
       it '空欄でないこと' do
+        topic.title = ''
+        expect(topic.valid?).to eq false;
+      end
+
+      it '100字以下であること' do
+        topic.title = Faker::Lorem.character(number: 101)
+        expect(topic.valid?).to eq false;
       end
     end
   end
@@ -14,7 +22,13 @@ RSpec.describe Topic, type: :model do
   describe 'アソシエーションのテスト' do
     context 'Userモデルとの関係' do
       it 'N:1となっている' do
-        expect(Blog_comment.reflect_on_association(:blog).macro).to eq :belongs_to
+        expect(Topic.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+
+    context 'TopicCommentモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Topic.reflect_on_association(:topic_comments).macro).to eq :has_many
       end
     end
   end

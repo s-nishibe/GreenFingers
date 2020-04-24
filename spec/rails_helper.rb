@@ -63,4 +63,11 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include FactoryBot::Syntax::Methods
 
+  # open_on_error: true表記でテスト失敗箇所をブラウザ表示
+  config.after do |example|
+    if example.metadata[:type] == :feature and example.exception.present? and example.metadata[:open_on_error] == true
+      save_and_open_page
+    end
+  end
+
 end
