@@ -6,9 +6,6 @@ class PlantsController < ApplicationController
   	@plant = @user.plants.build(plant_params)
     if @plant.save
        render :index
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:danger] = '花を登録できませんでした。'
     end
   end
 
@@ -30,9 +27,6 @@ class PlantsController < ApplicationController
     @plant = Plant.find(params[:id])
     if @plant.update(plant_params)
       render :index
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:success] = '花の情報を更新しました！'
     end
   end
 
@@ -40,9 +34,6 @@ class PlantsController < ApplicationController
     @plant = Plant.find(params[:id])
     if @plant.destroy
       render :index
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:danger] = '花の情報を破棄できませんでした。'
     end
   end
 

@@ -25,7 +25,7 @@ RSpec.feature 'Blog機能のテスト' do
   	end
   end
 
-  feature 'コメント投稿' do
+  feature 'コメント投稿', js: true do
   	scenario '正常にコメントを投稿できる' do
   	  fill_in '#blog_comment_comment', text: 'こめんと'
   	  click_button '送信！'
