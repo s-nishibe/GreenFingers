@@ -2,7 +2,7 @@ class BlogComment < ApplicationRecord
 	belongs_to :user
 	belongs_to :blog
 
-	validates :comment, length: {maximum: 500}
+	validates :comment, length: {minimum: 1, maximum: 500}
 
 	attachment :image
 end

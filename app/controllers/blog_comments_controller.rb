@@ -7,9 +7,6 @@ class BlogCommentsController < ApplicationController
     @blog_comment.user_id = current_user.id
     if @blog_comment.save
       render :index
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:danger] = 'コメントを送信できませんでした。'
     end
   end
 
@@ -18,11 +15,7 @@ class BlogCommentsController < ApplicationController
     if @blog_comment.destroy
       @blog = Blog.find(params[:blog_id])
       render :index
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:danger] = 'コメントを破棄できませんでした。'
     end
-
   end
 
   private
