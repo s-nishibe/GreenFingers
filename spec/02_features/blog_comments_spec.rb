@@ -6,7 +6,9 @@ RSpec.feature '' do
   end
 
   feature '' do
-  	scenario '' do
+  	context '' do
+  	  scenario '' do
+      end
     end
   end
 
