@@ -4,8 +4,7 @@ RSpec.feature 'ヘッダーのテスト' do
 
   # 検索機能のテストについては別ファイルにて実施
 
-  feature 'ログインしていない場合' do
-  	context 'リンクの表示と遷移' do
+  feature 'ログイン前のリンク遷移' do
       visit root_path
 
   	  scenario 'リンク付きロゴ画像からTopページへ遷移' do
@@ -27,10 +26,9 @@ RSpec.feature 'ヘッダーのテスト' do
       scenario '「新規登録」からsign_up画面へ遷移' do
         expect(page).to have_link '会員登録', href: new_user_registration_path
       end
-    end
   end
 
-  feature 'ログイン後' do
+  feature 'ログイン後のリンク遷移' do
   	given!(:user) { create(:user) }
 
   	background do
@@ -40,7 +38,6 @@ RSpec.feature 'ヘッダーのテスト' do
       click_button 'ログイン'
     end
 
-    context 'リンクの表示と遷移' do
   	  scenario 'リンク付きロゴ画像からTopページへ遷移' do
         expect(page).to have_selector '#GreenFingers', href: homes_top_path
       end
@@ -66,14 +63,13 @@ RSpec.feature 'ヘッダーのテスト' do
       end
 
       scenario '「会員一覧」から全User一覧へ遷移' do
-        expect(page).to have_link '会員一覧', href: users_path(page: 'all_users')
+        expect(page).to have_link '会員一覧', href: users_path(who: 'all_users')
       end
 
       scenario '「ログアウト」からsign_out処理、Topページに戻る' do
         expect(page).to have_link 'ログアウト', href: destroy_user_session_path
         expect(page).to have_content 'h2', '新着記事'
       end
-    end
   end
 
 end
