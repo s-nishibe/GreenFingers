@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:edit, :destroy]
 
   def index
     @who = params[:who]
@@ -22,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
     if @user.id != current_user.id
       redirect_back(fallback_location: root_path)
       flash[:danger] = 'お探しのページにアクセスできませんでした。'
@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     if @user.destroy
       redirect_to homes_top_path
       flash[:info] = '退会処理は正常に行われました。ご利用ありがとうございました。'
@@ -50,10 +51,6 @@ class UsersController < ApplicationController
   end
 
   private
-  def set_user
-    @user = current_user
-  end
-
   def user_params
     params.require(:user).permit(:name, :email, :introduction, :profile_img)
   end

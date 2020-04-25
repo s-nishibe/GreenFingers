@@ -26,7 +26,7 @@
             <li class="nav-item"><%= link_to '皆の日記', blogs_path(page: 'all_blogs'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to '花の広場', topics_path(page: 'all_topics'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to '会員一覧', users_path(who: 'all_users'), class: 'nav-link' %></li>
-  	  	    <li class="nav-item"><%= link_to 'ログイン', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+  	  	    <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
   	  	  <% else %>
   	  	    <li class="nav-item"><%= link_to '花の広場', topics_path(page: 'all_topics'), class: 'nav-link' %></li>
   	  	    <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %></li>
