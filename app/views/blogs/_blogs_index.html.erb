@@ -14,7 +14,7 @@
     <% blogs.each do |blog| %>
   	  <tr>
    		  <td>
-          <%= link_to blog_path(blog) do %>
+          <%= link_to user_path(blog.user) do %>
           <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
           <% end %>
         </td>

@@ -22,8 +22,8 @@ def create
       redirect_to blogs_path(page: 'drafts')
       flash[:success] = '日記を下書き保存しました。'
     else
+      flash[:danger] = '日記を保存できません。タイトルの文字数は1～100字、本文には2字以上が必要です。'
       render :new
-      flash[:danger] = '日記を保存できません。空欄になっている箇所はありませんか？'
     end
   else params[:blog_btn]
     @blog = Blog.new(blog_params)
@@ -34,8 +34,8 @@ def create
       redirect_to blog_path(@blog)
       flash[:success] = '日記を公開しました！ 下のツイートボタンで友達に知らせましょう！'
     else
+      flash[:danger] = '日記を保存できません。タイトルの文字数は1～100字、本文には2字以上が必要です。'
       render :new
-      flash[:danger] = '日記を保存できません。空欄になっている箇所はありませんか？'
     end
   end
 end
