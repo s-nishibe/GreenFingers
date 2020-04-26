@@ -3,10 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Blogモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
-    before do
-      let!(:user) { create(:user) }
-      let!(:blog) { create(:blog, uesr_id: user.id) }
-    end
+    let!(:user) { create(:user) }
+    let!(:plant) { create(:plant, user_id: user.id) }
+    let!(:blog) { create(:blog, user_id: user.id, plant_id: plant.id) }
 
     context 'titleカラム' do
       it '空欄でないこと' do
