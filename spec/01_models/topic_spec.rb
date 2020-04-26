@@ -3,10 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Topicモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
-    before do
-      let!(:user) { create(:user) }
-      let!(:topic) { create(:topic, user_id: user.id) }
-    end
+    let!(:user) { create(:user) }
+    let!(:topic) { create(:topic, user_id: user.id) }
 
     context 'titleカラム' do
       it '空欄でないこと' do
@@ -15,7 +13,7 @@ RSpec.describe 'Topicモデルのテスト', type: :model do
       end
 
       it '100字以下であること' do
-        topic.title = Faker::Lorem.character(number: 101)
+        topic.title = Faker::Lorem.characters(number: 101)
         expect(topic.valid?).to eq false;
       end
     end
