@@ -25,7 +25,7 @@
   	</div>
 
     <% if user_signed_in? %>
-    <div style="padding-top: 50px;">
+    <div class="topic_comment_form" style="padding-top: 50px;">
       <%= form_with(model: @topic_comment, url: topic_topic_comments_path(@topic), remote: true) do |f| %>
         <h4>新規コメント</h4><br>
         <%= link_to user_path(@user) do %>

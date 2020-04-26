@@ -33,7 +33,7 @@
   <% end %>
 <% end %>
 
-<!------------------------------------ ウケる --------------------------------------->
+<!------------------------------------ おもしろい！ --------------------------------------->
 <% unless Stamp.where(user_id: current_user.id, blog_id: @blog.id, stamp_img: 3).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 3), method: :post, remote: true, style: 'color: #664539;' do %>
   <span style="float: left; text-align: center; padding: 10px;">

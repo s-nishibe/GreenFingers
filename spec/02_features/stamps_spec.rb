@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'スタンプ機能のテスト' do
+RSpec.feature 'Stamp機能のテスト' do
   background do
     given!(:user) { create(:user) }
     given!(:blog) { create(:blog, user_id: user.id) }
@@ -8,7 +8,7 @@ RSpec.feature 'スタンプ機能のテスト' do
     visit blog_path(blog)
   end
 
-  feature 'いいねスタンプを押す' do
+  feature 'いいねスタンプを押す', js: true do
   	background do
   	  click_link '0いいね'
   	end
@@ -22,7 +22,7 @@ RSpec.feature 'スタンプ機能のテスト' do
 
     scenario 'ブログ一覧のスタンプ数表示が増える' do
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '1'
+      expect(page).to have_selector '.stamp_count', text: '1'
     end
 
     scenario '2回押すとアイコンが白抜きに戻る' do
@@ -38,11 +38,11 @@ RSpec.feature 'スタンプ機能のテスト' do
     scenario 'ブログ一覧のスタンプ数表示が戻る' do
       click_link '1いいね'
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '0'
+      expect(page).to have_selector '.stamp_count', text: '0'
     end
   end
 
-  feature 'なるほどスタンプを押す' do
+  feature 'なるほどスタンプを押す', js: true do
   	background do
   	  click_link '0なるほど'
   	end
@@ -56,7 +56,7 @@ RSpec.feature 'スタンプ機能のテスト' do
 
     scenario 'ブログ一覧のスタンプ数表示が増える' do
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '1'
+      expect(page).to have_selector '.stamp_count', text: '1'
     end
 
     scenario '2回押すとアイコンが白抜きに戻る' do
@@ -72,11 +72,11 @@ RSpec.feature 'スタンプ機能のテスト' do
     scenario 'ブログ一覧のスタンプ数表示が戻る' do
       click_link '1なるほど'
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '0'
+      expect(page).to have_selector '.stamp_count', text: '0'
     end
   end
 
-  feature 'おもしろい！スタンプを押す' do
+  feature 'おもしろい！スタンプを押す', js: true do
   	background do
   	  click_link '0おもしろい！'
   	end
@@ -90,7 +90,7 @@ RSpec.feature 'スタンプ機能のテスト' do
 
     scenario 'ブログ一覧のスタンプ数表示が増える' do
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '1'
+      expect(page).to have_selector '.stamp_count', text: '1'
     end
 
     scenario '2回押すとアイコンが白抜きに戻る' do
@@ -106,11 +106,11 @@ RSpec.feature 'スタンプ機能のテスト' do
     scenario 'ブログ一覧のスタンプ数表示が戻る' do
       click_link '1おもしろい！'
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '0'
+      expect(page).to have_selector '.stamp_count', text: '0'
     end
   end
 
-  feature 'スタースタンプを押す' do
+  feature 'スタースタンプを押す', js: true do
   	background do
   	  click_link '0スター'
   	end
@@ -124,7 +124,7 @@ RSpec.feature 'スタンプ機能のテスト' do
 
     scenario 'ブログ一覧のスタンプ数表示が増える' do
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '1'
+      expect(page).to have_selector '.stamp_count', text: '1'
     end
 
     scenario '2回押すとアイコンが白抜きに戻る' do
@@ -140,11 +140,11 @@ RSpec.feature 'スタンプ機能のテスト' do
     scenario 'ブログ一覧のスタンプ数表示が戻る' do
       click_link '1スター'
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '0'
+      expect(page).to have_selector '.stamp_count', text: '0'
     end
   end
 
-  feature 'ありがとうスタンプを押す' do
+  feature 'ありがとうスタンプを押す', js: true do
   	background do
   	  click_link '0ありがとう'
   	end
@@ -158,7 +158,7 @@ RSpec.feature 'スタンプ機能のテスト' do
 
     scenario 'ブログ一覧のスタンプ数表示が増える' do
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '1'
+      expect(page).to have_selector '.stamp_count', text: '1'
     end
 
     scenario '2回押すとアイコンが白抜きに戻る' do
@@ -174,7 +174,7 @@ RSpec.feature 'スタンプ機能のテスト' do
     scenario 'ブログ一覧のスタンプ数表示が戻る' do
       click_link '1ありがとう'
       visit blogs_path(page: 'all_blogs')
-      expect(page).to have_content '0'
+      expect(page).to have_selector '.stamp_count', text: '0'
     end
   end
 
