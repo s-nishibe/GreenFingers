@@ -1,4 +1,7 @@
 class Blog < ApplicationRecord
+
+	default_scope -> { order(updated_at: :DESC) }
+
 	belongs_to :user
 	belongs_to :plant
 	has_many :blog_comments, dependent: :destroy
