@@ -28,7 +28,7 @@
                   <%= f.attachment_field :image %>
                 </div>
               </div>
-              <%= f.text_area :comment, class: 'form-control', size: '90x5' %>
+              <%= f.text_area :comment, class: 'form-control', name: 'bc_comment_form', size: '90x5' %>
               <%= f.submit '送信！', class: 'btn-sm btn-crud-green w-25 offset-9', style: 'margin-top: 10px;' %>
             <% end %>
           </div>

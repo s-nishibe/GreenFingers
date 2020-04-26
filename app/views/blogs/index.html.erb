@@ -16,6 +16,7 @@
   	    <h2>皆の日記 全 <%= @blogs.count %> 件</h2>
   	  <% end %>
       <%= render 'blogs_index', blogs: @blogs %>
+      <%= paginate @blogs, class: 'paginate' %>
   	</div>
   </div>
 </div>
