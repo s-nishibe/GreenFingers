@@ -5,13 +5,13 @@ class UsersController < ApplicationController
     @who = params[:who]
     if @who == 'all_users'
        @user = current_user
-       @users = User.all
+       @users = User.page(params[:page])
     elsif @who == 'followings'
        @user = User.find(params[:user_id])
-       @users = @user.followings
+       @users = @user.followings.page(params[:page])
     else @who == 'followers'
       @user = User.find(params[:user_id])
-      @users = @user.followers
+      @users = @user.followers.page(params[:page])
     end
   end
 

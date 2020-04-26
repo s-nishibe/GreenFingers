@@ -17,8 +17,10 @@
   	  <% end %>
 
       <div>
-  	  <%= render 'topics_index', topics: @topics %>
-      <%= paginate @topics, class: 'paginate' %>
+  	    <%= render 'topics_index', topics: @topics %>
+        <div class="col offset-3">
+          <%= paginate @topics, class: 'paginate' %>
+        </div>
       </div>
     </div>
 

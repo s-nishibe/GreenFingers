@@ -224,3 +224,14 @@ footer {
   text-align: center;
   padding-top: 30px;
 }
+
+/* ページャ(kaminari) */
+.pagination span {
+  margin: 30px 10px 0;
+  color: #664539;
+}
+
+.page a {
+  color: #664539;
+}
+

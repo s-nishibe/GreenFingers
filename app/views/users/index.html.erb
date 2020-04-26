@@ -10,7 +10,13 @@
       <% else @who == 'followers' %>
         <h2><%= @user.name %>さんのフォロワー一覧（<%= @users.count %>名）</h2>
       <% end %>
+
       <%= render 'users/index', users: @users %>
+
+      <div class="col offset-3">
+        <%= paginate @users, class: 'paginate' %>
+      </div>
+
   	</div>
   </div>
 </div>
