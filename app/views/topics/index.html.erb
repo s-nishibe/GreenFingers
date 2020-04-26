@@ -18,6 +18,7 @@
 
       <div>
   	  <%= render 'topics_index', topics: @topics %>
+      <%= paginate @topics, class: 'paginate' %>
       </div>
     </div>
 

@@ -9,7 +9,9 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.build(topic_params)
     if @topic.save
-      @topic_comment = @topic.topic_comments.build(tc_params)
+      @topic_comment = @topic.topic_comments.build
+      @topic_comment.image = params[:topic][:topic_comment][:image]
+      @topic_comment.comment = params[:topic][:topic_comment][:comment]
       @topic_comment.user_id = current_user.id
       if @topic_comment.save
         redirect_to topic_path(@topic.id)
@@ -28,14 +30,14 @@ class TopicsController < ApplicationController
     @page = params[:page]
     if @page == 'all_topics'
       @user = current_user
-      @topics = Topic.order(updated_at: :DESC)
+      @topics = Topic.page(params[:page])
     elsif @page == 'user_topics'
       @user = User.find(params[:id])
-      @topics = @user.topics.order(updated_at: :DESC)
+      @topics = @user.topics.page(params[:page])
     else @page == 'category'
       @user = current_user
       @category = params[:category].to_i
-      @topics = Topic.where(category: @category).order(updated_at: :DESC)
+      @topics = Topic.where(category: @category).page(params[:page])
     end
   end
 
@@ -92,10 +94,6 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:eyecatch_img, :title, :category, :user_id)
-  end
-
-  def tc_params
-    params.permit(:image, :comment)
   end
 
   def status_params

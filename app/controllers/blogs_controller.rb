@@ -47,16 +47,16 @@ end
 def index
   if params[:tag_name]
     @tag = params[:tag_name]
-    @blogs = Blog.tagged_with("#{params[:tag_name]}").where(status: true)
+    @blogs = Blog.tagged_with("#{params[:tag_name]}").where(status: true).page(params[:page])
   elsif params[:page] == 'TL'
     @user = current_user
     @followers = @user.followings
-    @blogs = Blog.where(user_id: @followers)
+    @blogs = Blog.where(user_id: @followers).page(params[:page])
   elsif params[:page] == 'user_blogs'
     @user = User.find(params[:id])
-    @blogs = @user.blogs.where(status: true)
+    @blogs = @user.blogs.where(status: true).page(params[:page])
   elsif params[:page] == 'drafts'
-    @blogs = current_user.blogs.where(status: false)
+    @blogs = current_user.blogs.where(status: false).page(params[:page])
   else params[:page] == 'all_blogs'
     @blogs = Blog.where(status: true).page(params[:page])
   end
