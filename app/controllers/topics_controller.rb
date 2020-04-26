@@ -9,20 +9,18 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.build(topic_params)
     if @topic.save
-      @topic_comment = @topic.topic_comments.build
+      @topic_comment = @topic.topic_comments.build(tc_params)
       @topic_comment.user_id = current_user.id
-      @topic_comment.image = params[:topic][:topic_comment][:image]
-      @topic_comment.comment = params[:topic][:topic_comment][:comment]
       if @topic_comment.save
         redirect_to topic_path(@topic.id)
         flash[:success] = '新しいトピックが立ちました！'
       else
-        redirect_back(fallback_location: root_path)
-        flash[:danger] = 'トピックのコメントを送信できませんでした。コメントの文字数は500字までです。'
+        redirect_to topic_path(@topic.id)
+        flash[:danger] = 'トピックのコメントを送信できませんでした。コメントの文字数は1字から500字です。'
       end
     else
       redirect_back(fallback_location: root_path)
-      flash[:danger] = 'トピックを立てられません。タイトルの文字数は100字までです。'
+      flash[:danger] = 'トピックを立てられません。タイトルの文字数は2字から100字です。'
     end
   end
 
@@ -69,7 +67,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:id])
     if @topic.destroy
-      redirect_to topics_path
+      redirect_to topics_path(page: 'all_topics')
       flash[:info] = 'トピックが削除されました。'
     else
       redirect_back(fallback_location: root_path)
@@ -94,6 +92,10 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:eyecatch_img, :title, :category, :user_id)
+  end
+
+  def tc_params
+    params.permit(:image, :comment)
   end
 
   def status_params

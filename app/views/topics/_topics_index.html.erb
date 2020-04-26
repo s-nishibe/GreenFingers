@@ -17,7 +17,11 @@
 	      <% end %>
 	    </td>
 		<td><%= simple_time(topic[:updated_at]) %></td>
-		<td style="width: 40%;"><%= topic.title %></td>
+		<td style="width: 40%;">
+			<%= link_to topic_path(topic), style: 'color: #664539;' do %>
+			<%= topic.title %>
+			<% end %>
+		</td>
 		<td>
 		  <%= link_to topics_path(page: 'category', category: topic.category), style: "color: #664539;" do %>
 		  <%= render 'topics/category', category: topic.category %>
