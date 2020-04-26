@@ -18,7 +18,7 @@
 
       <%= render 'blogs_index', blogs: @blogs %>
 
-      <div class="col offset-3">
+      <div class="col offset-3 kaminari">
         <%= paginate @blogs, class: 'paginate' %>
       </div>
 

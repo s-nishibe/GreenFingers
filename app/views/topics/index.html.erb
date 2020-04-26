@@ -18,7 +18,7 @@
 
       <div>
   	    <%= render 'topics_index', topics: @topics %>
-        <div class="col offset-3">
+        <div class="col offset-3 kaminari">
           <%= paginate @topics, class: 'paginate' %>
         </div>
       </div>

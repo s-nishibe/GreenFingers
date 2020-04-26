@@ -193,7 +193,7 @@ footer {
 
 .btn-crud-green {
   padding: 0.3em;
-  font-size: 20px;
+  font-size: 15px;
   color: #feffe4;
   background-color: #2eb872;
   border:2px solid #2eb872;
@@ -202,7 +202,7 @@ footer {
 
 .btn-crud-red {
   padding: 0.3em;
-  font-size: 20px;
+  font-size: 15px;
   color: #feffe4;
   background-color: #F94659;
   border:2px solid #F94659;
@@ -211,7 +211,7 @@ footer {
 
 .btn-crud-brown {
   padding: 0.3em;
-  font-size: 20px;
+  font-size: 15px;
   color: #feffe4;
   background-color: #664539;
   border:2px solid #664539;
@@ -226,12 +226,28 @@ footer {
 }
 
 /* ページャ(kaminari) */
-.pagination span {
-  margin: 30px 10px 0;
+.kaminari {
+  padding-top: 30px;
+}
+
+.pagination>li>a {
+  border: none;
+  background-color: #feffe4;
+}
+
+.page-link {
   color: #664539;
 }
 
-.page a {
-  color: #664539;
+.page-link:hover {
+  color: #2eb872;
+  background-color: #a4f5c8;
+  border-radius: 50%
 }
+.page-item.active>.page-link {
+  color: #feffe4;
+  background-color: #2eb872;
+  border-radius: 50%;
+}
+
 

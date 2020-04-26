@@ -13,7 +13,7 @@
 
       <%= render 'users/index', users: @users %>
 
-      <div class="col offset-3">
+      <div class="col offset-3 kaminari">
         <%= paginate @users, class: 'paginate' %>
       </div>
 
