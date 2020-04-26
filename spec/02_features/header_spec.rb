@@ -5,7 +5,9 @@ RSpec.feature 'ヘッダーのテスト' do
   # 検索機能のテストについては別ファイルにて実施
 
   feature 'ログイン前のリンク遷移' do
-      visit root_path
+      background do
+        visit homes_top_path
+      end
 
   	  scenario 'リンク付きロゴ画像からTopページへ遷移' do
         expect(page).to have_selector '#GreenFingers', href: homes_top_path

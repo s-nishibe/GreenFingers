@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Topicモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
-    let!(:user) { create(:user) }
-    let!(:topic) { create(:topic, user_id: user.id) }
+    before do
+      let!(:user) { create(:user) }
+      let!(:topic) { create(:topic, user_id: user.id) }
+    end
 
     context 'titleカラム' do
       it '空欄でないこと' do

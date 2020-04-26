@@ -70,7 +70,7 @@ RSpec.feature 'Topic機能のテスト' do
       expect(page).to have_link '削除', href: topic_path(topic), method: :delete
     end
 
-    sceanrio '「削除」を押すとトピックが削除される' do
+    scenario '「削除」を押すとトピックが削除される' do
       click_link '削除'
       expect(page).to_not have_content topic.title
     end

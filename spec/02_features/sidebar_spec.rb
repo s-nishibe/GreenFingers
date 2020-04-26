@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature 'サイドバーのテスト' do
-  given!(:user) { create(:user) }
-  given!(:user2) { create(:user) }
-  visit root_path
+  background do
+    given!(:user) { create(:user) }
+    given!(:user2) { create(:user) }
+    visit homes_top_path
+  end
 
-  feature '未ログイン時はサイドバーを表示しない' do
+  scenario '未ログイン時はサイドバーを表示しない' do
   	expect(page).to_not have_content 'User Info'
   end
 

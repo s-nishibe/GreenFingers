@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Userモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
-    let!(:user) { create(:user) }
+    before do
+      let!(:user) { create(:user) }
+    end
 
     context 'nameカラム' do
       it '空欄でないこと' do
@@ -59,6 +61,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     context 'Stampモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:stamps).macro).to eq :has_many
+      end
     end
 
     context 'Topicモデルとの関係' do
@@ -70,6 +73,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     context 'TopicCommentモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:topic_comments).macro).to eq :has_many
+      end
     end
 
     context 'Relationshipモデルとの関係' do

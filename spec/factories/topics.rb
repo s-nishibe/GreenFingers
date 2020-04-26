@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :topics do
+  factory :topic do
   	user_id { Faker::Number.between(from: 1, to: 100 ) }
   	title { Faker::Lorem.characters(number: 50) }
   	category { Faker::Number.between(from: 1, to: 100 ) }

@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Plantモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
-    let!(:user) { create(:user) }
-    let!(:plant) { create(:plant, user_id: user.id) }
+    before do
+      let!(:user) { create(:user) }
+      let!(:plant) { create(:plant, user_id: user.id) }
+    end
 
     context 'nameカラム' do
       it '空欄でないこと' do
