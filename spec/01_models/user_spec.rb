@@ -3,9 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Userモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
-    before do
-      let!(:user) { create(:user) }
-    end
+    let!(:user) { create(:user) }
 
     context 'nameカラム' do
       it '空欄でないこと' do
@@ -14,26 +12,26 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       end
 
       it '20字以下であること' do
-        user.name = Faker::Lorem.character(number: 21)
+        user.name = Faker::Lorem.characters(number: 21)
         expect(user.valid?).to eq false;
       end
     end
 
     context 'emailカラム' do
       it '2字以上であること' do
-        user.name = Faker::Lorem.character(number: 1)
+        user.email = Faker::Lorem.characters(number: 1)
         expect(user.valid?).to eq false;
       end
 
       it '50字以下であること' do
-        user.name = Faker::Lorem.character(number: 51)
+        user.email = Faker::Lorem.characters(number: 51)
         expect(user.valid?).to eq false;
       end
     end
 
     context 'introductionカラム' do
       it '50字以下であること' do
-        user.name = Faker::Lorem.character(number: 51)
+        user.name = Faker::Lorem.characters(number: 51)
         expect(user.valid?).to eq false;
       end
     end
