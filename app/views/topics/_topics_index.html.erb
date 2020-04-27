@@ -29,8 +29,8 @@
 		</td>
 		<td class="tc_count" style="text-align: center;"><%= topic.topic_comments.count %></td>
 		<% if user_signed_in? && topic.user_id == current_user.id %>
-	      <td><%= link_to 'タイトル変更', edit_topic_path(topic), class: 'btn-crud-green' %></td>
-		  <td><%= link_to '削除', topic_path(topic), method: :delete, class: 'btn-crud-red' %></td>
+	      <td style="width: 10%;"><%= link_to 'タイトル変更', edit_topic_path(topic), class: 'btn-crud-green' %></td>
+		  <td style="width: 5%;"><%= link_to '削除', topic_path(topic), method: :delete, class: 'btn-crud-red' %></td>
 	    <% end %>
 	  </tr>
     <% end %>

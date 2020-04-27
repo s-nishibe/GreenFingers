@@ -5,11 +5,11 @@
   	<%= render partial: 'layouts/sidebar', user: @user %>
     <% end %>
 
-  	<div class="col col-md-10">
+  	<div class="col col-md-10 col-body">
     	<%= render partial: 'layouts/flash' %>
 
     	<% if params[:sort] == 'all_topics' %>
-    	  <h2>全てのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
+    	  <h2>花の広場（全トピック一覧、<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
     	<% elsif params[:sort] == 'user_topics' %>
   	    <h2><%= @user.name %>さんのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
       <% else params[:sort] == 'category' %>

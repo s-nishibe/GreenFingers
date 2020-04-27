@@ -1,8 +1,11 @@
-<div class="clearfix">
-  <div style="float: left;">
+<div class="row">
+
+  <div class="col-3">
     <%= attachment_image_tag(@blog, :eyecatch_img, fallback: 'no_img.jpg', size: '220x220') %><br>
   </div>
-  <div style="float: left; margin-left: 30px;">
+
+  <div class="col-9">
+    <div class="row">
     <% unless @blog.updated_at.nil? %>
       <h5>
         <%= simple_time(@blog[:updated_at]) %>
@@ -11,16 +14,31 @@
     <% else %>
       <h5>〇月〇日</h5>
     <% end %>
-    <h3 class="himaji"><%= @blog.title %></h3><br>
-      <%= @blog.plant.name %>(種別：<%= render 'plants/info', plant: @blog.plant %>)<br>
-      <br>
-      <%= render 'blogs/weather_info', blog: @blog %><br>
-    <span class="himaji">タグ：</span>
-    <%= render 'tag_list', tag_list: @blog.tag_list %>
+    </div>
+
+    <div class="row">
+      <h3 class="himaji"><%= @blog.title %></h3>
+    </div>
+
+    <div class="row">
+      <div class="col-7">
+        <p><%= @blog.plant.name %>(種別：<%= render 'plants/info', plant: @blog.plant %>)</p>
+        <p><%= render 'blogs/weather_info', blog: @blog %></p>
+        <p class="himaji">タグ：
+          <%= render 'tag_list', tag_list: @blog.tag_list %></p>
+      </div>
+      <div class="col-5">
+        <% if @blog.user_id == current_user.id %>
+          <%= link_to '編集', edit_blog_path(@blog), class: 'btn-green btn-block w-50' %>
+          <%= link_to '削除', blog_path(@blog), method: :delete, class: 'btn-crud-red btn-block w-50' %>
+        <% end %>
+      </div>
+    </div>
   </div>
+
 </div>
 
-<div class="clearfix" style="padding-top: 30px;">
+<div style="padding-top: 30px;">
   <%= raw @blog.content %>
   <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
 </div>
