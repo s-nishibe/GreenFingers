@@ -2,7 +2,7 @@
   <thead>
 	  <tr>
       <th></th>
-      <th>日付</th>
+      <th>名前</th>
       <th>タイトル</th>
       <th>花の名前</th>
    		<th>タグ</th>
@@ -14,11 +14,13 @@
     <% blogs.each do |blog| %>
   	  <tr>
    		  <td>
-          <%= link_to user_path(blog.user) do %>
+          <%= link_to blog_path(blog) do %>
           <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
           <% end %>
         </td>
-   		  <td><%= simple_time(blog[:updated_at]) %></td>
+   		  <td style="width: 15%;">
+          <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %> 
+        </td>
    		  <td style="width: 35%;">
           <%= link_to blog_path(blog), style: 'color: #664539;' do %>
           <%= blog.title %>
