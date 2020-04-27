@@ -4,11 +4,11 @@
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-md-10 himaji">
       <% if params[:sort] == 'all_users' %>
-        <h2>全ユーザ一覧（<%= @users.count %>名）</h2>
+        <h2>全ユーザ一覧（<%= @users.count %>/<%= @users_all.count %>名）</h2>
       <% elsif params[:sort] == 'followings' %>
-      　<h2><%= @user.name %>さんのフォロー一覧（<%= @users.count %>名）</h2>
+      　<h2><%= @user.name %>さんのフォロー一覧（<%= @users.count %>/<%= @users_all.count %>名）</h2>
       <% else params[:sort] == 'followers' %>
-        <h2><%= @user.name %>さんのフォロワー一覧（<%= @users.count %>名）</h2>
+        <h2><%= @user.name %>さんのフォロワー一覧（<%= @users.count %>/<%= @users_all.count %>名）</h2>
       <% end %>
 
       <%= render 'users/index', users: @users %>

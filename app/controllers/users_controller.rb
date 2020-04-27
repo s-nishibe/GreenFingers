@@ -4,12 +4,15 @@ class UsersController < ApplicationController
   def index
     if params[:sort] == 'all_users'
        @user = current_user
+       @users_all = User.all
        @users = User.page(params[:page])
     elsif params[:sort] == 'followings'
        @user = User.find(params[:user_id])
+       @users_all = @user.followings
        @users = @user.followings.page(params[:page])
     else params[:sort] == 'followers'
       @user = User.find(params[:user_id])
+      @users_all = @user.followers
       @users = @user.followers.page(params[:page])
     end
   end

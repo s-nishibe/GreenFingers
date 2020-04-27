@@ -5,15 +5,15 @@
   	<div class="col col-md-10">
   	  <%= render partial: 'layouts/flash' %>
   	  <% if params[:tag_name] %>
-  	    <h2>タグ「<%= @tag %>」の記事（全<%= @blogs_all.count %>件中<%= @blogs.count %>件を表示）</h2>
+  	    <h2>タグ「<%= @tag %>」の記事（<%= @blogs.count %>/<%= @blogs_all.count %>件）</h2>
       <% elsif params[:sort] == 'TL' %>
-        <h2><%= @user.name %>さんのタイムライン</h2>
+        <h2><%= @user.name %>さんのタイムライン（<%= @blogs.count %>/<%= @blogs_all.count %>件）</h2>
       <% elsif params[:sort] == 'user_blogs' %>
-        <h2><%= @user.name %>さんの日記（全<%= @blogs_all.count %>件中<%= @blogs.count %>件を表示）</h2>
+        <h2><%= @user.name %>さんの日記（<%= @blogs.count %>/<%= @blogs_all.count %>件）</h2>
       <% elsif params[:sort] == 'drafts' %>
-        <h2>下書き一覧</h2>
+        <h2>下書き一覧（<%= @blogs.count %>/<%= @blogs_all.count %>件）</h2>
   	  <% else params[:sort] == 'all_blogs' %>
-  	    <h2>皆の日記（全<%= @blogs_all.count %>件中<%= @blogs.count %>件を表示）</h2>
+  	    <h2>皆の日記（<%= @blogs.count %>/<%= @blogs_all.count %>件）</h2>
   	  <% end %>
 
       <%= render 'blogs_index', blogs: @blogs %>
