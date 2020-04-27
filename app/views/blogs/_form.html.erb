@@ -10,7 +10,7 @@
 
   <div class="field">
   	<%= f.label :タイトル, class: 'field-content' %>
-  	<%= f.text_field :title, class: 'form-control' %>
+  	<%= f.text_field :title, placeholder: '1～100文字', class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -34,12 +34,12 @@
 
   <div class="field">
     <%= f.label :気温, class: 'field-content' %>
-    <%= f.text_field :temperature, class: 'form-control w-25' %>℃
+    <%= f.text_field :temperature, placeholder: '℃', class: 'text-right form-control w-25' %>
   </div>
 
   <div class="field">
-    <%= f.label :タグ（カンマ区切り）, class: 'field-content' %><br>
-    <%= f.text_field :tag_list, value: blog.tag_list.join(','), class: 'form-control' %>
+    <%= f.label :タグ, class: 'field-content' %><br>
+    <%= f.text_field :tag_list, value: blog.tag_list.join(','), placeholder: '半角カンマ（,）で区切って複数登録できます', class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -48,8 +48,8 @@
   </div>
 
   <div class="action w-50 offset-9">
-    <%= f.submit '下書き保存', name: 'draft_btn', class: 'btn-crud-green' %>
-    <%= f.submit '公開する！', name: 'blog_btn', class: 'btn-crud-brown' %>
+    <%= f.submit '下書き保存', name: 'draft_btn', class: 'btn-green w-25 submit' %>
+    <%= f.submit '公開する！', name: 'blog_btn', class: 'btn-brown w-25 submit' %>
   </div>
 
 <% end %>

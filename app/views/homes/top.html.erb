@@ -1,14 +1,14 @@
 <%= render partial: 'layouts/header' %>
-<div class="container-fluid">
+<div class="container-fluid container-main">
   <div class="row">
   	<% if user_signed_in? %>
   	  <%= render partial: 'layouts/sidebar', user: @user %>
   	<% end %>
-  	<div class="col col-10">
+  	<div class="col-md-10">
   	  <%= render partial: 'layouts/flash' %>
 
       <!-- 新着記事swiper -->
-  	  <div>
+  	  <div class="row-content">
         <h3>新着記事</h3>
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -27,7 +27,7 @@
   	  </div>
 
       <!-- 注目記事swiper -->
-  	  <div>
+  	  <div class="row-content">
         <h3>注目記事</h3>
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -46,7 +46,7 @@
   	  </div>
 
       <!-- Topicsのswiper -->
-  	  <div>
+  	  <div class="row-content">
         <h3>未解決の質問</h3>
         <div class="swiper-container">
           <div class="swiper-wrapper">

@@ -1,21 +1,21 @@
 <%= form_with(model: @plant, remote: true) do |f| %>
 
-  <div>
+  <div class="field">
   	<%= f.label :花の名前, class: 'field-content' %>
-  	<%= f.text_field :name, class: 'form-comtrol w-75' %>
+  	<%= f.text_field :name, placeholder: '1～20文字', class: 'form-control w-75' %>
   </div>
 
-  <div>
+  <div class="field">
   	<%= f.label :種別　　, class: 'field-content' %>
   	<%= f.select :kind, [['一年草', 0], ['多年草', 1], ['低木', 2], ['高木', 3]], value: @plant.kind %>
   </div>
 
-  <div>
+  <div class="field">
   	<%= f.label :メモ　　, class: 'field-content' %>
-  	<%= f.text_area :memo, size: '90x5', class: 'form-comtrol w-75' %>
+  	<%= f.text_area :memo, size: '90x5', placeholder: '最大200文字', class: 'form-control w-75' %>
   </div>
 
-  <div>
+  <div class="action">
   	<%= f.submit '登録！', class: 'btn-sm btn-green btn-block w-25 offset-7' %>
   </div>
 

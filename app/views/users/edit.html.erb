@@ -1,18 +1,18 @@
 <%= render partial: 'layouts/header' %>
-<div class="container-fluid">
+<div class="container-fluid container-main">
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
-  	<div class="col col-10">
+  	<div class="col col-md-10">
       <%= render partial: 'layouts/flash' %>
   	  <%= form_with(model: @user, local: true) do |f| %>
   	    <div class="user_field">
-  	    <%= f.label :お名前, class: 'field-content' %>
+  	    <%= f.label :お名前, placeholder: '1～20文字', class: 'field-content' %>
   	    <%= f.text_field :name, class: 'form-control' %>
   	    </div>
 
   	    <div class="user_field">
   	    <%= f.label :ひとこと, class: 'field-content' %>
-  	    <%= f.text_field :introduction, class: 'form-control' %>
+  	    <%= f.text_field :introduction, placeholder: '最大50文字', class: 'form-control' %>
   	    </div>
 
   	    <div class="user_field">

@@ -1,5 +1,5 @@
 <%= render partial: 'devise/shared/login_header' %>
-<div class="container-fluid">
+<div class="container-fluid container-main">
   <div class="row">
     <div class="col col-4 offset-4" style="padding-top: 30px;">
       <h2 class="himaji">ログイン</h2>
@@ -8,12 +8,12 @@
 
       <div class="field">
         <%= f.label :メールアドレス %><br>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control w-100' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: '最大50文字', class: 'form-control w-100' %>
       </div>
 
       <div class="field">
         <%= f.label :パスワード %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control w-100 sans' %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: '6文字以上', class: 'form-control w-100 sans' %>
       </div>
 
       <% if devise_mapping.rememberable? %>

@@ -1,8 +1,8 @@
 <%= render partial: 'layouts/header' %>
-<div class="container-fluid">
+<div class="container-fluid container-main">
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
-  	<div class="col col-10">
+  	<div class="col col-md-10">
       <%= render partial: 'layouts/flash' %>
       <div>
 
@@ -28,7 +28,7 @@
                   <%= f.attachment_field :image %>
                 </div>
               </div>
-              <%= f.text_area :comment, class: 'form-control', name: 'bc_comment_form', size: '90x5' %>
+              <%= f.text_area :comment, class: 'form-control', placeholder: '最大500文字', size: '90x5' %>
               <%= f.submit '送信！', class: 'btn-sm btn-crud-green w-25 offset-9', style: 'margin-top: 10px;' %>
             <% end %>
           </div>

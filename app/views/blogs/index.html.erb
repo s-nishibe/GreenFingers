@@ -1,8 +1,8 @@
 <%= render partial: 'layouts/header' %>
-<div class="container-fluid">
+<div class="container-fluid container-main">
   <div class="row">
   	<%= render partial: 'layouts/sidebar', user: @user %>
-  	<div class="col col-10">
+  	<div class="col col-md-10">
   	  <%= render partial: 'layouts/flash' %>
   	  <% if params[:tag_name] %>
   	    <h2>タグ「<%= @tag %>」の記事 全<%= @blogs.count %>件</h2>
@@ -18,7 +18,7 @@
 
       <%= render 'blogs_index', blogs: @blogs %>
 
-      <div class="col offset-3 kaminari">
+      <div class="offset-3 kaminari">
         <%= paginate @blogs, class: 'paginate' %>
       </div>
 

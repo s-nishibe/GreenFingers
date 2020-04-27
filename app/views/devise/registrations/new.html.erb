@@ -1,5 +1,5 @@
 <%= render partial: 'devise/shared/login_header' %>
-<div class="container-fluid">
+<div class="container-fluid container-main">
   <div class="row">
     <div class="col col-4 offset-4" style="padding-top: 30px;">
 
@@ -10,12 +10,12 @@
 
       <div class="field">
         <%= f.label :お名前 %><br />
-        <%= f.text_field :name, class: 'form-control w-100' %>
+        <%= f.text_field :name, placeholder: '1～20文字', class: 'form-control w-100' %>
       </div>
 
       <div class="field">
         <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control w-100' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: '最大50文字', class: 'form-control w-100' %>
       </div>
 
       <div class="field">
@@ -23,7 +23,7 @@
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control w-100 sans' %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: '6文字以上', class: 'form-control w-100 sans' %>
       </div>
 
       <div class="field">

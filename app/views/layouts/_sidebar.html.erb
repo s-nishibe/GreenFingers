@@ -1,11 +1,10 @@
-<div id="sidebar" class="col col-2 himaji letter">
+<div class="col-md-2 himaji letter">
+  <div id="sidebar">
   <table>
-  	<thead>
-  		<tr>
-  			<th style="font-size: 20px;">User Info</th>
-  		</tr>
-  	</thead>
   	<tbody>
+      <tr>
+        <th style="font-size: 20px;">User Info</th>
+      </tr>
       <tr>
         <%= link_to user_path(@user) do %>
         <%= attachment_image_tag(@user, :profile_img, fallback: 'no_img.jpg', size: '100x100') %>
@@ -19,7 +18,7 @@
   			<td><strong style="font-size: 20px;">ひとこと</strong><br>
   			  <%= @user.introduction %></td>
   		</tr>
-        <tr id="relation-<%= @user.id %>" style="font-size: 0.8em;">
+        <tr id="relation-<%= @user.id %>">
           <%= render 'relationships/follow_count', user: @user %>
         </tr>
   	</tbody>
@@ -42,4 +41,5 @@
       <%= link_to 'この人のトピ', topics_path(id: @user.id, page: 'user_topics'), class: 'btn-green btn-block' %>
   </div>
   <% end %>
+  </div>
 </div>
