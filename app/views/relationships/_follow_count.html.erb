@@ -1,4 +1,4 @@
 <td>
-<%= link_to "#{@user.followings.count}フォロー", users_path(who: 'followings', user_id: @user.id), style: 'color: #F94659;' %><br>
-<%= link_to "#{@user.followers.count}フォロワー", users_path(who: 'followers', user_id: @user.id), style: 'color: #F94659;' %>
+<%= link_to "#{@user.followings.count}フォロー", users_path(sort: 'followings', user_id: @user.id), style: 'color: #F94659;' %><br>
+<%= link_to "#{@user.followers.count}フォロワー", users_path(sort: 'followers', user_id: @user.id), style: 'color: #F94659;' %>
 </td>

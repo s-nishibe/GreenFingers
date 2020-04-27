@@ -27,14 +27,13 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @page = params[:page]
-    if @page == 'all_topics'
+    if params[:sort] == 'all_topics'
       @user = current_user
       @topics = Topic.page(params[:page])
-    elsif @page == 'user_topics'
+    elsif params[:sort] == 'user_topics'
       @user = User.find(params[:id])
       @topics = @user.topics.page(params[:page])
-    else @page == 'category'
+    else params[:sort] == 'category'
       @user = current_user
       @category = params[:category].to_i
       @topics = Topic.where(category: @category).page(params[:page])

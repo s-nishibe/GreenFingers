@@ -26,9 +26,9 @@
   <% if @user.id == current_user.id %>
   <div style="text-align: center;">
     <%= link_to '会員情報編集', edit_user_path(@user), class: 'btn-green btn-block' %>
-    <%= link_to '下書き一覧', blogs_path(id: current_user.id, page: 'drafts'), class: 'btn-green btn-block' %>
-    <%= link_to '日記一覧', blogs_path(id: current_user.id, page: 'user_blogs'), class: 'btn-green btn-block' %>
-    <%= link_to 'トピック一覧', topics_path(id: current_user.id, page: 'user_topics'), class: 'btn-green btn-block' %>
+    <%= link_to '下書き一覧', blogs_path(id: current_user.id, sort: 'drafts'), class: 'btn-green btn-block' %>
+    <%= link_to '日記一覧', blogs_path(id: current_user.id, sort: 'user_blogs'), class: 'btn-green btn-block' %>
+    <%= link_to 'トピック一覧', topics_path(id: current_user.id, sort: 'user_topics'), class: 'btn-green btn-block' %>
     <%= link_to '新しい日記', new_blog_path, class: 'btn-green-new btn-block' %>
     <%= link_to '新しいトピ', new_topic_path, class: 'btn-green-new btn-block' %>
   </div>
@@ -37,8 +37,8 @@
     <div id="follow_btn-<%= @user.id %>">
       <%= render 'relationships/follow_btn', user: @user %>
     </div>
-      <%= link_to 'この人の日記', blogs_path(id: @user.id, page: 'user_blogs'), class: 'btn-green btn-block' %>
-      <%= link_to 'この人のトピ', topics_path(id: @user.id, page: 'user_topics'), class: 'btn-green btn-block' %>
+      <%= link_to 'この人の日記', blogs_path(id: @user.id, sort: 'user_blogs'), class: 'btn-green btn-block' %>
+      <%= link_to 'この人のトピ', topics_path(id: @user.id, sort: 'user_topics'), class: 'btn-green btn-block' %>
   </div>
   <% end %>
   </div>

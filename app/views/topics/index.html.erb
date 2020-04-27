@@ -8,11 +8,11 @@
   	<div class="col col-md-10">
     	<%= render partial: 'layouts/flash' %>
 
-    	<% if @page == 'all_topics' %>
+    	<% if params[:sort] == 'all_topics' %>
     	  <h2>トピック 全<%= @topics.count %>件</h2>
-    	<% elsif @page == 'user_topics' %>
+    	<% elsif params[:sort] == 'user_topics' %>
   	    <h2><%= @user.name %>さんのトピック 全<%= @topics.count %>件</h2>
-      <% else @page == 'category' %>
+      <% else params[:sort] == 'category' %>
         <h2>カテゴリ「<%= render 'topics/category', category: @category %>」のトピック</h2>
   	  <% end %>
 

@@ -2,14 +2,13 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @who = params[:who]
-    if @who == 'all_users'
+    if params[:sort] == 'all_users'
        @user = current_user
        @users = User.page(params[:page])
-    elsif @who == 'followings'
+    elsif params[:sort] == 'followings'
        @user = User.find(params[:user_id])
        @users = @user.followings.page(params[:page])
-    else @who == 'followers'
+    else params[:sort] == 'followers'
       @user = User.find(params[:user_id])
       @users = @user.followers.page(params[:page])
     end
