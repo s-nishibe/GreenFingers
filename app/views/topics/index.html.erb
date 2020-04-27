@@ -9,11 +9,11 @@
     	<%= render partial: 'layouts/flash' %>
 
     	<% if params[:sort] == 'all_topics' %>
-    	  <h2>トピック 全<%= @topics.count %>件</h2>
+    	  <h2>トピック（全<%= @topics_all.count %>件中<%= @topics.count %>件を表示）</h2>
     	<% elsif params[:sort] == 'user_topics' %>
-  	    <h2><%= @user.name %>さんのトピック 全<%= @topics.count %>件</h2>
+  	    <h2><%= @user.name %>さんのトピック（全<%= @topics_all.count %>件中<%= @topics.count %>件を表示）</h2>
       <% else params[:sort] == 'category' %>
-        <h2>カテゴリ「<%= render 'topics/category', category: @category %>」のトピック</h2>
+        <h2>カテゴリ「<%= render 'topics/category', category: @category %>」のトピック（全<%= @topics_all.count %>件中<%= @topics.count %>件を表示）</h2>
   	  <% end %>
 
       <div>
