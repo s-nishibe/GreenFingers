@@ -6,7 +6,8 @@ class SearchController < ApplicationController
   	@topic = Topic.new
   	@model = params[:search][:model]
   	@word = params[:search][:word]
-  	@datas = search_for(@model, @word)
+  	@datas_all = search_for(@model, @word)
+    @datas = search_for(@model, @word).page(params[:page])
     @user = current_user
   end
 
