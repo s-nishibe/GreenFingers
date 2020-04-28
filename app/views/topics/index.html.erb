@@ -12,9 +12,13 @@
     	  <h2>花の広場（全トピック一覧、<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
     	<% elsif params[:sort] == 'user_topics' %>
   	    <h2><%= @user.name %>さんのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
-      <% else params[:sort] == 'category' %>
+      <% elsif params[:sort] == 'category' %>
         <h2>カテゴリ「<%= render 'topics/category', category: @category %>」のトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
-  	  <% end %>
+  	  <% elsif params[:sort] == 'resolved' %>
+        <h2>解決済みのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
+      <% else params[:sort] == 'unsolved' %>
+        <h2>未解決のトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
+      <% end %>
 
       <div>
   	    <%= render 'topics_index', topics: @topics %>

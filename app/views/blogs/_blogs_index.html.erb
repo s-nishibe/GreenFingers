@@ -2,9 +2,9 @@
   <thead>
 	  <tr>
       <th></th>
-      <th>名前</th>
-      <th>タイトル</th>
       <th>花の名前</th>
+      <th>タイトル</th>
+      <th>名前</th>
    		<th>タグ</th>
       <th>スタンプ</th>
       <th colspan="3"></th>
@@ -18,18 +18,18 @@
           <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
           <% end %>
         </td>
-   		  <td style="width: 15%;">
-          <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %> 
+   		  <td>
+          <%= link_to plant_path(blog.plant), style: 'color: #664539;' do %>
+          <%= blog.plant.name %>
+          <% end %>
         </td>
    		  <td style="width: 35%;">
           <%= link_to blog_path(blog), style: 'color: #664539;' do %>
           <%= blog.title %>
           <% end %>
         </td>
-        <td>
-          <%= link_to plant_path(blog.plant), style: 'color: #664539;' do %>
-          <%= blog.plant.name %>
-          <% end %>
+        <td style="width: 15%;">
+          <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %> 
         </td>
         <td><%= render 'blogs/tag_list', tag_list: blog.tag_list %></td>
         <td class="stamp_count" style="text-align: center;"><%= blog.stamps.count %></td>

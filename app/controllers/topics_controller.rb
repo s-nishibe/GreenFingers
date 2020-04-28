@@ -35,11 +35,19 @@ class TopicsController < ApplicationController
       @user = User.find(params[:id])
       @topics_all = @user.topics
       @topics = @user.topics.page(params[:page])
-    else params[:sort] == 'category'
+    elsif params[:sort] == 'category'
       @user = current_user
       @category = params[:category].to_i
       @topics_all = Topic.where(category: @category)
       @topics = Topic.where(category: @category).page(params[:page])
+    elsif params[:sort] == 'resolved'
+      @user = current_user
+      @topics_all = Topic.where(status: true)
+      @topics = Topic.where(status: true).page(params[:page])
+    else params[:sort] == 'unsolved'
+      @user = current_user
+      @topics_all = Topic.where(status: false)
+      @topics = Topic.where(status: false).page(params[:page])
     end
   end
 

@@ -2,7 +2,7 @@
  <thead>
     <tr>
       <th></th>
-        <th>名前</th>
+        <th>ステータス</th>
 	    <th>タイトル</th>
 	    <th>カテゴリ</th>
 	    <th>コメント</th>
@@ -17,7 +17,11 @@
 	      <% end %>
 	    </td>
 		<td style="width: 15%;">
-		  <%= link_to topic.user.name, user_path(topic.user_id), class: 'letter' %>
+		  <% if topic.status == true %>
+		    <%= link_to '解決済み', topics_path(sort: 'resolved'), class: 'letter' %>
+		  <% else topic.status == false %>
+		    <%= link_to '未解決', topics_path(sort: 'unsolved'), class: 'letter' %>
+		  <% end %>
 		</td>
 		<td style="width: 40%;">
 			<%= link_to topic_path(topic), style: 'color: #664539;' do %>

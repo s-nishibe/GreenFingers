@@ -51,9 +51,9 @@ def index
     @blogs = Blog.tagged_with("#{params[:tag_name]}").where(status: true).page(params[:page])
   elsif params[:sort] == 'TL'
     @user = current_user
-    @followers = @user.followings
-    @blogs_all = Blog.where(user_id: @followers)
-    @blogs = Blog.where(user_id: @followers).page(params[:page])
+    @timeline = @user.followings
+    @blogs_all = Blog.where(user_id: @timeline)
+    @blogs = Blog.where(user_id: @timeline).page(params[:page])
   elsif params[:sort] == 'user_blogs'
     @user = User.find(params[:id])
     @blogs_all = @user.blogs.where(status: true)
