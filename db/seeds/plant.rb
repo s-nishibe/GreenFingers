@@ -89,14 +89,6 @@ Plant.create!(
   	},
 
   	{
-    id: 12,
-  	user_id: 6,
-  	name: 'ばら',
-  	kind: 2,
-    memo: '葉に霧吹きするとカビ・虫を防げる気がする'
-  	},
-
-  	{
     id: 13,
   	user_id: 6,
   	name: 'ハイビスカス',

@@ -29,7 +29,7 @@
 			<% end %>
 		</td>
 		<td>
-		  <%= link_to topics_path(page: 'category', category: topic.category), style: "color: #664539;" do %>
+		  <%= link_to topics_path(sort: 'category', category: topic.category), style: "color: #664539;" do %>
 		  <%= render 'topics/category', category: topic.category %>
 		  <% end %>
 		</td>

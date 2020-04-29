@@ -7,8 +7,8 @@ def new
     @blog = Blog.new
     @plant = Plant.new
   else
-    redirect_back(fallback_location: root_path)
-    flash[:info] = '育てているお花のご登録はお済みですか？　マイページよりご登録いただけます。'
+    redirect_to user_path(current_user)
+    flash[:info] = '日記機能は花を登録してからご利用いただけます。さっそく花を登録してみましょう！'
   end
 end
 
