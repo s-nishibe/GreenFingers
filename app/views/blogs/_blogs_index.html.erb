@@ -19,9 +19,7 @@
           <% end %>
         </td>
    		  <td>
-          <%= link_to plant_path(blog.plant), style: 'color: #664539;' do %>
-          <%= blog.plant.name %>
-          <% end %>
+          <%= link_to blog.plant_id, plant_path(blog.plant_id), style: 'color: #664539;' %>
         </td>
    		  <td style="width: 35%;">
           <%= link_to blog_path(blog), style: 'color: #664539;' do %>
