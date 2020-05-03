@@ -8,7 +8,7 @@ class Blog < ApplicationRecord
 	has_many :stamps, dependent: :destroy
 
 	validates :title, length: {minimum: 1, maximum: 100}
-	validates :content, length: {minimum: 2}
+	validates :body, length: {minimum: 2}
 
 	attachment :eyecatch_img
 	acts_as_taggable

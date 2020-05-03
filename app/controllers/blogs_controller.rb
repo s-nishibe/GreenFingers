@@ -29,7 +29,7 @@ def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
     @blog.plant_id = params[:blog][:plant_id]
-    @blog.score = Language.get_data(blog_params[:title])
+    @blog.score = Language.get_data(blog_params[:body])
     @blog.status = true
     if @blog.save
       redirect_to blog_path(@blog)
@@ -103,7 +103,7 @@ def update
     end
   else params[:blog_btn]
     @blog = Blog.find(params[:id])
-    @blog.score = Language.get_data(blog_params[:content])
+    @blog.score = Language.get_data(blog_params[:body])
     @blog.status = true
     if @blog.update(blog_params)
       redirect_to blog_path(@blog)
@@ -132,7 +132,7 @@ def set_user
 end
 
 def blog_params
-  params.require(:blog).permit(:user_id, :plant_id, :title, :content, :eyecatch_img, :tag_list, :weather, :temperature, :water)
+  params.require(:blog).permit(:user_id, :plant_id, :title, :body, :eyecatch_img, :tag_list, :weather, :temperature, :water)
 end
 
 end

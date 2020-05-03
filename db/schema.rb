@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_052243) do
     t.integer "user_id", null: false
     t.integer "plant_id", null: false
     t.string "title", default: "", null: false
-    t.text "content", null: false
+    t.text "body", null: false
     t.string "eyecatch_img_id", default: "", null: false
     t.integer "weather", default: 0, null: false
     t.string "temperature", default: "", null: false

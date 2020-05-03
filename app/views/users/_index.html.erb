@@ -14,7 +14,10 @@
 	  	      <%= attachment_image_tag(user, :profile_img, fallback: 'no_img.jpg', size: '50x50') %>
   	      <% end %>
   	    </td>
-  	    <td><%= user.name %></td>
+  	    <td>
+          <%= user.name %>
+          <i class="far fa-laugh-beam" style="color: #ff69b4;"></i>
+        </td>
   	    <td><%= user.introduction %></td>
   	  </tr>
  	  <% end %>
