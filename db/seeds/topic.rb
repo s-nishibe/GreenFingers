@@ -26,6 +26,13 @@ Topic.create!(
       title: '皆さんは収穫した果物どうやって食べてますか？',
       category: 5,
       status: true
+    },
+
+    {
+      user_id: 6,
+      title: '観光地の写真上げて旅行した気になろう',
+      category: 5,
+      status: false
     }
 
    ]

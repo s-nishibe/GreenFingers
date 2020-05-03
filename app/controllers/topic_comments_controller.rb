@@ -6,9 +6,6 @@ class TopicCommentsController < ApplicationController
   	@topic_comment.user_id = current_user.id
   	if @topic_comment.save
       render :index
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:danger] = 'コメントを送信できませんでした。'
     end
   end
 
@@ -17,9 +14,6 @@ class TopicCommentsController < ApplicationController
   	if @topic_comment.destroy
       @topic = Topic.find(params[:topic_id])
       render :index
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:danger] = 'コメントを削除できませんでした。'
     end
   end
 

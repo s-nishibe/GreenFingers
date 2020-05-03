@@ -5,6 +5,9 @@
   	<div class="col col-md-10 col-body">
       <%= render partial: 'layouts/flash' %>
       <div>
+        <div>
+          <%= @blog.score %>
+        </div>
 
         <%= render 'blogs/article', blog: @blog %>
 
