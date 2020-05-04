@@ -32,6 +32,8 @@ def create
     @blog.score = Language.get_data(blog_params[:body])
     @blog.status = true
     if @blog.save
+      @user.score = @user.blogs.average(:score).round(1)
+      @user.save
       redirect_to blog_path(@blog)
       flash[:success] = '日記を公開しました！ 下のツイートボタンで友達に知らせましょう！'
     else

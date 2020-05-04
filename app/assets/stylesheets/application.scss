@@ -161,6 +161,15 @@ footer {
   z-index: -2;
 }
 
+/* ユーザ用 金・銀枠 */
+.border-gold {
+  border: 5px solid #edde7b;
+}
+
+.border-silver {
+  border: 5px solid #bbdbf3;
+}
+
 /* フォーム */
 
 .field {

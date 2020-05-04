@@ -6,13 +6,22 @@
         <th style="font-size: 20px;">User Info</th>
       </tr>
       <tr>
-        <%= link_to user_path(@user) do %>
-        <%= attachment_image_tag(@user, :profile_img, fallback: 'no_img.jpg', size: '100x100') %>
+        <% if @user.score >= 0.8 %>
+          <%= link_to user_path(@user) do %>
+          <%= attachment_image_tag(@user, :profile_img, fallback: 'no_img.jpg', size: '110x110', class: 'border-gold') %>
+          <% end %>
+        <% else %>
+          <%= link_to user_path(@user) do %>
+          <%= attachment_image_tag(@user, :profile_img, fallback: 'no_img.jpg', size: '100x100') %>
+          <% end %>
         <% end %>
       </tr>
   		<tr>
-  			<td><strong style="font-size: 20px;">お名前</strong><br>
-  			  <%= @user.name %></td>
+  			<td>
+          <strong style="font-size: 20px;">お名前</strong><br>
+  			  <%= @user.name %><br>
+          <%= @user.score %>
+        </td>
   		</tr>
   		<tr>
   			<td><strong style="font-size: 20px;">ひとこと</strong><br>
