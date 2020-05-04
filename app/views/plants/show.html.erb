@@ -10,11 +10,11 @@
           <%= @plant.name %>
           <% if @plant.blogs.exists? %>
             <% if @plant.blogs.average(:score) >= 0.6 %>
-              <i class="far fa-laugh-beam"></i>
+              <i class="far fa-laugh-beam" style="color: #ee827c;"></i>
             <% elsif @plant.blogs.average(:score) >= -0.6 %>
-              <i class="far fa-smile"></i>
+              <i class="far fa-smile" style="color: #fdd35c;"></i>
             <% else @plant.blogs.average(:score) <= -0.6 %>
-              <i class="far fa-frown"></i>
+              <i class="far fa-frown" style="color: #008db7;"></i>
             <% end %>
           <% end %>
         </h2>
