@@ -10,6 +10,10 @@
           <%= link_to user_path(@user) do %>
           <%= attachment_image_tag(@user, :profile_img, fallback: 'no_img.jpg', size: '110x110', class: 'border-gold') %>
           <% end %>
+        <% elsif @user.score >= 0.6 %>
+          <%= link_to user_path(@user) do %>
+          <%= attachment_image_tag(@user, :profile_img, fallback: 'no_img.jpg', size: '110x110', class: 'border-silver') %>
+          <% end %>
         <% else %>
           <%= link_to user_path(@user) do %>
           <%= attachment_image_tag(@user, :profile_img, fallback: 'no_img.jpg', size: '100x100') %>
@@ -20,7 +24,6 @@
   			<td>
           <strong style="font-size: 20px;">お名前</strong><br>
   			  <%= @user.name %><br>
-          <%= @user.score %>
         </td>
   		</tr>
   		<tr>

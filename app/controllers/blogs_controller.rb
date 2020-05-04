@@ -108,6 +108,8 @@ def update
     @blog.score = Language.get_data(blog_params[:body])
     @blog.status = true
     if @blog.update(blog_params)
+      @user.score = @user.blogs.average(:score).round(1)
+      @user.save
       redirect_to blog_path(@blog)
       flash[:success] = '日記を公開しました！ 下のツイートボタンから更新のお知らせをしましょう！'
     else
@@ -120,6 +122,8 @@ end
 def destroy
   @blog = Blog.find(params[:id])
   if @blog.destroy
+    @user.score = @user.blogs.average(:score).round(1)
+    @user.save
     redirect_to blogs_path
     flash[:info] = 'ブログ記事を削除しました。'
   else
