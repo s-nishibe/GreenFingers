@@ -8,12 +8,14 @@
       <div>
         <h2>
           <%= @plant.name %>
-          <% if @plant.blogs.average(:score) >= 0.6 %>
-            <i class="far fa-laugh-beam"></i>
-          <% elsif @plant.blogs.average(:score) >= -0.6 %>
-            <i class="far fa-smile"></i>
-          <% elsif @plant.blogs.average(:score) <= -0.6 %>
-            <i class="far fa-frown"></i>
+          <% if @plant.blogs.exists? %>
+            <% if @plant.blogs.average(:score) >= 0.6 %>
+              <i class="far fa-laugh-beam"></i>
+            <% elsif @plant.blogs.average(:score) >= -0.6 %>
+              <i class="far fa-smile"></i>
+            <% else @plant.blogs.average(:score) <= -0.6 %>
+              <i class="far fa-frown"></i>
+            <% end %>
           <% end %>
         </h2>
         <p>種別：<%=render 'plants/info', plant: @plant %></p>
