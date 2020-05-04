@@ -6,7 +6,16 @@
   	  <%= render partial: 'layouts/flash' %>
 
       <div>
-        <h2><%= @plant.name %></h2>
+        <h2>
+          <%= @plant.name %>
+          <% if @plant.blogs.average(:score) >= 0.6 %>
+            <i class="far fa-laugh-beam"></i>
+          <% elsif @plant.blogs.average(:score) >= -0.6 %>
+            <i class="far fa-smile"></i>
+          <% elsif @plant.blogs.average(:score) <= -0.6 %>
+            <i class="far fa-frown"></i>
+          <% end %>
+        </h2>
         <p>種別：<%=render 'plants/info', plant: @plant %></p>
         <p>メモ：<%= @plant.memo %></p>
       </div>

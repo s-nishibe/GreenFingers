@@ -4,6 +4,15 @@
       <%= link_to plant_path(plant), style: 'color: #664539;' do %>
       <p>
         <%= plant.name %>（種別：<%= render 'plants/info', plant: plant %>）
+        <% if plant.blogs.exists? %>
+          <% if plant.blogs.average(:score) >= 0.6 %>
+            <i class="far fa-laugh-beam" style="color: #ee827c;"></i>
+          <% elsif plant.blogs.average(:score) >= -0.6 %>
+            <i class="far fa-smile" style="color: #fdd35c;"></i>
+          <% elsif plant.blogs.average(:score) <= -0.6 %>
+            <i class="far fa-frown" style="color: #008db7;"></i>
+          <% end %>
+        <% end %>
       </p>
       <% end %>
      </h4>
