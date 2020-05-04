@@ -32,7 +32,7 @@ def create
     @blog.score = Language.get_data(blog_params[:body])
     @blog.status = true
     if @blog.save
-      @user.score = @user.blogs.average(:score).round(1)
+      @user.score = @user.blogs.average(:score)
       @user.save
       redirect_to blog_path(@blog)
       flash[:success] = '日記を公開しました！ 下のツイートボタンで友達に知らせましょう！'
@@ -108,7 +108,7 @@ def update
     @blog.score = Language.get_data(blog_params[:body])
     @blog.status = true
     if @blog.update(blog_params)
-      @user.score = @user.blogs.average(:score).round(1)
+      @user.score = @user.blogs.average(:score)
       @user.save
       redirect_to blog_path(@blog)
       flash[:success] = '日記を公開しました！ 下のツイートボタンから更新のお知らせをしましょう！'
@@ -122,9 +122,13 @@ end
 def destroy
   @blog = Blog.find(params[:id])
   if @blog.destroy
-    @user.score = @user.blogs.average(:score).round(1)
+    if @user.blogs.exists?
+       @user.score = @user.blogs.average(:score)
+    else
+       @user.score = 0
+    end
     @user.save
-    redirect_to blogs_path
+    redirect_to blogs_path(sort: 'user_blogs', id: @user.id)
     flash[:info] = 'ブログ記事を削除しました。'
   else
     redirect_back(fallback_location: root_path)
