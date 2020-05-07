@@ -17,6 +17,45 @@
 @import "bootstrap";
 @import "summernote-bs4";
 
+/* fonts('Noto Serif JP') */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,700|Noto+Serif+JP:300,700&display=swap&subset=japanese');
+
+@font-face {
+  font-family: 'Antique';
+  src: font-url('07YasashisaAntique.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cinecaption';
+  src: font-url('cinecaption226.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tanuki';
+  src: font-url('TanukiMagic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'himaji';
+  src: font-url('himaji.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.himaji {
+  font-family: 'himaji';
+}
+
+.sans {
+  font-family: 'sans-serif';
+}
+
 /* initialize */
 *{
 	margin: 0;
@@ -32,22 +71,6 @@
 
 p {
   margin: 0;
-}
-
-/* フォント(class'himaji' or font-family: himaji;で呼び出せる) */
-@font-face {
-  font-family: 'himaji';
-  src: font-url('himaji.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.himaji {
-  font-family: 'himaji';
-}
-
-.sans {
-  font-family: 'sans-serif';
 }
 
 /* リッチテキストsummernote */
