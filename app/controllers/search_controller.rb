@@ -16,11 +16,11 @@ class SearchController < ApplicationController
   	@blog = Blog.new
   	@topic = Topic.new
     @model = params[:search][:model]
+    @datas = datas_none(@model)
 
     @positive_words.each do |word|
-      @datas = datas_none(@model)
-      @datas_all = @datas.or(search_for(@model, word))
-      @datas = @datas.or(search_for(@model, word).page(params[:page]))
+      @datas_all = search_for(@model, word)
+      @datas = search_for(@model, word).page(params[:page])
     end
 
     @negative_words.each do |word|
@@ -31,17 +31,17 @@ class SearchController < ApplicationController
   private
   def datas_none(model)
     if model == 'user'
-      @datas = User.none
+      @datas = User
     elsif model == 'blog'
-      @datas = Blog.none
+      @datas = Blog
     else model == 'topic'
-      @datas = Topic.none
+      @datas = Topic
     end
   end
 
   def search_for(model, word)
   	if model == 'user'
-  	  User.where("name LIKE ?", "%#{word}%")
+  	  @datas = @datas.where("name LIKE ?", "%#{word}%")
   	elsif model == 'blog'
   	  Blog.where("title || content LIKE ?", "%#{word}%")
   	else model == 'topic'
