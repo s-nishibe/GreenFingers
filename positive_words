@@ -1,0 +1,28 @@
+
+[1mFrom:[0m /home/vagrant/work/GreenFingers/app/controllers/search_controller.rb:19 SearchController#search:
+
+     [1;34m5[0m:   [32mdef[0m [1;34msearch[0m
+     [1;34m6[0m:     [32mif[0m params[[33m:search[0m][[33m:word[0m] == [31m[1;31m'[0m[31m[1;31m'[0m[31m[0m
+     [1;34m7[0m:       redirect_to root_path
+     [1;34m8[0m:     [32mend[0m
+     [1;34m9[0m: 
+    [1;34m10[0m:     @split_words = params[[33m:search[0m][[33m:word[0m].split([35m[1;35m/[0m[35m[[:blank:]]+[1;35m/[0m[35m[0m).select(&[33m:present?[0m)
+    [1;34m11[0m:     negative_words, positive_words =
+    [1;34m12[0m:       @split_words.partition {|split_word| split_word.start_with?([31m[1;31m'[0m[31m-[1;31m'[0m[31m[0m)}
+    [1;34m13[0m: 
+    [1;34m14[0m:     @user = current_user
+    [1;34m15[0m:   	@new_user = [1;34;4mUser[0m.new
+    [1;34m16[0m:   	@blog = [1;34;4mBlog[0m.new
+    [1;34m17[0m:   	@topic = [1;34;4mTopic[0m.new
+    [1;34m18[0m:     @model = params[[33m:search[0m][[33m:model[0m]
+ => [1;34m19[0m: binding.pry
+    [1;34m20[0m:     positive_words.each [32mdo[0m |word|
+    [1;34m21[0m:       @datas_all = @datas.or(search_for(@model, word))
+    [1;34m22[0m:       @datas = @datas.or(search_for(@model, @word).page(params[[33m:page[0m]))
+    [1;34m23[0m:     [32mend[0m
+    [1;34m24[0m: 
+    [1;34m25[0m:     negative_words.each [32mdo[0m |word|
+    [1;34m26[0m:       @datas.where!([31m[1;31m"[0m[31mname NOT LIKE ?[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m%#{word.delete_prefix([1;31m'[0m[31m-[1;31m'[0m[31m[0m[31m)}[0m[31m%[1;31m"[0m[31m[0m)
+    [1;34m27[0m:     [32mend[0m
+    [1;34m28[0m:   [32mend[0m
+
