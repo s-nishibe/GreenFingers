@@ -24,7 +24,13 @@ class SearchController < ApplicationController
     end
 
     @negative_words.each do |word|
-      @datas.where!("name NOT LIKE ?", "%#{word.delete_prefix('-')}%")
+      if @model == 'user'
+        @datas.where("name NOT LIKE ?", "%#{word.delete_prefix('-')}%")
+      elsif @model == 'blog'
+        @datas.where("title || body NOT LIKE ?", "%#{word.delete_prefix('-')}%")
+      else @model == 'topic'
+        @datas.where("title NOT LIKE ?", "%#{word.delete_prefix('-')}%")
+      end
     end
   end
 
@@ -43,9 +49,9 @@ class SearchController < ApplicationController
   	if model == 'user'
   	  @datas = @datas.where("name LIKE ?", "%#{word}%")
   	elsif model == 'blog'
-  	  Blog.where("title || content LIKE ?", "%#{word}%")
+  	  @datas = @datas.where("title || body LIKE ?", "%#{word}%")
   	else model == 'topic'
-  	  Topic.where("title LIKE ?", "%#{word}%")
+  	  @datas = @datas.where("title LIKE ?", "%#{word}%")
     end
   end
 end
