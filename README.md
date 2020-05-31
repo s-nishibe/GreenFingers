@@ -1,5 +1,8 @@
 # GreenFingers
 
+## デプロイURL
+https://greenfingers.tokyo
+
 ## サイト概要
 植物が好きな人が集まって、育て方に関する情報交換をしたり、観察日記を共有したりできる会員制サイトです。
 機能の多くはログイン後に使えるようになりますが、花の広場（トピック）のみログインなしでもご覧いただけます。
@@ -62,6 +65,8 @@ ajax通信で素早くやり取りできます。
 ## 設計書
 WBS
 https://docs.google.com/spreadsheets/d/1ziCbTtNhriS-QdUkU09QKVKJ59OmagVZga6zU1NRxgE/edit?usp=sharing
+データベース設計書
+https://docs.google.com/spreadsheets/d/1U_r6q1tOkaSSAUAXCLX3xI7_sUPpHVyk6BOIHpPP4do/edit?usp=sharing
 
 
 ### 機能一覧
