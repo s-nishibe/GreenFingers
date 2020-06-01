@@ -67,6 +67,8 @@ WBS
 https://docs.google.com/spreadsheets/d/1ziCbTtNhriS-QdUkU09QKVKJ59OmagVZga6zU1NRxgE/edit?usp=sharing
 データベース設計書
 https://docs.google.com/spreadsheets/d/1U_r6q1tOkaSSAUAXCLX3xI7_sUPpHVyk6BOIHpPP4do/edit?usp=sharing
+アプリケーション設計書
+https://docs.google.com/spreadsheets/d/1U_r6q1tOkaSSAUAXCLX3xI7_sUPpHVyk6BOIHpPP4do/edit?usp=sharing
 
 
 ### 機能一覧
