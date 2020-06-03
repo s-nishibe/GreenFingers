@@ -5,13 +5,12 @@ https://greenfingers.tokyo
 
 ## サイト概要
 植物が好きな人が集まって、育て方に関する情報交換をしたり、観察日記を共有したりできる会員制サイトです。
-機能の多くはログイン後に使えるようになりますが、花の広場（トピック）のみログインなしでもご覧いただけます。
+機能の多くはログイン後に使えるようになりますが、花の広場（トピック）の閲覧のみログインなしでもご利用いただけます。
 メールアドレスとお名前、パスワードで会員登録をするほか、Twitter認証でのログインもでき、お気軽にご利用いただけるよう設計しております。
-日記機能にはリッチテキストエディタ(summernote)を採用、本文のフォントを修飾したり、お好きな所に写真を挿入したりできます。
+日記機能にはリッチテキストエディタ(summernote)を採用、本文のフォントに色を付けたり種類を変更したりといった装飾ができます。
 また、気になる日記やトピックにはコメントやスタンプでリアクションすることができます。これらは全てajax通信で行われ、素早いページ読み込みで快適にご使用いただけます。
-acts_on_taggableによるタグ付け機能を搭載し、ユーザがご自身の日記に好きなタグを付けられるようにしました。後ほどこの機能はAIで自動化予定です。
-ユーザ（記事＋本文）/日記/トピックでのモデル別検索ができ、
-画像を判別して何の植物か当てる機能をAIで搭載してみたいと考えていますが、1ヶ月で作りきれるか調査が必要です。
+acts_on_taggableによるタグ付け機能を搭載し、ユーザがご自身の日記に好きなタグを付けられるようにしました。
+ユーザ（記事＋本文）/日記/トピックでのモデル別検索ができます。アンド検索、マイナス検索が可能です。
 
 
 ### サイトテーマ
@@ -69,6 +68,8 @@ https://docs.google.com/spreadsheets/d/1ziCbTtNhriS-QdUkU09QKVKJ59OmagVZga6zU1NR
 https://docs.google.com/spreadsheets/d/1U_r6q1tOkaSSAUAXCLX3xI7_sUPpHVyk6BOIHpPP4do/edit?usp=sharing
 アプリケーション設計書
 https://docs.google.com/spreadsheets/d/1U_r6q1tOkaSSAUAXCLX3xI7_sUPpHVyk6BOIHpPP4do/edit?usp=sharing
+ER図
+https://drive.google.com/file/d/1zVgv4ABDHtPLiaZ85dHbWLfygf2_wx6t/view?usp=sharing
 
 
 ### 機能一覧
