@@ -11,10 +11,11 @@
   	<div>
       <%= attachment_image_tag(@topic, :eyecatch_img, fallback: 'no_img.jpg', size: '200x200') %>
       <% if user_signed_in? && @topic.user_id == current_user.id %>
-      <%= link_to 'タイトルを変更', edit_topic_path(@topic.id), class: 'btn-green' %>
       <span id="status_btn-<%= @topic.id %>">
         <%= render 'topics/status_btn', topic: @topic %>
       </span>
+      <%= link_to 'タイトルを変更', edit_topic_path(@topic.id), class: 'btn-green' %>
+      <%= link_to '削除', topic_path(@topic.id), method: :delete, class: 'btn-crud-red' %>
       <% end %>
       <h3><%= @topic.title %></h3>
       <h5>カテゴリ：<%= render 'topics/category', category: @topic.category %>、<%= simple_time(@topic[:updated_at]) %></h5>
