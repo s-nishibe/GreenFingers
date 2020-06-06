@@ -6,13 +6,5 @@ ActiveAdmin.register BlogComment do
   # Uncomment all parameters which should be permitted for assignment
   #
   permit_params :user_id, :blog_id, :comment, :image_id
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:user_id, :blog_id, :comment, :image_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+
 end

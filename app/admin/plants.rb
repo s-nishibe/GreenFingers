@@ -6,13 +6,6 @@ ActiveAdmin.register Plant do
   # Uncomment all parameters which should be permitted for assignment
   #
   permit_params :user_id, :name, :kind, :memo
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:user_id, :name, :kind, :memo]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+
+
 end
