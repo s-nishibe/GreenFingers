@@ -6,13 +6,15 @@ ActiveAdmin.register Stamp do
   # Uncomment all parameters which should be permitted for assignment
   #
   permit_params :user_id, :blog_id, :stamp_img
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:user_id, :blog_id, :stamp_img]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+
+  # 入力フォーム
+  form do |f|
+    f.inputs do
+      f.input :user
+      f.input :blog
+      f.input :stamp_img, as: :select, collection: {'いいね' => 1, 'なるほど' => 2, 'おもしろい' => 3, 'スター' => 4, 'ありがとう' => 5}
+    end
+    f.actions
+  end
+
 end
