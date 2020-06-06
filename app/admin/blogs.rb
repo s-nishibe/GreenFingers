@@ -33,6 +33,9 @@ ActiveAdmin.register Blog do
     column 'comment' do |blog|
       blog.blog_comments.count
     end
+    column 'stamp' do |blog|
+      blog.stamps.count
+    end
     column :updated_at
     actions
   end
