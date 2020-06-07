@@ -21,7 +21,7 @@ ActiveAdmin.register Topic do
       f.input :user
       f.input :title
       f.input :category, as: :select, collection: {'育て方全般' => 0, '剪定' => 1, '土作り' => 2, '肥料' => 3, '病害虫' => 4, 'その他' => 5}
-      f.input :status, as: :select, :collection: {'解決済み' => true, '未解決' => :false}
+      f.input :status, as: :select, collection: {'解決済み' => true, '未解決' => :false}
     end
     f.actions
   end
@@ -40,8 +40,8 @@ ActiveAdmin.register Topic do
   end
 
   # 詳細画面
-  show do |blog|
-    attributes_table(*blog.class.columns.collect { |column| column.name.to_sym })
+  show do |topic|
+    attributes_table(*topic.class.columns.collect { |column| column.name.to_sym })
     panel "コメント一覧" do
       table_for topic.topic_comments do
         column :user

@@ -30,8 +30,8 @@ ActiveAdmin.register Plant do
   end
 
   # 詳細画面
-  show do |blog|
-    attributes_table(*blog.class.columns.collect { |column| column.name.to_sym })
+  show do |plant|
+    attributes_table(*plant.class.columns.collect { |column| column.name.to_sym })
     panel "日記一覧" do
       table_for plant.blogs do
         column :title
