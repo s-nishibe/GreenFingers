@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Userのテスト' do
-  feature 'ログインのテスト' do
-  	let!(:user) { create(:user) }
+  let!(:user) { create(:user) }
 
-  	scenario '新規登録ができる' do
+  feature 'ログイン機能のテスト' do
+
+  	xscenario '新規登録ができる' do
   	  visit new_user_registration_path
   	  fill_in 'お名前', with: 'GreenFingers公式'
   	  fill_in 'メールアドレス', with: 'greenfingers@gmail.com'
@@ -38,6 +39,28 @@ RSpec.feature 'Userのテスト' do
   	end
   end
 
-  scenario '' do
+  feature 'ユーザ情報の編集' do
+    background do
+      sign_in user
+      visit edit_user_path(user)
+    end
+
+    scenario '名前を変更' do
+      fill_in 'お名前', with: 'GREENFINGERS'
+      click_on '更新する！'
+      expect(page).to have_content '会員情報が更新されました！'
+    end
+
+    scenario 'ひとことを変更' do
+      fill_in 'ひとこと', with: 'こんにちは'
+      click_on '更新する！'
+      expect(page).to have_content '会員情報が更新されました！'
+    end
+
+    scenario '名前が空欄だと更新できない' do
+      fill_in 'お名前', with: ''
+      click_on '更新する！'
+      expect(page).to have_content 'お名前は1文字以上20文字以内にしてください。'
+    end
   end
 end

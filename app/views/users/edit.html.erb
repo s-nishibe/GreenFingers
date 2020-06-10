@@ -6,13 +6,13 @@
       <%= render partial: 'layouts/flash' %>
   	  <%= form_with(model: @user, local: true) do |f| %>
   	    <div class="user_field">
-  	    <%= f.label :お名前, placeholder: '1～20文字', class: 'field-content' %>
-  	    <%= f.text_field :name, class: 'form-control' %>
+  	    <%= f.label :お名前, placeholder: '1～20文字', class: 'field-content', for: 'user_name' %>
+  	    <%= f.text_field :name, class: 'form-control', id: 'user_name' %>
   	    </div>
 
   	    <div class="user_field">
-  	    <%= f.label :ひとこと, class: 'field-content' %>
-  	    <%= f.text_field :introduction, placeholder: '最大50文字', class: 'form-control' %>
+  	    <%= f.label :ひとこと, class: 'field-content', for: 'user_introduction' %>
+  	    <%= f.text_field :introduction, placeholder: '最大50文字', class: 'form-control', id: 'user_introduction' %>
   	    </div>
 
   	    <div class="user_field">
