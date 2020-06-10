@@ -7,8 +7,8 @@
     </div>
   </div>
   <div class="field">
-    <%= f.label :タイトル, class: 'field-content' %>
-    <%= f.text_field :title, placeholder: '2～100文字', class: 'form-control' %>
+    <%= f.label :タイトル, class: 'field-content', for: 'topic_title' %>
+    <%= f.text_field :title, placeholder: '2～100文字', class: 'form-control', id: 'topic_title' %>
   </div>
   <div class="field">
  	<%= f.label :カテゴリ, class: 'field-content' %>
@@ -25,7 +25,7 @@
     <div class="field">
       <%= f.fields_for @topic_comment do |tc| %>
         <%= tc.attachment_field :image %>
-        <%= tc.text_field :comment, placeholder: '最大500文字', class: 'form-control' %>
+        <%= tc.text_field :comment, placeholder: '最大500文字', class: 'form-control', id: 'topic_comment_first' %>
       <% end %>
     </div>
   <% end %>

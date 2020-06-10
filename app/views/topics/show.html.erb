@@ -34,7 +34,7 @@
         <% end %>
         <%= current_user.name %>
         <%= f.attachment_field :image %>
-        <%= f.text_area :comment, size: '90x5', placeholder: '最大500文字' %><br>
+        <%= f.text_area :comment, size: '90x5', placeholder: '最大500文字', id: 'topic_comment_text' %><br>
         <%= f.submit '送信！', class: 'btn-brown offset-8' %>
       <% end %>
     </div>

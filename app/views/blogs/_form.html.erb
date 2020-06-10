@@ -3,14 +3,14 @@
   <div class="field clearfix">
   	<%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '200x200', style: 'float: left;', id: 'blog_eyecatch_prev') %>
     <div style="float: left; padding-top: 50px; margin-left: 20px;">
-      <%= f.label :アイキャッチ画像, class: 'field-content' %>
+      <%= f.label :アイキャッチ画像, class: 'field-content', for: 'blog_eyecatch' %>
   	  <%= f.attachment_field :eyecatch_img, id: 'blog_eyecatch' %>
     </div>
   </div>
 
   <div class="field">
-  	<%= f.label :タイトル, class: 'field-content' %>
-  	<%= f.text_field :title, placeholder: '1～100文字', class: 'form-control' %>
+  	<%= f.label :タイトル, class: 'field-content', for: 'blog_title' %>
+  	<%= f.text_field :title, placeholder: '1～100文字', class: 'form-control', id: 'blog_title' %>
   </div>
 
   <div class="field">
@@ -33,17 +33,17 @@
   </div>
 
   <div class="field">
-    <%= f.label :気温, class: 'field-content' %>
-    <%= f.text_field :temperature, placeholder: '℃', class: 'text-right form-control w-25' %>
+    <%= f.label :気温, class: 'field-content', for: 'blog_temperature' %>
+    <%= f.text_field :temperature, placeholder: '℃', class: 'text-right form-control w-25', id: 'blog_temperature' %>
   </div>
 
   <div class="field">
-    <%= f.label :タグ, class: 'field-content' %><br>
-    <%= f.text_field :tag_list, value: blog.tag_list.join(','), placeholder: '半角カンマ（,）で区切って複数登録できます', class: 'form-control' %>
+    <%= f.label :タグ, class: 'field-content', for: 'blog_tags' %><br>
+    <%= f.text_field :tag_list, value: blog.tag_list.join(','), placeholder: '半角カンマ（,）で区切って複数登録できます', class: 'form-control', id: 'blog_tags' %>
   </div>
 
   <div class="field">
-  	<%= f.label :本文, class: 'field-content' %>
+  	<%= f.label :本文, class: 'field-content', for: 'summernote' %>
   	<%= f.text_area :body, id: "summernote", class: 'form-control', required: true, 'data-provider': :summernote %>
   </div>
 

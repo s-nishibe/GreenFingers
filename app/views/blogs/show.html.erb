@@ -28,7 +28,7 @@
                   <%= f.attachment_field :image %>
                 </div>
               </div>
-              <%= f.text_area :comment, class: 'form-control', placeholder: '最大500文字', size: '90x5' %>
+              <%= f.text_area :comment, class: 'form-control', placeholder: '最大500文字', size: '90x5', id: 'blog_comment_text' %>
               <%= f.submit '送信！', class: 'btn-sm btn-crud-green w-25 offset-9', style: 'margin-top: 10px;' %>
             <% end %>
           </div>

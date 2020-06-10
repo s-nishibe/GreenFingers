@@ -31,7 +31,13 @@ RSpec.feature 'Userのテスト' do
   	end
 
   	scenario '退会が正常に行われる' do
-
+  		sign_in user
+  		visit edit_user_path(user)
+  		click_on '退会する'
+  		expect(page).to have_content '退会処理は正常に行われました。ご利用ありがとうございました。'
   	end
+  end
+
+  scenario '' do
   end
 end
