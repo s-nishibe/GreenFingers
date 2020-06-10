@@ -16,7 +16,7 @@ RSpec.describe 'Blogモデルのテスト', type: :model do
 
     context 'contentカラム' do
       it '空欄でないこと' do
-        blog.content = ''
+        blog.body = ''
         expect(blog.valid?).to eq false;
       end
     end

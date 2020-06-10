@@ -62,16 +62,23 @@ ajax通信で素早くやり取りできます。
 
 
 ## 設計書
-WBS
+#### WBS
+
 https://docs.google.com/spreadsheets/d/1ziCbTtNhriS-QdUkU09QKVKJ59OmagVZga6zU1NRxgE/edit?usp=sharing
-データベース設計書
+
+#### データベース設計書
+
 https://docs.google.com/spreadsheets/d/1U_r6q1tOkaSSAUAXCLX3xI7_sUPpHVyk6BOIHpPP4do/edit?usp=sharing
-アプリケーション設計書
+
+#### アプリケーション設計書
+
 https://docs.google.com/spreadsheets/d/1U_r6q1tOkaSSAUAXCLX3xI7_sUPpHVyk6BOIHpPP4do/edit?usp=sharing
-ER図
+
+#### ER図
+
 https://drive.google.com/file/d/1zVgv4ABDHtPLiaZ85dHbWLfygf2_wx6t/view?usp=sharing
 
 
-### 機能一覧
+#### 機能一覧
 https://docs.google.com/spreadsheets/d/1P-rThENpArI9mimByuh7o2GfnGNTTIZGmUM6Ge0fQ5U/edit#gid=0
 

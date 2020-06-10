@@ -7,13 +7,13 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
       <div class="field">
-        <%= f.label :メールアドレス %><br>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: '最大50文字', class: 'form-control w-100' %>
+        <%= f.label :メールアドレス, for: 'login_email' %><br>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: '最大50文字', class: 'form-control w-100', id: 'login_email' %>
       </div>
 
       <div class="field">
-        <%= f.label :パスワード %><br />
-        <%= f.password_field :password, autocomplete: "current-password", placeholder: '6文字以上', class: 'form-control w-100 sans' %>
+        <%= f.label :パスワード, for: 'login_password' %><br />
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: '6文字以上', class: 'form-control w-100 sans', id: 'login_password' %>
       </div>
 
       <% if devise_mapping.rememberable? %>
