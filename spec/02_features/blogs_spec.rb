@@ -61,15 +61,14 @@ RSpec.feature 'Blogのテスト' do
   end
 
   feature 'アクセス制限のテスト' do
-    background do
-      sign_in user2
-    end
     scenario '他者の記事は編集できない' do
+      sign_in user2
       visit edit_blog_path(blog)
       expect(page).to have_content 'お探しのページにはアクセスできません。'
     end
 
     scenario '他者の記事を削除できない' do
+      sign_in user2
       visit blog_path(blog)
       expect(page).to_not have_content '削除'
     end

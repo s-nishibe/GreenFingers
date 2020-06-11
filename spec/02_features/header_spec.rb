@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'のテスト' do
+RSpec.feature 'Headerのテスト' do
   feature '' do
   	scenario '' do
   	end

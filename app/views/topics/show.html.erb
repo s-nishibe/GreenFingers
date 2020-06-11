@@ -15,7 +15,7 @@
         <%= render 'topics/status_btn', topic: @topic %>
       </span>
       <%= link_to 'タイトルを変更', edit_topic_path(@topic.id), class: 'btn-green' %>
-      <%= link_to '削除', topic_path(@topic.id), data: {confirm: 'トピックを削除しますか？'},  method: :delete, class: 'btn-crud-red' %>
+      <%= link_to '削除', topic_path(@topic.id), data: {confirm: 'トピックを削除しますか？'},  method: :delete, class: 'btn-crud-red', id: 'delete_topic' %>
       <% end %>
       <h3><%= @topic.title %></h3>
       <h5>カテゴリ：<%= render 'topics/category', category: @topic.category %>、<%= simple_time(@topic[:updated_at]) %></h5>
@@ -34,8 +34,8 @@
         <% end %>
         <%= current_user.name %>
         <%= f.attachment_field :image %>
-        <%= f.text_area :comment, size: '90x5', placeholder: '最大500文字', id: 'topic_comment_text' %><br>
-        <%= f.submit '送信！', class: 'btn-brown offset-8' %>
+        <%= f.text_area :comment, placeholder: '最大500文字', class: 'form-control', id: 'topic_comment_text' %><br>
+        <%= f.submit '送信！', class: 'btn-brown offset-11' %>
       <% end %>
     </div>
     <% end %>

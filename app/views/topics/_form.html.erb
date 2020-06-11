@@ -24,8 +24,9 @@
   <% if @topic.id.nil? %>
     <div class="field">
       <%= f.fields_for @topic_comment do |tc| %>
-        <%= tc.attachment_field :image %>
-        <%= tc.text_field :comment, placeholder: '最大500文字', class: 'form-control', id: 'topic_comment_first' %>
+        <%= tc.label :comment, '本文', for: 'topic_comment_first', style: 'font-size: 24px;' %><br>
+        <%= tc.attachment_field :image %><br>
+        <%= tc.text_area :comment, placeholder: '最大500文字', class: 'form-control', id: 'topic_comment_first' %>
       <% end %>
     </div>
   <% end %>

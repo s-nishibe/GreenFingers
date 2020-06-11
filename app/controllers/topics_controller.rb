@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.build(topic_params)
     if @topic.save
-      @topic_comment = @topic.topic_comments.build
+      @topic_comment = @topic.topic_comments.build(tc_params)
       @topic_comment.image = params[:topic][:topic_comment][:image]
       @topic_comment.comment = params[:topic][:topic_comment][:comment]
       @topic_comment.user_id = current_user.id
@@ -69,10 +69,10 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
       redirect_to topic_path(@topic)
-      flash[:success] = 'トピックのタイトルが変更されました！'
+      flash[:success] = 'トピックが更新されました！'
     else
       redirect_back(fallback_location: root_path)
-      flash[:danger] = 'トピックのタイトルを変更できませんでした。'
+      flash[:danger] = 'トピックを更新できませんでした。'
     end
   end
 
@@ -104,6 +104,10 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:eyecatch_img, :title, :category, :user_id)
+  end
+
+  def tc_params
+    params.permit(:image, :comment)
   end
 
   def status_params
