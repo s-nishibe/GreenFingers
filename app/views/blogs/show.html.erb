@@ -20,7 +20,7 @@
 
           <div class="blog_comment_form" style="padding-top: 30px;">
             <%= form_with(model: @blog_comment, url: blog_blog_comments_path(@blog), remote: true) do |f| %>
-              <h4>新規コメント</h4>
+              <%= f.label :comment, '新規コメント', for: 'blog_comment_text', style: 'font-size: 32px;' %>
               <div class="clearfix">
                 <%= attachment_image_tag(current_user, :profile_img, fallback: 'no_img.jpg', size: '50x50', style: 'float: left;') %>
                 <p style="float: left; margin-left: 20px; padding-top: 20px;"><%= current_user.name %></p>

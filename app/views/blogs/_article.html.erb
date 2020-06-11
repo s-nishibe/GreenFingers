@@ -30,7 +30,7 @@
       <div class="col-5">
         <% if @blog.user_id == current_user.id %>
           <%= link_to '編集', edit_blog_path(@blog), class: 'btn-green btn-block w-50' %>
-          <%= link_to '削除', blog_path(@blog), method: :delete, class: 'btn-crud-red btn-block w-50' %>
+          <%= link_to '削除', blog_path(@blog), method: :delete, class: 'btn-crud-red btn-block w-50', id: 'delete_blog' %>
         <% end %>
       </div>
     </div>

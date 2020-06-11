@@ -19,7 +19,7 @@ def create
     @blog.plant_id = params[:blog][:plant_id]
     @blog.status = false
     if @blog.save
-      redirect_to blogs_path(page: 'drafts')
+      redirect_to blogs_path(sort: 'drafts')
       flash[:success] = '日記を下書き保存しました。'
     else
       flash[:danger] = '日記を保存できません。タイトルの文字数は1～100字、本文には2字以上が必要です。'
@@ -97,11 +97,11 @@ def update
     @blog = Blog.find(params[:id])
     @blog.status = false
     if @blog.update(blog_params)
-      redirect_to blogs_path(page: 'drafts')
+      redirect_to blogs_path(sort: 'drafts')
       flash[:success] = '下書きを更新しました！'
     else
-      render :new
       flash[:danger] = '下書きを更新できません。空欄になっている箇所はありませんか？'
+      render :new
     end
   else params[:blog_btn]
     @blog = Blog.find(params[:id])
@@ -113,8 +113,8 @@ def update
       redirect_to blog_path(@blog)
       flash[:success] = '日記を公開しました！ 下のツイートボタンから更新のお知らせをしましょう！'
     else
-      render :new
       flash[:danger] = '日記を更新できません。空欄になっている箇所はありませんか？'
+      render :new
     end
   end
 end
@@ -129,10 +129,10 @@ def destroy
     end
     @user.save
     redirect_to blogs_path(sort: 'user_blogs', id: @user.id)
-    flash[:info] = 'ブログ記事を削除しました。'
+    flash[:info] = '日記を削除しました。'
   else
     redirect_back(fallback_location: root_path)
-    flash[:danger] = '記事を削除できませんでした。'
+    flash[:danger] = '日記を削除できませんでした。'
   end
 end
 
