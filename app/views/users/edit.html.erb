@@ -4,6 +4,7 @@
   	<%= render partial: 'layouts/sidebar', user: @user %>
   	<div class="col col-md-10 col-body">
       <%= render partial: 'layouts/flash' %>
+      <h3>会員情報編集</h3>
   	  <%= form_with(model: @user, local: true) do |f| %>
   	    <div class="user_field">
   	    <%= f.label :お名前, placeholder: '1～20文字', class: 'field-content', for: 'user_name' %>
