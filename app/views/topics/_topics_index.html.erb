@@ -16,11 +16,17 @@
 	      <%= attachment_image_tag(topic, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
 	      <% end %>
 	    </td>
-		<td style="width: 15%;">
-		  <% if topic.status == true %>
-		    <%= link_to '解決済み', topics_path(sort: 'resolved'), class: 'letter' %>
-		  <% else topic.status == false %>
-		    <%= link_to '未解決', topics_path(sort: 'unsolved'), class: 'letter' %>
+		<td style="width: 10%;">
+		  <% if topic.user_id == current_user.id %>
+		    <span id="status_btn-<%= topic.id %>">
+            <%= render 'topics/status_btn', topic: topic %>
+            </span>
+          <% else %>
+		    <% if topic.status == true %>
+		      <%= link_to '解決済み', topics_path(sort: 'resolved'), class: 'letter' %>
+		    <% else topic.status == false %>
+		      <%= link_to '未解決', topics_path(sort: 'unsolved'), class: 'letter' %>
+		    <% end %>
 		  <% end %>
 		</td>
 		<td style="width: 40%;">
@@ -35,7 +41,7 @@
 		</td>
 		<td class="tc_count" style="text-align: center;"><%= topic.topic_comments.count %></td>
 		<% if user_signed_in? && topic.user_id == current_user.id %>
-	      <td style="width: 10%;"><%= link_to '編集', edit_topic_path(topic), class: 'btn-crud-green' %></td>
+	      <td style="width: 5%;"><%= link_to '編集', edit_topic_path(topic), class: 'btn-crud-green' %></td>
 		  <td style="width: 5%;"><%= link_to '削除', topic_path(topic), method: :delete, data: {confirm: 'トピックを削除しますか？'}, class: 'btn-crud-red' %></td>
 	    <% end %>
 	  </tr>
