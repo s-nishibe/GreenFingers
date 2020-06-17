@@ -80,3 +80,12 @@ User.create!(
 
   ]
 )
+
+20.times do |n|
+  User.create!(
+  	name: "てすとゆーざーさん#{n}",
+  	email: "testuser#{n}@internet.com",
+  	password: "password",
+  	password_confirmation: "password",
+  	)
+end

@@ -9,6 +9,7 @@
 require './db/seeds/user.rb'
 require './db/seeds/plant.rb'
 require './db/seeds/topic.rb'
+require './db/seeds/blog.rb'
 
 
 

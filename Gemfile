@@ -92,6 +92,8 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'rails-i18n', '~> 5.1'
 
+gem 'seed-fu'
+
 group :production do
   gem 'mysql2'
 end

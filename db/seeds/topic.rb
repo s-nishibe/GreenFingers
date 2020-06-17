@@ -37,3 +37,12 @@ Topic.create!(
 
    ]
  )
+
+10.times do |n|
+  Topic.create!(
+    user_id: 2,
+    title: "テスト送信#{n}",
+    category: 1,
+    status: true,
+    )
+end
