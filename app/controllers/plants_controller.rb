@@ -12,7 +12,8 @@ class PlantsController < ApplicationController
   def show
     @plant = Plant.find(params[:id])
     @user = @plant.user
-    @blogs = @plant.blogs
+    @blogs_t = @plant.blogs.where(status: true)
+    @blogs = @blogs_t.page(params[:page])
   end
 
   def edit

@@ -23,9 +23,12 @@
       </div>
 
       <div style="padding-top: 50px;">
-        <h3><%= @plant.name %> についての日記 <%= @plant.blogs.count %>件</h3>
+        <h3><%= @plant.name %> についての日記 <%= @blogs_t.count %>件</h3>
           <div>
-          <%= render 'blogs/blogs_index', blogs: @blogs %>
+            <%= render 'blogs/blogs_index', blogs: @blogs %>
+          </div>
+          <div class="offset-3 kaminari">
+            <%= paginate @blogs, class: 'paginate' %>
           </div>
       </div>
 

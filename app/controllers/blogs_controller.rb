@@ -51,23 +51,20 @@ def index
   if params[:tag_name]
     @tag = params[:tag_name]
     @blogs_all = Blog.tagged_with("#{params[:tag_name]}").where(status: true)
-    @blogs = Blog.tagged_with("#{params[:tag_name]}").where(status: true).page(params[:page])
   elsif params[:sort] == 'TL'
     @user = current_user
     @timeline = @user.followings
-    @blogs_all = Blog.where(user_id: @timeline)
-    @blogs = Blog.where(user_id: @timeline).page(params[:page])
+    @blogs_all = Blog.where(user_id: @timeline).where(status: true)
   elsif params[:sort] == 'user_blogs'
     @user = User.find(params[:id])
     @blogs_all = @user.blogs.where(status: true)
-    @blogs = @user.blogs.where(status: true).page(params[:page])
   elsif params[:sort] == 'drafts'
     @blogs_all = current_user.blogs.where(status: false)
-    @blogs = current_user.blogs.where(status: false).page(params[:page])
   else params[:sort] == 'all_blogs'
     @blogs_all = Blog.where(status: true)
-    @blogs = Blog.where(status: true).page(params[:page])
   end
+
+  @blogs = @blogs_all.page(params[:page])
 end
 
 def edit

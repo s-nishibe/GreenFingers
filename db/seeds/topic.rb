@@ -37,5 +37,3 @@ Topic.create!(
 
    ]
  )
-
-end
