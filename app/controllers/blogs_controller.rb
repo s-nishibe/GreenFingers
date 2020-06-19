@@ -50,18 +50,17 @@ end
 def index
   if params[:tag_name]
     @tag = params[:tag_name]
-    @blogs_all = Blog.tagged_with("#{params[:tag_name]}").where(status: true)
+    @blogs_all = Blog.is_published.tagged_with("#{params[:tag_name]}")
   elsif params[:sort] == 'TL'
-    @user = current_user
     @timeline = @user.followings
-    @blogs_all = Blog.where(user_id: @timeline).where(status: true)
+    @blogs_all = Blog.is_published.where(user_id: @timeline)
   elsif params[:sort] == 'user_blogs'
     @user = User.find(params[:id])
-    @blogs_all = @user.blogs.where(status: true)
+    @blogs_all = @user.blogs.is_published
   elsif params[:sort] == 'drafts'
-    @blogs_all = current_user.blogs.where(status: false)
+    @blogs_all = current_user.blogs.is_draft
   else params[:sort] == 'all_blogs'
-    @blogs_all = Blog.where(status: true)
+    @blogs_all = Blog.is_published.preload(:user)
   end
 
   @blogs = @blogs_all.page(params[:page])

@@ -8,4 +8,6 @@ class Topic < ApplicationRecord
 	validates :title, length: {minimum: 2, maximum: 100}
 
 	attachment :eyecatch_img
+
+	scope :is_unsolved, -> { where(status: false) }
 end

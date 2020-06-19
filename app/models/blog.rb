@@ -12,4 +12,7 @@ class Blog < ApplicationRecord
 
 	attachment :eyecatch_img
 	acts_as_taggable
+
+	scope :is_published, -> { where(status: true) }
+	scope :is_draft, -> { where(status: false) }
 end

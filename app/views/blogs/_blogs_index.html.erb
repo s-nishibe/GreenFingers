@@ -19,15 +19,15 @@
           <% end %>
         </td>
    		  <td>
-          <%= link_to blog.plant.name, plant_path(blog.plant_id), style: 'color: #664539;' %>
+          <%= link_to blog.plant.name, plant_path(blog.plant_id), class: 'letter' %>
         </td>
    		  <td style="width: 35%;">
-          <%= link_to blog_path(blog), style: 'color: #664539;' do %>
+          <%= link_to blog_path(blog), class: 'letter' do %>
           <%= blog.title %>
           <% end %>
         </td>
         <td style="width: 15%;">
-          <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %> 
+          <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
         </td>
         <td><%= render 'blogs/tag_list', tag_list: blog.tag_list %></td>
         <td class="stamp_count" style="text-align: center;"><%= blog.stamps.count %></td>

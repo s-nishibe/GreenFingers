@@ -25,7 +25,9 @@
   	      <% end %>
   	    </td>
   	    <td>
+          <%= link_to user_path(user), class: 'letter' do %>
           <%= user.name %>
+          <% end %>
         </td>
   	    <td><%= user.introduction %></td>
   	  </tr>

@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_user, except: [:index]
+  before_action :set_user
 
   def new
     @topic = Topic.new
@@ -28,27 +28,20 @@ class TopicsController < ApplicationController
 
   def index
     if params[:sort] == 'all_topics'
-      @user = current_user
       @topics_all = Topic.all
-      @topics = Topic.page(params[:page])
     elsif params[:sort] == 'user_topics'
       @user = User.find(params[:id])
       @topics_all = @user.topics
-      @topics = @user.topics.page(params[:page])
     elsif params[:sort] == 'category'
-      @user = current_user
       @category = params[:category].to_i
       @topics_all = Topic.where(category: @category)
-      @topics = Topic.where(category: @category).page(params[:page])
     elsif params[:sort] == 'resolved'
-      @user = current_user
       @topics_all = Topic.where(status: true)
-      @topics = Topic.where(status: true).page(params[:page])
     else params[:sort] == 'unsolved'
-      @user = current_user
       @topics_all = Topic.where(status: false)
-      @topics = Topic.where(status: false).page(params[:page])
     end
+
+    @topics = @topics_all.page(params[:page])
   end
 
   def edit
