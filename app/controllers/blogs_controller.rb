@@ -60,7 +60,7 @@ def index
   elsif params[:sort] == 'drafts'
     @blogs_all = current_user.blogs.is_draft
   else params[:sort] == 'all_blogs'
-    @blogs_all = Blog.is_published.preload(:user)
+    @blogs_all = Blog.is_published.includes(plant: :user)
   end
 
   @blogs = @blogs_all.page(params[:page])
