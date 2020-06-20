@@ -18,7 +18,7 @@
             <% end %>
           <% end %>
         </h2>
-        <p>種別：<%=render 'plants/info', plant: @plant %></p>
+        <p>種別：<%= plant_kind(@plant) %></p>
         <p>メモ：<%= @plant.memo %></p>
       </div>
 
