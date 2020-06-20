@@ -1,0 +1,25 @@
+<% plants.each do |plant| %>
+  <span>
+    <h4 style="padding-top: 30px;">
+    <%= link_to plant_path(plant), style: 'color: #664539;' do %>
+    <p>
+      <%= plant.name %>（種別：<%= plant_kind(plant) %>）
+      <% if plant.blogs.exists? %>
+        <% if plant.blogs.limit(3).average(:score) >= 0.6 %>
+          <i class="far fa-laugh-beam" style="color: #ee827c;"></i>
+        <% elsif plant.blogs.limit(3).average(:score) >= -0.6 %>
+          <i class="far fa-smile" style="color: #fdd35c;"></i>
+        <% elsif plant.blogs.limit(3).average(:score) <= -0.6 %>
+          <i class="far fa-frown" style="color: #008db7;"></i>
+        <% end %>
+      <% end %>
+    </p>
+    <% end %>
+    </h4>
+    <%= plant.memo %>
+    <% if @user.id == current_user.id %>
+      <%= link_to '編集', edit_plant_path(plant), remote: true, class: 'btn-crud-green' %>
+      <%= link_to '削除', plant_path(plant), method: :delete, remote: true, class: 'btn-crud-red' %>
+    <% end %>
+  </span>
+<% end %>

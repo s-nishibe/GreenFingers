@@ -1,4 +1,4 @@
-$("#plant-<%= @user.id %> ").html("<%= j(render partial: 'plants/index', locals: {user: @user}) %>");
+$("#plant-<%= @user.id %> ").html("<%= j(render partial: 'plants/index', locals: {plants: @user.plants}) %>");
 document.getElementById('plant_name').value = ''
 document.getElementById('plant_kind').value = 0
 document.getElementById('plant_memo').value = ''
