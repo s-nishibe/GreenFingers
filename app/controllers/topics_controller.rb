@@ -28,17 +28,17 @@ class TopicsController < ApplicationController
 
   def index
     if params[:sort] == 'all_topics'
-      @topics_all = Topic.all
+      @topics_all = Topic.includes(:topic_comments)
     elsif params[:sort] == 'user_topics'
       @user = User.find(params[:id])
-      @topics_all = @user.topics
+      @topics_all = @user.topics.includes(:topic_comments)
     elsif params[:sort] == 'category'
       @category = params[:category].to_i
-      @topics_all = Topic.where(category: @category)
+      @topics_all = Topic.where(category: @category).includes(:topic_comments)
     elsif params[:sort] == 'resolved'
-      @topics_all = Topic.where(status: true)
+      @topics_all = Topic.resolved.includes(:topic_comments)
     else params[:sort] == 'unsolved'
-      @topics_all = Topic.where(status: false)
+      @topics_all = Topic.unsolved.includes(:topic_comments)
     end
 
     @topics = @topics_all.page(params[:page])

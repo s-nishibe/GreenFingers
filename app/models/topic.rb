@@ -9,5 +9,6 @@ class Topic < ApplicationRecord
 
 	attachment :eyecatch_img
 
-	scope :is_unsolved, -> { where(status: false) }
+	scope :resolved, -> { where(status: true) }
+	scope :unsolved, -> { where(status: false) }
 end
