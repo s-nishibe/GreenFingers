@@ -15,7 +15,7 @@
       <%= link_to '削除', topic_path(@topic.id), data: {confirm: 'トピックを削除しますか？'},  method: :delete, class: 'btn-crud-red', id: 'delete_topic' %>
       <% end %>
       <h3><%= @topic.title %></h3>
-      <h5>カテゴリ：<%= render 'topics/category', category: @topic.category %>、<%= simple_time(@topic[:updated_at]) %></h5>
+      <h5>カテゴリ：<%= topic_category(@topic.category) %>、<%= simple_time(@topic[:updated_at]) %></h5>
       <div id="comments_for_topic-<%= @topic.id %>" style="padding-top: 30px;">
       </style>
         <%= render 'topic_comments/tc_index', topic_comments: @topic_comments %>

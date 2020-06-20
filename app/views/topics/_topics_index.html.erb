@@ -36,7 +36,7 @@
 		</td>
 		<td>
 		  <%= link_to topics_path(sort: 'category', category: topic.category), style: "color: #664539;" do %>
-		  <%= render 'topics/category', category: topic.category %>
+		  <%= topic_category(topic.category) %>
 		  <% end %>
 		</td>
 		<td class="tc_count" style="text-align: center;"><%= topic.topic_comments.count %></td>
