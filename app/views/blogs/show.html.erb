@@ -27,7 +27,7 @@
             <div class="row">
               <div class="col-7">
                 <p><%= @blog.plant.name %>(種別：<%= plant_kind(@blog.plant) %>)</p>
-                <p><%= render 'blogs/weather_info', blog: @blog %></p>
+                <p><%= weather_info(@blog) %></p>
                 <p class="himaji">タグ：
                 <%= render 'tag_list', tag_list: @blog.tag_list %></p>
               </div>

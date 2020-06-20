@@ -15,7 +15,7 @@ module ApplicationHelper
     end
   end
 
-  def weeather_info(weather)
+  def weather_info(weather)
   	if @blog.weather == 0
   	  return '晴れ'
     elsif @blog.weather == 1
