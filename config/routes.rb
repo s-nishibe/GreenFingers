@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'homes/top' => 'homes#top'
   get 'homes/about' => 'homes#about'
+  get 'homes/rank' => 'homes#rank'
 
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
