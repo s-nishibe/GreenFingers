@@ -3,7 +3,7 @@ class HomesController < ApplicationController
 
   def top
   	@blogs = Blog.all
-  	@new_blogs = Blog.published.limit(5)
+  	@new_blogs = Blog.is_published.limit(5)
   	@featured_blogs = Blog.find(Stamp.group(:blog_id).order('count(blog_id) desc').limit(5).pluck(:blog_id))
   	@topics = Topic.unsolved.limit(5)
   end
