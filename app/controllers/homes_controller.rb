@@ -12,6 +12,11 @@ class HomesController < ApplicationController
   end
 
   def rank
+    @good = Blog.find(Stamp.where(stamp_img: 1).group(:blog_id).order('count(blog_id) desc').limit(5).pluck(:blog_id))
+    # @useful
+    # @funny
+    # @star
+    # @thanks
   end
 
   private
