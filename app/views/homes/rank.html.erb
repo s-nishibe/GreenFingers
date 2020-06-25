@@ -8,13 +8,15 @@
 
   	<div class="col col-md-10 col-body">
   	  <%= render partial: 'layouts/flash' %>
-  	  <h2>スタンプ数ランキング</h2>
-  	  <p>ここでは、読者からの反応が多かった日記を、スタンプの種類ごとに集計しています。<br>
-  	  スタンプは全5種類。面白い文章からお役立ち記事まで、みんなが注目している日記をチェックしてみましょう！</p>
+  	  <div class="row-content" style="text-align: center;">
+  	    <h2>スタンプ数ランキング</h2>
+  	    <p>ここでは、読者からの反応が多かった日記を、スタンプの種類ごとに集計しています。<br>
+  	    スタンプは全5種類。面白い文章からお役立ち記事まで、みんなが注目している日記をチェックしてみましょう！</p>
+  	  </div>
 
+  	  <!-- いいねランキング -->
   	  <div class="row-content">
   	  	<h3>いいね</h3>
-  	  	<!-- each文で上位記事をループ -->
   	  	<table class="himaji">
           <thead>
 	        <tr>
@@ -27,8 +29,9 @@
             </tr>
           </thead>
           <tbody>
-            <% @good.each do |blog| %>
+            <% @good.each.with_index(1) do |blog, i| %>
   	        <tr>
+  	          <td>第<%= i %>位</td>
    		      <td>
                 <%= link_to blog_path(blog) do %>
                 <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
@@ -46,16 +49,13 @@
                 <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
               </td>
               <td class="stamp_count" style="text-align: center;"><%= blog.stamps.where(stamp_img: 1).count %></td>
-                <% if blog.user_id == current_user.id %>
-                  <td style="width: 5%;"><%= link_to '編集', edit_blog_path(blog), class: 'btn-crud-green' %></td>
-                  <td style="width: 5%;"><%= link_to '削除', blog_path(blog), method: :delete, class: 'btn-crud-red' %></td>
-                <% end %>
- 	  	      </tr>
+ 	  	    </tr>
             <% end %>
  	      </tbody>
         </table>
   	  </div>
 
+  	  <!-- なるほどランキング -->
   	  <div class="row-content">
   	  	<h3>なるほど</h3>
   	  	<table class="himaji">
@@ -65,7 +65,7 @@
               <th>花の名前</th>
               <th>タイトル</th>
               <th>名前</th>
-              <th>スタンプ</th>
+              <th>なるほど</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -89,16 +89,13 @@
                 <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
               </td>
               <td class="stamp_count" style="text-align: center;"><%= blog.stamps.count %></td>
-                <% if blog.user_id == current_user.id %>
-                  <td style="width: 5%;"><%= link_to '編集', edit_blog_path(blog), class: 'btn-crud-green' %></td>
-                  <td style="width: 5%;"><%= link_to '削除', blog_path(blog), method: :delete, class: 'btn-crud-red' %></td>
-                <% end %>
- 	  	      </tr>
+ 	  	    </tr>
             <% end %>
  	      </tbody>
         </table>
   	  </div>
 
+  	  <!-- おもしろいランキング -->
   	  <div class="row-content">
   	  	<h3>おもしろい</h3>
   	  	<table class="himaji">
@@ -108,7 +105,7 @@
               <th>花の名前</th>
               <th>タイトル</th>
               <th>名前</th>
-              <th>スタンプ</th>
+              <th>おもしろい</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -132,16 +129,13 @@
                 <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
               </td>
               <td class="stamp_count" style="text-align: center;"><%= blog.stamps.count %></td>
-                <% if blog.user_id == current_user.id %>
-                  <td style="width: 5%;"><%= link_to '編集', edit_blog_path(blog), class: 'btn-crud-green' %></td>
-                  <td style="width: 5%;"><%= link_to '削除', blog_path(blog), method: :delete, class: 'btn-crud-red' %></td>
-                <% end %>
- 	  	      </tr>
+ 　　  	    </tr>
             <% end %>
  	      </tbody>
         </table>
   	  </div>
 
+  	  <!-- スターランキング -->
   	  <div class="row-content">
   	  	<h3>スター</h3>
   	  	<table class="himaji">
@@ -151,7 +145,7 @@
               <th>花の名前</th>
               <th>タイトル</th>
               <th>名前</th>
-              <th>スタンプ</th>
+              <th>スター</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -175,16 +169,13 @@
                 <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
               </td>
               <td class="stamp_count" style="text-align: center;"><%= blog.stamps.count %></td>
-                <% if blog.user_id == current_user.id %>
-                  <td style="width: 5%;"><%= link_to '編集', edit_blog_path(blog), class: 'btn-crud-green' %></td>
-                  <td style="width: 5%;"><%= link_to '削除', blog_path(blog), method: :delete, class: 'btn-crud-red' %></td>
-                <% end %>
- 	  	      </tr>
+ 	  	    </tr>
             <% end %>
  	      </tbody>
         </table>
   	  </div>
 
+  	  <!-- ありがとうランキング -->
   	  <div class="row-content">
   	  	<h3>ありがとう</h3>
   	  	<table class="himaji">
@@ -194,7 +185,7 @@
               <th>花の名前</th>
               <th>タイトル</th>
               <th>名前</th>
-              <th>スタンプ</th>
+              <th>ありがとう</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -218,11 +209,7 @@
                 <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
               </td>
               <td class="stamp_count" style="text-align: center;"><%= blog.stamps.count %></td>
-                <% if blog.user_id == current_user.id %>
-                  <td style="width: 5%;"><%= link_to '編集', edit_blog_path(blog), class: 'btn-crud-green' %></td>
-                  <td style="width: 5%;"><%= link_to '削除', blog_path(blog), method: :delete, class: 'btn-crud-red' %></td>
-                <% end %>
- 	  	      </tr>
+　　　　　   </tr>
             <% end %>
  	      </tbody>
         </table>
