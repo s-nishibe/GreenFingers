@@ -38,7 +38,146 @@
               <td style="width: 15%;">
                 <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
               </td>
-              <td class="stamp_count" style="text-align: center;"><%= blog.stamps.where(stamp_img: 1).count %></td>
+              <td class="stamp_count" style="text-align: center;">
+              	<i class="fas fa-thumbs-up"></i>
+                <%= blog.stamps.where(stamp_img: 1).count %>
+              </td>
+ 	  	    </tr>
+            <% end %>
+ 	      </tbody>
+        </table>
+  	  </div>
+
+  	  <!-- なるほどランキング -->
+  	  <div class="row-content">
+  	  	<h3><i class="far fa-lightbulb"></i> なるほど <i class="far fa-lightbulb"></i></h3>
+  	  	<table class="himaji">
+          <tbody>
+            <% @useful.each.with_index(1) do |blog, i| %>
+  	        <tr>
+  	          <td>第<%= i %>位</td>
+   		      <td>
+                <%= link_to blog_path(blog) do %>
+                <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
+                <% end %>
+              </td>
+   		      <td>
+                <%= link_to blog.plant.name, plant_path(blog.plant_id), class: 'letter' %>
+              </td>
+   		      <td style="width: 35%;">
+                <%= link_to blog_path(blog), class: 'letter' do %>
+                <%= blog.title %>
+                <% end %>
+              </td>
+              <td style="width: 15%;">
+                <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
+              </td>
+              <td class="stamp_count" style="text-align: center;">
+              	<i class="fas fa-lightbulb"></i>
+              	<%= blog.stamps.where(stamp_img: 1).count %>
+              </td>
+ 	  	    </tr>
+            <% end %>
+ 	      </tbody>
+        </table>
+  	  </div>
+
+  	  <!-- おもしろい！ランキング -->
+  	  <div class="row-content">
+  	  	<h3><i class="far fa-grin-squint-tears"></i> おもしろい！ <i class="far fa-grin-squint-tears"></i></h3>
+  	  	<table class="himaji">
+          <tbody>
+            <% @funny.each.with_index(1) do |blog, i| %>
+  	        <tr>
+  	          <td>第<%= i %>位</td>
+   		      <td>
+                <%= link_to blog_path(blog) do %>
+                <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
+                <% end %>
+              </td>
+   		      <td>
+                <%= link_to blog.plant.name, plant_path(blog.plant_id), class: 'letter' %>
+              </td>
+   		      <td style="width: 35%;">
+                <%= link_to blog_path(blog), class: 'letter' do %>
+                <%= blog.title %>
+                <% end %>
+              </td>
+              <td style="width: 15%;">
+                <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
+              </td>
+              <td class="stamp_count" style="text-align: center;">
+              	<i class="fas fa-grin-squint-tears"></i>
+              	<%= blog.stamps.where(stamp_img: 1).count %>
+              </td>
+ 	  	    </tr>
+            <% end %>
+ 	      </tbody>
+        </table>
+  	  </div>
+
+  	  <!-- スターランキング -->
+  	  <div class="row-content">
+  	  	<h3><i class="far fa-star"></i> スター <i class="far fa-star"></i></h3>
+  	  	<table class="himaji">
+          <tbody>
+            <% @star.each.with_index(1) do |blog, i| %>
+  	        <tr>
+  	          <td>第<%= i %>位</td>
+   		      <td>
+                <%= link_to blog_path(blog) do %>
+                <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
+                <% end %>
+              </td>
+   		      <td>
+                <%= link_to blog.plant.name, plant_path(blog.plant_id), class: 'letter' %>
+              </td>
+   		      <td style="width: 35%;">
+                <%= link_to blog_path(blog), class: 'letter' do %>
+                <%= blog.title %>
+                <% end %>
+              </td>
+              <td style="width: 15%;">
+                <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
+              </td>
+              <td class="stamp_count" style="text-align: center;">
+              	<i class="fas fa-star"></i>
+              	<%= blog.stamps.where(stamp_img: 1).count %>
+              </td>
+ 	  	    </tr>
+            <% end %>
+ 	      </tbody>
+        </table>
+  	  </div>
+
+  	  <!-- ありがとうランキング -->
+  	  <div class="row-content">
+  	  	<h3><i class="far fa-smile"></i> ありがとう <i class="far fa-smile"></i></h3>
+  	  	<table class="himaji">
+          <tbody>
+            <% @thanks.each.with_index(1) do |blog, i| %>
+  	        <tr>
+  	          <td>第<%= i %>位</td>
+   		      <td>
+                <%= link_to blog_path(blog) do %>
+                <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
+                <% end %>
+              </td>
+   		      <td>
+                <%= link_to blog.plant.name, plant_path(blog.plant_id), class: 'letter' %>
+              </td>
+   		      <td style="width: 35%;">
+                <%= link_to blog_path(blog), class: 'letter' do %>
+                <%= blog.title %>
+                <% end %>
+              </td>
+              <td style="width: 15%;">
+                <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
+              </td>
+              <td class="stamp_count" style="text-align: center;">
+              	<i class="fas fa-smile"></i>
+              	<%= blog.stamps.where(stamp_img: 1).count %>
+              </td>
  	  	    </tr>
             <% end %>
  	      </tbody>

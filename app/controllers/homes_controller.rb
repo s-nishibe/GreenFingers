@@ -13,10 +13,10 @@ class HomesController < ApplicationController
 
   def rank
     @good = Blog.find(Stamp.where(stamp_img: 1).group(:blog_id).order('count(blog_id) desc').limit(5).pluck(:blog_id))
-    # @useful
-    # @funny
-    # @star
-    # @thanks
+    @useful = Blog.find(Stamp.where(stamp_img: 2).group(:blog_id).order('count(blog_id) desc').limit(5).pluck(:blog_id))
+    @funny = Blog.find(Stamp.where(stamp_img: 3).group(:blog_id).order('count(blog_id) desc').limit(5).pluck(:blog_id))
+    @star = Blog.find(Stamp.where(stamp_img: 4).group(:blog_id).order('count(blog_id) desc').limit(5).pluck(:blog_id))
+    @thanks = Blog.find(Stamp.where(stamp_img: 5).group(:blog_id).order('count(blog_id) desc').limit(5).pluck(:blog_id))
   end
 
   private
