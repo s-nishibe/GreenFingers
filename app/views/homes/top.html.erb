@@ -78,9 +78,9 @@
   var MySwiper = new Swiper ('.swiper-container', {
     speed: 500,
     effect: 'slide',
-    spaceBetween: 5,
+    spaceBetween: 0,
     loop: true,
-    slidesPerView: 4,
+    slidesPerView: 1,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -88,5 +88,11 @@
     autoplay: {
       delay: 1000,
     },
+    breakpoints: {
+      767: {
+        slidesPerView: 4,
+        spacebetween: 5
+      }
+    }
   });
 </script>
