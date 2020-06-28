@@ -1,27 +1,22 @@
-<%= render partial: 'layouts/header' %>
-<div class="container-fluid container-main">
-  <div class="row">
-  	<%= render partial: 'layouts/sidebar', user: current_user %>
-  	<div class="col col-md-10 col-body">
-  	  <%= render partial: 'layouts/flash' %>
+<div class="col col-md-10 col-body">
+  <%= render partial: 'layouts/flash' %>
 
-      <div>
-        <div>
-          <% if @model == 'user' %>
-            <h3>「<%= render 'search/word_list', positive_words: @positive_words %>」での会員検索結果です！（<%= @datas.count %>/<%= @datas_all.count %>件）</h3>
-            <%= render 'users/index', users: @datas %>
-          <% elsif @model == 'blog' %>
-            <h3>「<%= render 'search/word_list', positive_words: @positive_words %>」での日記検索結果です！（<%= @datas.count %>/<%= @datas_all.count %>件）</h3>
-            <%= render 'blogs/blogs_index', blogs: @datas %>
-          <% else @model == 'topic' %>
-            <h3>「<%= render 'search/word_list', positive_words: @positive_words %>」でのトピック検索結果です！（<%= @datas.count %>/<%= @datas_all.count %>件）</h3>
-            <%= render 'topics/topics_index', topics: @datas %>
-          <% end %>
-        </div>
+  <div>
+    <div>
+      <% if @model == 'user' %>
+      <h3>「<%= render 'search/word_list', positive_words: @positive_words %>」での会員検索結果です！（<%= @datas.count %>/<%= @datas_all.count %>件）</h3>
+      <%= render 'users/index', users: @datas %>
+      <% elsif @model == 'blog' %>
+      <h3>「<%= render 'search/word_list', positive_words: @positive_words %>」での日記検索結果です！（<%= @datas.count %>/<%= @datas_all.count %>件）</h3>
+      <%= render 'blogs/blogs_index', blogs: @datas %>
+      <% else @model == 'topic' %>
+      <h3>「<%= render 'search/word_list', positive_words: @positive_words %>」でのトピック検索結果です！（<%= @datas.count %>/<%= @datas_all.count %>件）</h3>
+      <%= render 'topics/topics_index', topics: @datas %>
+      <% end %>
     </div>
+  </div>
 
-    <div class="offset-3 kaminari">
-      <%= paginate @datas, class: 'paginate' %>
-    </div>
+  <div class="offset-3 kaminari">
+    <%= paginate @datas, class: 'paginate' %>
   </div>
 </div>
