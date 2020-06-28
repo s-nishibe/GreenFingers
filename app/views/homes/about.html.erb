@@ -1,78 +1,67 @@
-<%= render partial: 'layouts/header' %>
-<div class="container-fluid container-main">
-  <div class="row">
+<div class="col col-md-10 col-body">
+  <%= render partial: 'layouts/flash' %>
 
-  	<% if user_signed_in? %>
-  	<%= render partial: 'layouts/sidebar', user: @user %>
-  	<% end %>
+  <div style="text-align: center;">
+    <h1>GreenFingersへようこそ！</h1>
+    <p>
+      GreenFingersとは、イギリスの慣用句で「花を育てるのが上手な人」の意。<br>
+      当サイトでは、そんな園芸好きな人たちが集まって、<br>
+      育て方についての情報交換や、花の成長記録を公開することができます。<br>
+      Twitterアカウントをお持ちの方は、面倒な登録手続きなしですぐにご利用いただけます！<br>
+      あなたも、GreenFingersの仲間になりませんか？
+    </p>
+  </div>
 
-  	<div class="col col-md-10 col-body">
-  	  <%= render partial: 'layouts/flash' %>
+  <div>
+    <h3>主な機能</h3>
+    <div class="container-fluid">
 
-    	<div style="text-align: center;">
-    	  <h1>GreenFingersへようこそ！</h1>
-    	  <p>
-  	    	GreenFingersとは、イギリスの慣用句で「花を育てるのが上手な人」の意。<br>
-  	    	当サイトでは、そんな園芸好きな人たちが集まって、<br>
-  	      育て方についての情報交換や、花の成長記録を公開することができます。<br>
-  	      Twitterアカウントをお持ちの方は、面倒な登録手続きなしですぐにご利用いただけます！<br>
-  	      あなたも、GreenFingersの仲間になりませんか？
-  	    </p>
-  	  </div>
+      <div class="row">
+        <div class="col col-xs-4 about-content">
+          <h4>Twitter認証</h4>
+          <%= image_tag 'about/i-tweet.png', size: '200x200' %>
+          <p>Twitterアカウントでログインすれば、会員手続きは一切不要、ログインの度に
+          パスワードを入力する手間からも解放されます！</p>
+        </div>
 
-    	<div>
-    	  <h3>主な機能</h3>
-    	  <div class="container-fluid">
+        <div class="col col-xs-4 about-content">
+          <h4>日記</h4>
+          <%= image_tag 'about/i-diary.png', size: '200x200' %>
+          <p>花の成長記録をつけることができます。きれいに咲かせた花の写真を誰かが見てくれることで、
+          よりモチベーションが上がるかも？</p>
+        </div>
 
-      	  <div class="row">
-        	  <div class="col col-xs-4 about-content">
-        	  	<h4>Twitter認証</h4>
-              <%= image_tag 'about/i-tweet.png', size: '200x200' %>
-        	  	<p>Twitterアカウントでログインすれば、会員手続きは一切不要、ログインの度に
-  	            パスワードを入力する手間からも解放されます！</p>
-        	  </div>
+        <div class="col col-xs-4 about-content">
+          <h4>花の広場</h4>
+          <%= image_tag 'about/i-topic.png', size: '200x200' %>
+          <p>花を育てていて困ったことがあったら、ここでトピックを立てて皆に聞いてみましょう。
+          もちろんその他の雑談も大歓迎です！</p>
+        </div>
+      </div>
 
-  	        <div class="col col-xs-4 about-content">
-    	    	  <h4>日記</h4>
-              <%= image_tag 'about/i-diary.png', size: '200x200' %>
-    	      	<p>花の成長記録をつけることができます。きれいに咲かせた花の写真を誰かが見てくれることで、
-  	            よりモチベーションが上がるかも？</p>
-      	    </div>
+      <div class="row">
+        <div class="col col-xs-4 about-content">
+          <h4>フォロー機能</h4>
+          <%= image_tag 'about/i-follow.png', size: '200x200' %>
+          <p>気になる日記・トピックを書いている人をフォローすることができます。フォローした人の記事はあなたのTLに表示されるため、
+          新着記事を読み逃す心配はありません！</p>
+        </div>
 
-    	      <div class="col col-xs-4 about-content">
-    	    	  <h4>花の広場</h4>
-              <%= image_tag 'about/i-topic.png', size: '200x200' %>
-    	      	<p>花を育てていて困ったことがあったら、ここでトピックを立てて皆に聞いてみましょう。
-  	           	もちろんその他の雑談も大歓迎です！</p>
-    	      </div>
-      	  </div>
+        <div class="col col-xs-4 about-content">
+          <h4>コメント</h4>
+          <%= image_tag 'about/i-comment.png', size: '200x200' %>
+          <p>参考になった日記や面白いトピックに、コメントを返してみましょう。ajax通信でサクサク快適にやりとりできます！</p>
+        </div>
 
-    	    <div class="row">
-  	        <div class="col col-xs-4 about-content">
-      	    	<h4>フォロー機能</h4>
-              <%= image_tag 'about/i-follow.png', size: '200x200' %>
-      	    	<p>気になる日記・トピックを書いている人をフォローすることができます。フォローした人の記事はあなたのTLに表示されるため、
-         	      新着記事を読み逃す心配はありません！</p>
-      	    </div>
-
-  	        <div class="col col-xs-4 about-content">
-      	  	  <h4>コメント</h4>
-              <%= image_tag 'about/i-comment.png', size: '200x200' %>
-       	    	<p>参考になった日記や面白いトピックに、コメントを返してみましょう。ajax通信でサクサク快適にやりとりできます！</p>
-  	        </div>
-
-  	        <div class="col col-xs-4 about-content">
-  	      	  <h4>スタンプ</h4>
-              <%= image_tag 'about/i-stamp.png', size: '200x200' %>
-  	        	<p>スタンプは全5種類。沢山スタンプを集めた上位5位までの人気記事は、
-        	    	サイトTOP画面に表示されます！</p>
-  	        </div>
-          </div>
-
-  	    </div>
-    	</div>
+        <div class="col col-xs-4 about-content">
+          <h4>スタンプ</h4>
+          <%= image_tag 'about/i-stamp.png', size: '200x200' %>
+          <p>スタンプは全5種類。沢山スタンプを集めた上位5位までの人気記事は、
+          サイトTOP画面に表示されます！</p>
+        </div>
+      </div>
 
     </div>
   </div>
-</div>
 
+</div>
