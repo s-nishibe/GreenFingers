@@ -1,32 +1,22 @@
-<%= render partial: 'layouts/header' %>
-<div class="container-fluid container-main">
-  <div class="row">
-    <% if user_signed_in? %>
-  	<%= render partial: 'layouts/sidebar', user: @user %>
-    <% end %>
+<div class="col col-md-10 col-body">
+  <%= render partial: 'layouts/flash' %>
 
-  	<div class="col col-md-10 col-body">
-    	<%= render partial: 'layouts/flash' %>
+  <% if params[:sort] == 'all_topics' %>
+  <h2>花の広場（全トピック一覧、<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
+  <% elsif params[:sort] == 'user_topics' %>
+  <h2><%= @user.name %>さんのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
+  <% elsif params[:sort] == 'category' %>
+  <h2>カテゴリ「<%= render 'topics/category', category: @category %>」のトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
+  <% elsif params[:sort] == 'resolved' %>
+  <h2>解決済みのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
+  <% else params[:sort] == 'unsolved' %>
+  <h2>未解決のトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
+  <% end %>
 
-    	<% if params[:sort] == 'all_topics' %>
-    	  <h2>花の広場（全トピック一覧、<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
-    	<% elsif params[:sort] == 'user_topics' %>
-  	    <h2><%= @user.name %>さんのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
-      <% elsif params[:sort] == 'category' %>
-        <h2>カテゴリ「<%= render 'topics/category', category: @category %>」のトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
-  	  <% elsif params[:sort] == 'resolved' %>
-        <h2>解決済みのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
-      <% else params[:sort] == 'unsolved' %>
-        <h2>未解決のトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
-      <% end %>
-
-      <div>
-  	    <%= render 'topics_index', topics: @topics %>
-        <div class="offset-3 kaminari">
-          <%= paginate @topics, class: 'paginate' %>
-        </div>
-      </div>
+  <div>
+    <%= render 'topics_index', topics: @topics %>
+    <div class="offset-3 kaminari">
+      <%= paginate @topics, class: 'paginate' %>
     </div>
-
   </div>
 </div>

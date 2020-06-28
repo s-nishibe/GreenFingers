@@ -1,16 +1,10 @@
-<%= render partial: 'layouts/header' %>
-<div class="container-fluid container-main">
-  <div class="row">
-  	<%= render partial: 'layouts/sidebar', user: @user %>
-  	<div class="col col-md-10 col-body">
+<div class="col col-md-10 col-body">
 
- 	<%= render partial: 'layouts/flash' %>
+	<%= render partial: 'layouts/flash' %>
 
- 	<div class="topic_form">
- 	  <h2>新しくトピックを立てる</h2>
- 	  <%= render 'topics/form', topic: @topic %>
- 	</div>
+	<div class="topic_form">
+		<h2>新しくトピックを立てる</h2>
+		<%= render 'topics/form', topic: @topic %>
+	</div>
 
-    </div>
-  </div>
 </div>
