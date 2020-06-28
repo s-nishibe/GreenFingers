@@ -1,6 +1,11 @@
-<%= form_with(url: search_path, method: :get, local: true) do |f| %>
-  <%= text_field_tag 'search[word]', '', {id: 'search_word'} %>
-  <%= select_tag 'search[model]', options_for_select({"会員": "user", "日記": "blog", "トピ": "topic"}), id: 'search_model' %>
-  <%= f.submit '検索', class: 'btn-sm btn-secondary himaji' %>
-<% end %>
-
+<div class="search-form clearfix">
+  <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+    <div class="search-content">
+      <%= text_field_tag 'search[word]', '', {id: 'search_word'} %>
+    </div>
+    <div class="search-content">
+      <%= select_tag 'search[model]', options_for_select({"会員": "user", "日記": "blog", "トピ": "topic"}), id: 'search_model' %>
+      <%= f.submit '検索', class: 'btn-sm btn-secondary himaji' %>
+    </div>
+  <% end %>
+</div>
