@@ -1,7 +1,3 @@
-<%= render partial: 'layouts/header' %>
-<div class="container-fluid container-main">
-  <div class="row">
-
   	<div class="col-md-10 col-body">
   	  <%= render partial: 'layouts/flash' %>
 
@@ -68,13 +64,6 @@
         </div>
   	  </div>
     </div>
-
-        <% if user_signed_in? %>
-      <%= render partial: 'layouts/sidebar', user: @user %>
-    <% end %>
-
-  </div>
-</div>
 
 <!-- swiper初期化・各種設定 -->
 <script type="text/javascript">

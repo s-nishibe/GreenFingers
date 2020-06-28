@@ -19,10 +19,16 @@
   </head>
 
   <body class="himaji letter" style="background-color: #feffe4;">
-    <%= yield %>
-    <%= render partial: 'layouts/footer' %>
+    <%= render partial: 'layouts/header' %>
+    <div class="container-fluid container-main">
+      <div class="row">
+        <%= yield %>
+        <%= render 'layouts/sidebar' %>
+        <%= render partial: 'layouts/footer' %>
+      </div>
+    </div>
 
-    <!-- twitter シェアボタン -->
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <!-- twitter シェアボタン -->
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </body>
 </html>
