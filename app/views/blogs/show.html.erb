@@ -1,81 +1,76 @@
-<%= render partial: 'layouts/header' %>
-<div class="container-fluid container-main">
-  <div class="row">
-  	<%= render partial: 'layouts/sidebar', user: @user %>
-  	<div class="col col-md-10 col-body">
-      <%= render partial: 'layouts/flash' %>
-      <div>
+<div class="col col-md-10 col-body">
+  <%= render partial: 'layouts/flash' %>
+  <div>
 
-        <!-- 日記の本文 -->
+    <!-- 日記の本文 -->
+    <div class="row">
+      <div class="col-3">
+        <%= attachment_image_tag(@blog, :eyecatch_img, fallback: 'no_img.jpg', size: '220x220') %><br>
+      </div>
+
+      <div class="col-9">
         <div class="row">
-          <div class="col-3">
-          <%= attachment_image_tag(@blog, :eyecatch_img, fallback: 'no_img.jpg', size: '220x220') %><br>
-          </div>
-
-          <div class="col-9">
-            <div class="row">
-              <h5>
-                <%= simple_time(@blog[:updated_at]) %>
-                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
-              </h5>
-            </div>
-
-            <div class="row">
-              <h3 class="himaji"><%= @blog.title %></h3>
-            </div>
-
-            <div class="row">
-              <div class="col-7">
-                <p><%= @blog.plant.name %>(種別：<%= plant_kind(@blog.plant) %>)</p>
-                <p><%= weather_info(@blog) %></p>
-                <p class="himaji">タグ：
-                <%= render 'tag_list', tag_list: @blog.tag_list %></p>
-              </div>
-              <div class="col-5">
-              <% if @blog.user_id == current_user.id %>
-                <%= link_to '編集', edit_blog_path(@blog), class: 'btn-green btn-block w-50' %>
-                <%= link_to '削除', blog_path(@blog), method: :delete, class: 'btn-crud-red btn-block w-50', id: 'delete_blog' %>
-              <% end %>
-              </div>
-            </div>
-          </div>
+          <h5>
+            <%= simple_time(@blog[:updated_at]) %>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+          </h5>
         </div>
+      </div>
 
-        <div style="padding-top: 30px;">
-          <%= raw @blog.body %>
-          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
-        </div>
+      <div class="row">
+        <h3 class="himaji"><%= @blog.title %></h3>
+      </div>
 
-        <!-- 公開された場合のみスタンプ・コメント欄表示 -->
-        <% if @blog.status == true %>
-          <!-- スタンプ -->
-          <div id="stamps-<%= @blog.id %>" class="stamps clearfix" style="padding-top: 30px;">
-            <%= render 'stamps/stamp', stamp: @stamp %>
+      <div class="row">
+        <div class="col-7">
+          <p><%= @blog.plant.name %>(種別：<%= plant_kind(@blog.plant) %>)</p>
+          <p><%= weather_info(@blog) %></p>
+          <p class="himaji">タグ：
+            <%= render 'tag_list', tag_list: @blog.tag_list %></p>
           </div>
-
-          <!-- コメント一覧 -->
-          <div id="comments_for_blog-<%= @blog.id %>" class="himaji" style="padding-top: 30px;">
-            <h4>コメント</h4>
-            <%= render 'blog_comments/bc_index', blog_comments: @blog_comments %>
-          </div>
-
-          <!-- 新規コメント -->
-          <div class="blog_comment_form" style="padding-top: 30px;">
-            <%= form_with(model: @blog_comment, url: blog_blog_comments_path(@blog), remote: true) do |f| %>
-              <%= f.label :comment, '新規コメント', for: 'blog_comment_text', style: 'font-size: 32px;' %>
-              <div class="clearfix">
-                <%= attachment_image_tag(current_user, :profile_img, fallback: 'no_img.jpg', size: '50x50', style: 'float: left;') %>
-                <p style="float: left; margin-left: 20px; padding-top: 20px;"><%= current_user.name %></p>
-                <div style="float: left; margin-left: 20px; padding-top: 15px;">
-                  <%= f.attachment_field :image %>
-                </div>
-              </div>
-              <%= f.text_area :comment, class: 'form-control', placeholder: '最大500文字', size: '90x5', id: 'blog_comment_text' %>
-              <%= f.submit '送信！', class: 'btn-sm btn-crud-green w-25 offset-9', style: 'margin-top: 10px;' %>
+          <div class="col-5">
+            <% if @blog.user_id == current_user.id %>
+            <%= link_to '編集', edit_blog_path(@blog), class: 'btn-green btn-block w-50' %>
+            <%= link_to '削除', blog_path(@blog), method: :delete, class: 'btn-crud-red btn-block w-50', id: 'delete_blog' %>
             <% end %>
           </div>
-        <% end %>
-  	  </div>
+        </div>
+      </div>
     </div>
+
+    <div style="padding-top: 30px;">
+      <%= raw @blog.body %>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+    </div>
+
+    <!-- 公開された場合のみスタンプ・コメント欄表示 -->
+    <% if @blog.status == true %>
+    <!-- スタンプ -->
+    <div id="stamps-<%= @blog.id %>" class="stamps clearfix" style="padding-top: 30px;">
+      <%= render 'stamps/stamp', stamp: @stamp %>
+    </div>
+
+    <!-- コメント一覧 -->
+    <div id="comments_for_blog-<%= @blog.id %>" class="himaji" style="padding-top: 30px;">
+      <h4>コメント</h4>
+      <%= render 'blog_comments/bc_index', blog_comments: @blog_comments %>
+    </div>
+
+    <!-- 新規コメント -->
+    <div class="blog_comment_form" style="padding-top: 30px;">
+      <%= form_with(model: @blog_comment, url: blog_blog_comments_path(@blog), remote: true) do |f| %>
+      <%= f.label :comment, '新規コメント', for: 'blog_comment_text', style: 'font-size: 32px;' %>
+      <div class="clearfix">
+        <%= attachment_image_tag(current_user, :profile_img, fallback: 'no_img.jpg', size: '50x50', style: 'float: left;') %>
+        <p style="float: left; margin-left: 20px; padding-top: 20px;"><%= current_user.name %></p>
+        <div style="float: left; margin-left: 20px; padding-top: 15px;">
+          <%= f.attachment_field :image %>
+        </div>
+      </div>
+      <%= f.text_area :comment, class: 'form-control', placeholder: '最大500文字', size: '90x5', id: 'blog_comment_text' %>
+      <%= f.submit '送信！', class: 'btn-sm btn-crud-green w-25 offset-9', style: 'margin-top: 10px;' %>
+      <% end %>
+    </div>
+    <% end %>
   </div>
 </div>

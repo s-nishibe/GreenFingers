@@ -1,69 +1,69 @@
-  	<div class="col-md-10 col-body">
-  	  <%= render partial: 'layouts/flash' %>
+<div class="col-md-10 col-body">
+ <%= render partial: 'layouts/flash' %>
 
-      <div class="row-content" style="text-align: center;">
-        <p>花が好きな人のSNSサイト</p>
-        <h1>GreenFingers</h1>
-        <%= link_to '＞＞ランキングを見る＜＜', homes_rank_path, class: 'letter' %>
+ <div class="row-content" style="text-align: center;">
+  <p>花が好きな人のSNSサイト</p>
+  <h1>GreenFingers</h1>
+  <%= link_to '＞＞ランキングを見る＜＜', homes_rank_path, class: 'letter' %>
+</div>
+
+<!-- 新着記事swiper -->
+<div class="row-content">
+  <h3>新着記事</h3>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @new_blogs.each do |blog| %>
+      <div class="swiper-slide">
+        <%= link_to blog_path(blog) do %>
+        <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '200x200') %>
+        <p><%= blog.title %></p>
+        <% end %>
       </div>
-
-      <!-- 新着記事swiper -->
-  	  <div class="row-content">
-        <h3>新着記事</h3>
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <% @new_blogs.each do |blog| %>
-              <div class="swiper-slide">
-                <%= link_to blog_path(blog) do %>
-                <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '200x200') %>
-                <p><%= blog.title %></p>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-  	  </div>
-
-      <!-- 注目記事swiper -->
-  	  <div class="row-content">
-        <h3>注目記事</h3>
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <% @featured_blogs.each do |blog| %>
-              <div class="swiper-slide">
-                <%= link_to blog_path(blog) do %>
-                <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '200x200') %>
-                <p><%= blog.title %></p>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-  	  </div>
-
-      <!-- Topicsのswiper -->
-  	  <div class="row-content">
-        <h3>未解決の質問</h3>
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <% @topics.each do |topic| %>
-              <div class="swiper-slide">
-                <%= link_to topic_path(topic) do %>
-                <%= attachment_image_tag(topic, :eyecatch_img, fallback: 'no_img.jpg', size: '200x200') %>
-                <p><%= topic.title %></p>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-  	  </div>
+      <% end %>
     </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+
+<!-- 注目記事swiper -->
+<div class="row-content">
+  <h3>注目記事</h3>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @featured_blogs.each do |blog| %>
+      <div class="swiper-slide">
+        <%= link_to blog_path(blog) do %>
+        <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '200x200') %>
+        <p><%= blog.title %></p>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+
+<!-- Topicsのswiper -->
+<div class="row-content">
+  <h3>未解決の質問</h3>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @topics.each do |topic| %>
+      <div class="swiper-slide">
+        <%= link_to topic_path(topic) do %>
+        <%= attachment_image_tag(topic, :eyecatch_img, fallback: 'no_img.jpg', size: '200x200') %>
+        <p><%= topic.title %></p>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+</div>
 
 <!-- swiper初期化・各種設定 -->
 <script type="text/javascript">
