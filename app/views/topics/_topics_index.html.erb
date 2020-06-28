@@ -17,7 +17,7 @@
 	      <% end %>
 	    </td>
 		<td style="width: 10%;">
-		  <% if topic.user_id == current_user.id %>
+		  <% if user_signed_in? && topic.user_id == current_user.id %>
 		    <span id="status_btn-<%= topic.id %>">
             <%= render 'topics/status_btn', topic: topic %>
             </span>

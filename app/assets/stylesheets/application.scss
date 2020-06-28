@@ -109,12 +109,13 @@ p {
 }
 
 /* 全体のレイアウト */
-header {
+.navbar-toggler {
+  border-color: #2eb872;
   background-color: #2eb872;
 }
 
-.container-main {
-  padding-top: 130px;
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(254,255,228)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .col-body {
