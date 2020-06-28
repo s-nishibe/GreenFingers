@@ -1,38 +1,32 @@
-<%= render partial: 'layouts/header' %>
-<div class="container-fluid container-main">
-  <div class="row">
-  	<%= render partial: 'layouts/sidebar', user: @user %>
-  	<div class="col col-md-10 col-body">
-  	  <%= render partial: 'layouts/flash' %>
+<div class="col col-md-10 col-body">
+  <%= render partial: 'layouts/flash' %>
 
-      <div>
-        <h2>
-          <%= @plant.name %>
-          <% if @plant.blogs.exists? %>
-            <% if @plant.blogs.limit(3).average(:score) >= 0.6 %>
-              <i class="far fa-laugh-beam" style="color: #ee827c;"></i>
-            <% elsif @plant.blogs.limit(3).average(:score) >= -0.6 %>
-              <i class="far fa-smile" style="color: #fdd35c;"></i>
-            <% else @plant.blogs.limit(3).average(:score) <= -0.6 %>
-              <i class="far fa-frown" style="color: #008db7;"></i>
-            <% end %>
-          <% end %>
-        </h2>
-        <p>種別：<%= plant_kind(@plant) %></p>
-        <p>メモ：<%= @plant.memo %></p>
-      </div>
+  <div>
+    <h2>
+      <%= @plant.name %>
+      <% if @plant.blogs.exists? %>
+      <% if @plant.blogs.limit(3).average(:score) >= 0.6 %>
+      <i class="far fa-laugh-beam" style="color: #ee827c;"></i>
+      <% elsif @plant.blogs.limit(3).average(:score) >= -0.6 %>
+      <i class="far fa-smile" style="color: #fdd35c;"></i>
+      <% else @plant.blogs.limit(3).average(:score) <= -0.6 %>
+      <i class="far fa-frown" style="color: #008db7;"></i>
+      <% end %>
+      <% end %>
+    </h2>
+    <p>種別：<%= plant_kind(@plant) %></p>
+    <p>メモ：<%= @plant.memo %></p>
+  </div>
 
-      <div style="padding-top: 50px;">
-        <h3><%= @plant.name %> についての日記 <%= @blogs_t.count %>件</h3>
-          <div>
-            <%= render 'blogs/blogs_index', blogs: @blogs %>
-          </div>
-          <div class="offset-3 kaminari">
-            <%= paginate @blogs, class: 'paginate' %>
-          </div>
-      </div>
-
+  <div style="padding-top: 50px;">
+    <h3><%= @plant.name %> についての日記 <%= @blogs_t.count %>件</h3>
+    <div>
+      <%= render 'blogs/blogs_index', blogs: @blogs %>
+    </div>
+    <div class="offset-3 kaminari">
+      <%= paginate @blogs, class: 'paginate' %>
     </div>
   </div>
+
 </div>
 
