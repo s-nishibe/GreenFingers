@@ -114,14 +114,21 @@ p {
   padding: 50px 50px 30px;
 }
 
-.tablea {
-  padding-top: 50px;
-}
-
 footer {
   background-color: #2eb872;
   height: 100px;
   margin-top: 10px;
+}
+
+.footer-message {
+  padding-top: 25px;
+  margin: 0 auto;
+  text-align: center;
+  color: #feffe4;
+}
+
+.footer-message-col {
+  display: inline-block;
 }
 
 .letter {
