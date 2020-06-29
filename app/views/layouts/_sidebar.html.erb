@@ -1,6 +1,5 @@
 <% if user_signed_in? %>
-<div class="col-md-2 himaji letter">
-  <div id="sidebar" class="col-12">
+<div id="sidebar" class="col-lg-2">
   <table>
   	<tbody>
       <tr>
@@ -54,6 +53,5 @@
       <%= link_to 'この人のトピ', topics_path(id: @user.id, sort: 'user_topics'), class: 'btn-green btn-block' %>
   </div>
   <% end %>
-  </div>
 </div>
 <% end %>
