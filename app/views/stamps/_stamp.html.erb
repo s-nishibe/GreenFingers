@@ -1,4 +1,4 @@
-<h4 class="himaji">スタンプ合計<%= @blog.stamps.count %>個</h4>
+<h4 class="himaji">スタンプ 合計<%= @blog.stamps.count %>個</h4>
 <!--^^-------------------------------- いいね -------------------------------------->
 <% unless Stamp.where(user_id: current_user.id, blog_id: @blog.id, stamp_img: 1).exists? %>
   <%= link_to blog_stamps_path(blog_id: @blog.id, stamp_img: 1), method: :post, remote: true, style: 'color: #664539;', id: 'stamp_good' do %>
