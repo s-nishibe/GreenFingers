@@ -1,39 +1,46 @@
-<table class="himaji">
-  <thead>
-	  <tr>
-      <th></th>
-      <th>花の名前</th>
-      <th>タイトル</th>
-      <th>名前</th>
-      <th>スタンプ</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% blogs.each do |blog| %>
-  	  <tr>
-   		  <td>
+<div class="container-fluid col-body">
+    <% blogs.each.with_index(1) do |blog, i| %>
+    <div class="container-fluid" style="margin-top: 30px;">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="row">
           <%= link_to blog_path(blog) do %>
-          <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '50x50') %>
+          <%= attachment_image_tag(blog, :eyecatch_img, fallback: 'no_img.jpg', size: '80x80') %>
           <% end %>
-        </td>
-   		  <td>
-          <%= link_to blog.plant.name, plant_path(blog.plant_id), class: 'letter' %>
-        </td>
-   		  <td style="width: 35%;">
-          <%= link_to blog_path(blog), class: 'letter' do %>
-          <%= blog.title %>
-          <% end %>
-        </td>
-        <td style="width: 15%;">
-          <%= link_to blog.user.name, user_path(blog.user_id), class: 'letter' %>
-        </td>
-        <td class="stamp_count" style="text-align: center;"><%= blog.stamps.count %></td>
-        <% if blog.user_id == current_user.id %>
-          <td style="width: 5%;"><%= link_to '編集', edit_blog_path(blog), class: 'btn-crud-green' %></td>
-          <td style="width: 5%;"><%= link_to '削除', blog_path(blog), method: :delete, class: 'btn-crud-red' %></td>
-        <% end %>
- 	  	</tr>
+          </div>
+          <div class="row">
+            <% if blog.user_id == current_user.id %>
+            <%= link_to '編集', edit_blog_path(blog), style: 'color: #2eb872;' %>
+            <%= link_to '削除', blog_path(blog), method: :delete, style: 'color: #F94659;' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="row">
+            <%= link_to blog_path(blog), class: 'letter' do %>
+            <h4><%= blog.title %></h4>
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+            <div class="row">
+              <%= link_to plant_path(blog.plant_id), class: 'letter' do %>
+              <i class="fas fa-seedling"></i> <%= blog.plant.name %>
+              <% end %>
+            </div>
+            <div class="row">
+              <%= link_to user_path(blog.user_id), class: 'letter' do %>
+              <i class="fas fa-pen-nib"></i> <%= blog.user.name %>
+              <% end %>
+            </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="row">スタンプ：<%= blog.stamps.count %></div>
+              <div class="row">コメント：<%= blog.blog_comments.count %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <% end %>
- 	</tbody>
-</table>
+  </div>

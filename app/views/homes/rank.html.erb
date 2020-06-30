@@ -9,7 +9,7 @@
   <!-- いいねランキング -->
   <div class="container col-body">
     <h3><i class="far fa-thumbs-up"></i> いいね <i class="far fa-thumbs-up"></i></h3>
-  <% @good.each.with_index(1) do |blog, i| %>
+    <% @good.each.with_index(1) do |blog, i| %>
     <div class="container" style="margin-top: 30px;">
       <div class="row">
         <span>第<%= i %>位</span>
@@ -45,13 +45,13 @@
         </div>
       </div>
     </div>
-  <% end %>
+    <% end %>
   </div>
 
   <!-- なるほどランキング -->
   <div class="container col-body">
     <h3><i class="far fa-lightbulb"></i> なるほど <i class="far fa-lightbulb"></i></h3>
-  <% @useful.each.with_index(1) do |blog, i| %>
+    <% @useful.each.with_index(1) do |blog, i| %>
     <div class="container" style="margin-top: 30px;">
       <div class="row">
         <span>第<%= i %>位</span>
@@ -87,13 +87,13 @@
         </div>
       </div>
     </div>
-  <% end %>
+    <% end %>
   </div>
 
   <!-- おもしろい！ランキング -->
   <div class="container col-body">
     <h3><i class="far fa-grin-squint-tears"></i> おもしろい！ <i class="far fa-grin-squint-tears"></i></h3>
-  <% @funny.each.with_index(1) do |blog, i| %>
+    <% @funny.each.with_index(1) do |blog, i| %>
     <div class="container" style="margin-top: 30px;">
       <div class="row">
         <span>第<%= i %>位</span>
@@ -129,13 +129,13 @@
         </div>
       </div>
     </div>
-  <% end %>
+    <% end %>
   </div>
 
   <!-- スターランキング -->
   <div class="container col-body">
     <h3><i class="far fa-star"></i> スター <i class="far fa-star"></i></h3>
-  <% @star.each.with_index(1) do |blog, i| %>
+    <% @star.each.with_index(1) do |blog, i| %>
     <div class="container" style="margin-top: 30px;">
       <div class="row">
         <span>第<%= i %>位</span>
@@ -171,13 +171,13 @@
         </div>
       </div>
     </div>
-  <% end %>
+    <% end %>
   </div>
 
   <!-- ありがとうランキング -->
   <div class="container col-body">
     <h3><i class="far fa-smile"></i> ありがとう <i class="far fa-smile"></i></h3>
-  <% @thanks.each.with_index(1) do |blog, i| %>
+    <% @thanks.each.with_index(1) do |blog, i| %>
     <div class="container" style="margin-top: 30px;">
       <div class="row">
         <span>第<%= i %>位</span>
@@ -213,7 +213,7 @@
         </div>
       </div>
     </div>
-  <% end %>
+    <% end %>
   </div>
 
 </div>
