@@ -1,63 +1,59 @@
-<div class="col col-md-10 col-body">
+<div class="col-lg-10 col-body">
   <%= render partial: 'layouts/flash' %>
-  <div>
 
-    <!-- 日記の本文 -->
+    <!-- 日記の情報 -->
     <div class="row">
-      <div class="col-3">
+      <div class="col-md-3">
         <%= attachment_image_tag(@blog, :eyecatch_img, fallback: 'no_img.jpg', size: '220x220') %><br>
       </div>
-
-      <div class="col-9">
-        <div class="row">
-          <h5>
-            <%= simple_time(@blog[:updated_at]) %>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
-          </h5>
-        </div>
-      </div>
-
-      <div class="row">
-        <h3 class="himaji"><%= @blog.title %></h3>
-      </div>
-
-      <div class="row">
-        <div class="col-7">
-          <p><%= @blog.plant.name %>(種別：<%= plant_kind(@blog.plant) %>)</p>
+      <div class="col-md-5">
+        <p><%= @blog.plant.name %>(種別：<%= plant_kind(@blog.plant) %>)</p>
           <p><%= weather_info(@blog) %></p>
           <p class="himaji">タグ：
             <%= render 'tag_list', tag_list: @blog.tag_list %></p>
-          </div>
-          <div class="col-5">
-            <% if @blog.user_id == current_user.id %>
+      </div>
+      <div class="col-md-4">
+        <% if @blog.user_id == current_user.id %>
             <%= link_to '編集', edit_blog_path(@blog), class: 'btn-green btn-block w-50' %>
             <%= link_to '削除', blog_path(@blog), method: :delete, class: 'btn-crud-red btn-block w-50', id: 'delete_blog' %>
             <% end %>
-          </div>
-        </div>
       </div>
     </div>
 
-    <div style="padding-top: 30px;">
+      <div class="row">
+        <div class="col-body">
+        <h5>
+            <%= simple_time(@blog[:updated_at]) %>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+          </h5>
+          <h3 class="himaji"><%= @blog.title %></h3>
+        </div>
+      </div>
+
+    <!-- 日記の本文 -->
+    <div class="row col-body">
       <%= raw @blog.body %>
+    </div>
+
+    <div class="row col-body">
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
     </div>
 
     <!-- 公開された場合のみスタンプ・コメント欄表示 -->
     <% if @blog.status == true %>
     <!-- スタンプ -->
-    <div id="stamps-<%= @blog.id %>" class="stamps clearfix" style="padding-top: 30px;">
+    <div id="stamps-<%= @blog.id %>" class="stamps clearfix row col-body" style="padding-top: 30px;">
       <%= render 'stamps/stamp', stamp: @stamp %>
     </div>
 
     <!-- コメント一覧 -->
-    <div id="comments_for_blog-<%= @blog.id %>" class="himaji" style="padding-top: 30px;">
+    <div id="comments_for_blog-<%= @blog.id %>" class="himaji row col-body" style="padding-top: 30px;">
       <h4>コメント</h4>
       <%= render 'blog_comments/bc_index', blog_comments: @blog_comments %>
     </div>
 
     <!-- 新規コメント -->
-    <div class="blog_comment_form" style="padding-top: 30px;">
+    <div class="blog_comment_form row col-body" style="padding-top: 30px;">
       <%= form_with(model: @blog_comment, url: blog_blog_comments_path(@blog), remote: true) do |f| %>
       <%= f.label :comment, '新規コメント', for: 'blog_comment_text', style: 'font-size: 32px;' %>
       <div class="clearfix">
@@ -72,5 +68,4 @@
       <% end %>
     </div>
     <% end %>
-  </div>
 </div>
