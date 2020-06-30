@@ -1,3 +1,54 @@
+<div class="container-fluid space">
+    <% topics.each.with_index(1) do |topic| %>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-sm-3">
+      	<div class="row">
+      		<%= link_to topic_path(topic) do %>
+	      <%= attachment_image_tag(topic, :eyecatch_img, fallback: 'no_img.jpg', size: '80x80') %>
+	      <% end %>
+      	</div>
+      	<div class="row">
+      	  <% if topic.user_id == current_user.id %>
+            <%= link_to '編集', edit_topic_path(topic), style: 'color: #2eb872;' %>
+            <%= link_to '削除', topic_path(topic), method: :delete, style: 'color: #F94659;' %>
+            <% end %>
+      	</div>
+      </div>
+      <div class="col-sm-6">
+      	<div class="row"><h4><%= topic.title %></h4></div>
+      	<div class="row">
+      		<div class="col-sm-6">
+      			カテゴリ：
+      			<%= link_to topics_path(sort: 'category', category: topic.category), style: "color: #664539;" do %>
+		  <%= topic_category(topic.category) %>
+		  <% end %>
+		  </div>
+      		<div class="col-sm-6">
+      			<i class="fas fa-comment"> </i>
+      			<%= topic.topic_comments.count %>
+      		</div>
+      	</div>
+      </div>
+      <div class="col-sm-3" style="padding-top: 20px;">
+      	<% if user_signed_in? && topic.user_id == current_user.id %>
+		    <span id="status_btn-<%= topic.id %>">
+            <%= render 'topics/status_btn', topic: topic %>
+            </span>
+          <% else %>
+		    <% if topic.status == true %>
+		      <%= link_to '解決済み', topics_path(sort: 'resolved'), class: 'letter' %>
+		    <% else topic.status == false %>
+		      <%= link_to '未解決', topics_path(sort: 'unsolved'), class: 'letter' %>
+		    <% end %>
+		  <% end %>
+      </div>
+    </div>
+    <% end %>
+</div>
+
+
+
+<br><br>
 <table>
  <thead>
     <tr>

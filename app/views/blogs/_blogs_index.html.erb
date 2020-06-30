@@ -1,7 +1,6 @@
 <div class="container-fluid space">
     <% blogs.each.with_index(1) do |blog, i| %>
-    <div class="container-fluid" style="margin-top: 30px;">
-      <div class="row">
+      <div class="row" style="margin-top: 30px;">
         <div class="col-sm-3">
           <div class="row">
           <%= link_to blog_path(blog) do %>
@@ -41,6 +40,5 @@
           </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
