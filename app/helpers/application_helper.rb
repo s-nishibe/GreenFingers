@@ -1,6 +1,6 @@
 module ApplicationHelper
   def simple_time(time)
-    time.strftime("%Y年%m月%d日　")
+    time.strftime("%Y/%m/%d")
   end
 
   def plant_kind(plant)
