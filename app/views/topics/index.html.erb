@@ -1,4 +1,4 @@
-<div class="col col-md-10 col-body">
+<div class="col col-lg-10 space">
   <%= render partial: 'layouts/flash' %>
 
   <% if params[:sort] == 'all_topics' %>
@@ -6,7 +6,7 @@
   <% elsif params[:sort] == 'user_topics' %>
   <h2><%= @user.name %>さんのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
   <% elsif params[:sort] == 'category' %>
-  <h2>カテゴリ「<%= render 'topics/category', category: @category %>」のトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
+  <h2>カテゴリ「<%= topic_category(@category) %>」のトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
   <% elsif params[:sort] == 'resolved' %>
   <h2>解決済みのトピック（<%= @topics.count %>/<%= @topics_all.count %>件）</h2>
   <% else params[:sort] == 'unsolved' %>

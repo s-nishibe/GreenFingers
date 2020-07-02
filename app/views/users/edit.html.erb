@@ -1,4 +1,4 @@
-<div class="col col-md-10 col-body">
+<div class="col col-lg-10 space">
   <%= render partial: 'layouts/flash' %>
   <h3>会員情報編集</h3>
   <%= form_with(model: @user, local: true) do |f| %>
@@ -20,9 +20,9 @@
 
   <div class="user_field">
     <%= f.submit '更新する！', class: 'btn btn-green btn-block w-25 offset-9' %>
+    <%= link_to '退会する', user_path, method: :delete, data: {confirm: '本当に退会しますか？'}, class: 'btn btn-crud-red btn-block w-25 offset-9', style: 'margin-top: 10px;' %>
   </div>
   <% end %>
-  <%= link_to '退会する', user_path, method: :delete, data: {confirm: '本当に退会しますか？'}, class: 'btn btn-crud-red btn-block w-25 offset-9', style: 'margin-top: 10px;' %>
 </div>
 
 

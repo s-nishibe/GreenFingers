@@ -1,36 +1,21 @@
-<table>
- 	<thead>
- 	  <tr>
- 	    <th></th>
- 	    <th>名前</th>
- 	    <th>ひとこと</th>
- 	  </tr>
- 	</thead>
-	<tbody>
- 	  <% users.each do |user| %>
-  	  <tr>
-  	    <td>
-          <% if user.score >= 0.8 %>
-            <%= link_to user_path(user) do %>
-            <%= attachment_image_tag(user, :profile_img, fallback: 'no_img.jpg', size: '50x50', class: 'border-gold') %>
-            <% end %>
-          <% elsif user.score >= 0.6 %>
-            <%= link_to user_path(user) do %>
-            <%= attachment_image_tag(user, :profile_img, fallback: 'no_img.jpg', size: '50x50', class: 'border-silver') %>
-            <% end %>
-          <% else %>
- 	  	      <%= link_to user_path(user) do %>
-	  	      <%= attachment_image_tag(user, :profile_img, fallback: 'no_img.jpg', size: '50x50') %>
-            <% end %>
-  	      <% end %>
-  	    </td>
-  	    <td>
-          <%= link_to user_path(user), class: 'letter' do %>
-          <%= user.name %>
-          <% end %>
-        </td>
-  	    <td><%= user.introduction %></td>
-  	  </tr>
- 	  <% end %>
-  </tbody>
-</table>
+<div class="container-fluid space">
+  <% users.each.with_index(1) do |user, i| %>
+  <div class="row" style="margin-top: 30px;">
+    <div class="col-sm-3">
+      <%= link_to user_path(user) do %>
+      <%= attachment_image_tag(user, :profile_img, fallback: 'no_img.jpg', size: '80x80') %>
+      <% end %>
+    </div>
+    <div class="col-sm-9">
+      <div class="row">
+        <%= link_to user_path(user), class: 'letter' do %>
+        <h4><%= user.name %></h4>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= user.introduction %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
