@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>GreenFingers</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>GreenFingers</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application' %>
-    <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'application' %>
 
-    <!-- レスポンシブ -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- レスポンシブ -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- swiper -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.esm.browser.bundle.js"></script>
+  <!-- swiper -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-    <!-- font awsome -->
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-  </head>
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-  <body class="himaji letter" style="background-color: #feffe4;">
-    <%= render partial: 'layouts/header' %>
-    <div class="container-fluid container-main">
-      <div class="row">
-        <%= yield %>
-        <%= render 'layouts/sidebar' %>
-        <%= render partial: 'layouts/footer' %>
-      </div>
+  <!-- font awsome -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+</head>
+
+<body class="himaji letter" style="background-color: #feffe4;">
+  <%= render partial: 'layouts/header' %>
+  <div class="container-fluid container-main">
+    <div class="row">
+      <%= yield %>
+      <%= render 'layouts/sidebar' %>
+      <%= render partial: 'layouts/footer' %>
     </div>
+  </div>
 
-      <!-- twitter シェアボタン -->
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body>
+  <!-- twitter シェアボタン -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
 </html>
