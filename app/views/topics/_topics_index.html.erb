@@ -8,7 +8,7 @@
 	      <% end %>
       	</div>
       	<div class="row">
-      	  <% if topic.user_id == current_user.id %>
+      	  <% if user_signed_in? && topic.user_id == current_user.id %>
             <%= link_to '編集', edit_topic_path(topic), style: 'color: #2eb872;' %>
             <%= link_to '削除', topic_path(topic), method: :delete, style: 'color: #F94659;' %>
             <% end %>
