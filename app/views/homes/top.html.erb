@@ -70,9 +70,9 @@
   var MySwiper = new Swiper ('.swiper-container', {
     speed: 500,
     effect: 'slide',
-    spaceBetween: 0,
+    spaceBetween: 4,
     loop: true,
-    slidesPerView: 1,
+    slidesPerView: 5,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -82,8 +82,8 @@
     },
     breakpoints: {
       767: {
-        slidesPerView: 4,
-        spacebetween: 5
+        slidesPerView: 1,
+        spacebetween: 0,
       }
     }
   });
